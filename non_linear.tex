@@ -20,11 +20,19 @@ $\sigma$ is generally a non-linear scalar function. Its application on a vector 
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
 $\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
-\norm{Y - \sigma (X w ) }^2 & = \norm{Y - XX^T Y - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(X^T Y + \epsilon \hat{w}) }^2 \\
-& = \norm{ Y - XX^T Y - \epsilon (X\hat{w} + \xi(X^T Y)) - \epsilon^2(\hat{w} + \nabla \xi(X^TY)\hat{w})}^2 \\
-& = \norm{Y-XX^T Y }^2 - 2 \epsilon (X \hat{w} + \xi(X^TY))^T (Y-XX^TY) +\\
-& +\epsilon^2(\norm{X\hat{w} + \xi(X^TY)} - 2 (\hat{w} + \nabla \xi(X^TY)\hat{w})^T(Y-XX^TY))
+\norm{Y - \sigma (X w ) }^2 & = \norm{Y - XX^T Y - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(XX^T Y + \epsilon X\hat{w}) }^2 \\
+& = \norm{ Y - XX^T Y - \epsilon (X\hat{w} + \xi(XX^T Y)) - \epsilon^2(X\tilde{w} + X\hat{w} + \nabla \xi(XX^TY)X\hat{w})}^2 \\
+& = \norm{Y-XX^T Y }^2 - 2 \epsilon (X \hat{w} + \xi(XX^TY))^T (Y-XX^TY) +\\
+& +\epsilon^2(\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (X\hat{w} + X \tilde{w}+ \nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY))
 \end{align*}
-We first notice that we can assume $X^T X = I$ since $X_1, \dots, X_k$ are i.i.d.
-Then $X^T(Y-XX^TY) = 0$
+We first notice that for given $X$, $XX^TY$ is the projection of $Y$ onto linear subspace spanned by columns of $X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
+$XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y|X$ is zero. For the coefficent of $\epsilon^2$ we have
+\begin{equation*}
+\textrm{Coeff}(\epsilon^2)  =  \norm{X\hat{w} + \xi(XX^TY)}^2 - 2 \nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)
+\end{equation*}
+Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
+\begin{equation}
+\min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(XX^TY)}^2 - \norm{X^T\xi(XX^TY)}^2 - \norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
+\end{equation}
+Below we assume $X$ is given and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = \frac{AA^T}{n}$.
 \end{document}

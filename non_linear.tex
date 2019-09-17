@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\inner{\langle}{\rangle}
+\def\P{\mathcal{P}}
+\def\E{\mathbb{E}}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\begin{document}
+Let $Y, X_1, \dots, X_k$ be i.i.d n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. we would like to compute the following quantity:
+\begin{equation}
+\E[\min_w \norm{Y - \sigma (X w ) }^2]
+\end{equation}
+$\sigma$ is generally a non-linear scalar function. Its application on a vector is element-wise.
+
+We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
+$\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
+\begin{align*}
+\norm{Y - \sigma (X w ) }^2 & = \norm{Y - XX^T Y - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(X^T Y + \epsilon \hat{w}) }^2 \\
+& = \norm{ Y - XX^T Y - \epsilon (X\hat{w} + \xi(X^T Y)) - \epsilon^2(\hat{w} + \nabla \xi(X^TY)\hat{w})}^2 \\
+& = \norm{Y-XX^T Y }^2 - 2 \epsilon (X \hat{w} + \xi(X^TY))^T (Y-XX^TY) +\\
+& +\epsilon^2(\norm{X\hat{w} + \xi(X^TY)} - 2 (\hat{w} + \nabla \xi(X^TY)\hat{w})^T(Y-XX^TY))
+\end{align*}
+We first notice that we can assume $X^T X = I$ since $X_1, \dots, X_k$ are i.i.d.
+Then $X^T(Y-XX^TY) = 0$
+\end{document}

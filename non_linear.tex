@@ -8,7 +8,7 @@
 \def\E{\mathbb{E}}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-
+\DeclareMathOperator*{\diag}{diag}
 \DeclareMathOperator*{\argmin}{argmin}
 \begin{document}
 Let $Y, X_1, \dots, X_k$ be i.i.d n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. we would like to compute the following quantity:
@@ -34,7 +34,7 @@ Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(XX^TY)}^2 - \norm{X^T\xi(XX^TY)}^2 - \norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
 \end{equation}
-Below we assume $X$ is given, the columns of $X$ are orthogonal and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = AY$. Then $Z \sim N(0, \frac{AA^T}{n})$. Let $\widetilde{A} = \frac{AA^T}{n} = \frac{A}{n}$ and $p(z| \sigma^2)$ denotes the pdf of Gaussian distribution with zero mean and variance $\sigma^2$. We then have
+Below we assume $X$ is given, the columns of $X$ are orthogonal ($X^TX=I_k$) and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = AY$. Then $Z \sim N(0, \frac{AA^T}{n})$. Let $\widetilde{A} = \frac{AA^T}{n} = \frac{A}{n}$ and $p(z| \sigma^2)$ denotes the pdf of Gaussian distribution with zero mean and variance $\sigma^2$. We then have
 \begin{equation*}
 I_1 = \sum_{i=1}^n \int_z \xi^2(z) p(z| \widetilde{A}_{i}) dz
 \end{equation*}
@@ -42,8 +42,26 @@ We use $p(x,y | \sigma^2_x, \sigma^2_y, \rho \sigma_x \sigma_y)$ to denote the p
 We further assume that every two rows of $A$ are linear independent.
 We then have
 \begin{equation*}
-I_2   = \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p(x,y| \widetilde{A}_{i}, \widetilde{A}_{j}, \widetilde{A}_{ij}) dx dy + \sum_{i=1}^n A_{ii} \int_z \xi^2(z) p(z | \widetilde{A}_i) dz 
+-I_2   = \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p(x,y| \widetilde{A}_{i}, \widetilde{A}_{j}, \widetilde{A}_{ij}) dx dy + \sum_{i=1}^n A_{ii} \int_z \xi^2(z) p(z | \widetilde{A}_i) dz 
 \end{equation*}
 Since we have $XX^T + \bar{X}\bar{X}^T = I_n$, $A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. Then we have
-
+\begin{equation*}
+I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p(z | \widetilde{A}_{ii}) dz  - \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p(x,y| \widetilde{A}_{ii}, \widetilde{A}_{jj}, \widetilde{A}_{ij}) dx dy
+\end{equation*}
+For $I_3$, the formula is quiet tricky, we assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. $[\cdot]_i$ represents the $i$-th element of a vector.
+Then
+\begin{equation*}
+-I_3 = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^m A_{ii}\Sigma_{ii}
+\end{equation*}
+For $\Sigma_{ii}$ we have
+\begin{equation*}
+\Sigma_{ii} = \int_y [(I - A)Y]^2_i (2[AY]_i + a)^2 dy
+\end{equation*}
+The above integral is about $y_1, \dots, y_n$, which is a quadratic function about $a$.
+For $\Sigma_{ij}$ with $i\neq j$ we have
+\begin{equation*}
+\Sigma_{ij} = \int_y [(I - A)Y]_i (2[AY]_i + a)[(I - A)Y]_j (2[AY]_j + a) dy
+\end{equation*}
+which is also a quadratic function about $a$.
+For $I_1 - I_2$, the coefficient of $ab$ is zero and the other terms are all quandratic about $a$ and $b$ respectively. Therefore, we can find optimal $a$ and $b$ such that $I_1 + I_2 + I_3$ takes the maximum value.
 \end{document}

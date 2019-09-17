@@ -34,5 +34,16 @@ Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(XX^TY)}^2 - \norm{X^T\xi(XX^TY)}^2 - \norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
 \end{equation}
-Below we assume $X$ is given and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = \frac{AA^T}{n}$.
+Below we assume $X$ is given, the columns of $X$ are orthogonal and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = AY$. Then $Z \sim N(0, \frac{AA^T}{n})$. Let $\widetilde{A} = \frac{AA^T}{n} = \frac{A}{n}$ and $p(z| \sigma^2)$ denotes the pdf of Gaussian distribution with zero mean and variance $\sigma^2$. We then have
+\begin{equation*}
+I_1 = \sum_{i=1}^n \int_z \xi^2(z) p(z| \widetilde{A}_{i}) dz
+\end{equation*}
+We use $p(x,y | \sigma^2_x, \sigma^2_y, \rho \sigma_x \sigma_y)$ to denote the pdf of two dimensional Gaussian distribution with zero mean. 
+We further assume that every two rows of $A$ are linear independent.
+We then have
+\begin{equation*}
+I_2   = \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p(x,y| \widetilde{A}_{i}, \widetilde{A}_{j}, \widetilde{A}_{ij}) dx dy + \sum_{i=1}^n A_{ii} \int_z \xi^2(z) p(z | \widetilde{A}_i) dz 
+\end{equation*}
+Since we have $XX^T + \bar{X}\bar{X}^T = I_n$, $A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. Then we have
+
 \end{document}

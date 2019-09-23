@@ -51,7 +51,7 @@ I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p(z | \widetilde{A}_{ii}) d
 For $I_3$, the formula is quiet tricky, we assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. $[\cdot]_i$ represents the $i$-th element of a vector.
 Then
 \begin{equation*}
--I_3 = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^m A_{ii}\Sigma_{ii}
+-I_3 = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii}
 \end{equation*}
 For $\Sigma_{ii}$ we have
 \begin{equation*}
@@ -63,5 +63,27 @@ For $\Sigma_{ij}$ with $i\neq j$ we have
 \Sigma_{ij} = \int_y [(I - A)Y]_i (2[AY]_i + a)[(I - A)Y]_j (2[AY]_j + a) dy
 \end{equation*}
 which is also a quadratic function about $a$.
-For $I_1 - I_2$, the coefficient of $ab$ is zero and the other terms are all quandratic about $a$ and $b$ respectively. Therefore, we can find optimal $a$ and $b$ such that $I_1 + I_2 + I_3$ takes the maximum value.
+For $I_1 + I_2$, the coefficient of $ab$ is zero and the other terms are all quandratic about $a$ and $b$ respectively. Therefore, we can find optimal $a$ and $b$ such that $I_1 + I_2 + I_3$ takes the maximum value.
+
+The coefficient of $b^2, b$ takes the following form respectively:
+\begin{align*}
+\textrm{Coeff}(b^2) & = \sum_{i=1}^n (1-A_{ii}) - \sum_{i,j=1, i\neq j} A_{ij} \\
+\textrm{Coeff}(b) & = \frac{2}{n}\sum_{i=1}^n A_{ii} [ 1 - A_{ii} - \sum_{j=1, j\neq i} A_{ij} ]
+\end{align*}
+The expectation about $\textrm{Coeff}(b^2)$ is positive. If $ X \sim N(0, \frac{1}{n})$ is assumed. 
+$$
+E[A_{ij}]= \begin{cases}
+\frac{k}{n} & i = j\\
+0 & i\neq j 
+\end{cases}
+$$
+Then $\textrm{Coeff}(b)  = n-k$. 
+Therefore we can take apprropriate $b$ such that $\min \textrm{Coeff}(\epsilon^2)$ is positive.
+It can be shown the coefficient of $a^2$ in $\textrm{Coeff}(a^2)$ is 
+\begin{equation}
+\textrm{Coeff}(a^2) = -\frac{1}{n}( \sum_{i,j=1}^n (n-2) A_{ij} + \sum_{i=1}^n A_{ii})
+\end{equation}
+The expectation of $\textrm{Coeff}(a^2)$ is negative. Therefore, we can choose $a$ such that $\textrm{Coeff}(\epsilon^2)$ is negative.
+
+We conclude that the sign of $\min \textrm{Coeff}(\epsilon^2)$ is undetermined in the case of quadratic linear function pertubation.
 \end{document}

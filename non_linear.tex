@@ -10,7 +10,10 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclareMathOperator*{\diag}{diag}
 \DeclareMathOperator*{\argmin}{argmin}
+\title{Non-linearity in random variable approximation}
+\author{Feng Zhao}
 \begin{document}
+\maketitle
 Let $Y, X_1, \dots, X_k$ be i.i.d n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. we would like to compute the following quantity:
 \begin{equation}
 \E[\min_w \norm{Y - \sigma (X w ) }^2]
@@ -48,7 +51,7 @@ Since we have $XX^T + \bar{X}\bar{X}^T = I_n$, $A_{ii} = \sum_{j=1}^k x^2_{ij} <
 \begin{equation*}
 I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p(z | \widetilde{A}_{ii}) dz  - \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p(x,y| \widetilde{A}_{ii}, \widetilde{A}_{jj}, \widetilde{A}_{ij}) dx dy
 \end{equation*}
-For $I_3$, the formula is quiet tricky, we assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. $[\cdot]_i$ represents the $i$-th element of a vector.
+For $I_3$, the formula is quite tricky, we assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. $[\cdot]_i$ represents the $i$-th element of a vector.
 Then
 \begin{equation*}
 -I_3 = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii}
@@ -70,14 +73,14 @@ The coefficient of $b^2, b$ takes the following form respectively:
 \textrm{Coeff}(b^2) & = \sum_{i=1}^n (1-A_{ii}) - \sum_{i,j=1, i\neq j} A_{ij} \\
 \textrm{Coeff}(b) & = \frac{2}{n}\sum_{i=1}^n A_{ii} [ 1 - A_{ii} - \sum_{j=1, j\neq i} A_{ij} ]
 \end{align*}
-The expectation about $\textrm{Coeff}(b^2)$ is positive. If $ X \sim N(0, \frac{1}{n})$ is assumed. 
+The expectation about $\textrm{Coeff}(b^2)$ is positive. If  we assume
 $$
 E[A_{ij}]= \begin{cases}
 \frac{k}{n} & i = j\\
 0 & i\neq j 
 \end{cases}
 $$
-Then $\textrm{Coeff}(b)  = n-k$. 
+Then $\textrm{Coeff}(b^2)  = n-k$. 
 Therefore we can take apprropriate $b$ such that $\min \textrm{Coeff}(\epsilon^2)$ is positive.
 It can be shown the coefficient of $a^2$ in $\textrm{Coeff}(a^2)$ is 
 \begin{equation}

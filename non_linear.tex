@@ -10,16 +10,28 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclareMathOperator*{\diag}{diag}
 \DeclareMathOperator*{\argmin}{argmin}
+\newtheorem{lemma}{Lemma}
 \title{Non-linearity in random variable approximation}
 \author{Feng Zhao}
 \begin{document}
 \maketitle
-Let $Y, X_1, \dots, X_k$ be i.i.d n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. we would like to compute the following quantity:
-\begin{equation}
+Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$from $X$ have the property that $x_i \cdot x_j = 0$. We would like to compute the following quantity:
+\begin{equation}\label{eq:Eminw}
 \E[\min_w \norm{Y - \sigma (X w ) }^2]
 \end{equation}
 $\sigma$ is generally a non-linear scalar function. Its application on a vector is element-wise.
+\begin{lemma}
+Suppose $X$ is an $n$ by $k$ random matrix. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0, \norm{x_i}=1$ where $x_i$ is the $i$-th column.  Let $A=X X^T$, then we have
+\begin{equation}
+E[A_{ij}]= \begin{cases}
+\frac{k}{n} & i = j\\
+0 & i\neq j 
+\end{cases}
+\end{equation}
+\end{lemma}
+\begin{proof}
 
+\end{proof}
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
 $\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
@@ -33,11 +45,13 @@ $XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. By s
 \begin{equation*}
 \textrm{Coeff}(\epsilon^2)  =  \norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)
 \end{equation*}
+We have written Equation \eqref{eq:Eminw} in $ \norm{Y - X X^T Y}^2 + \E[\textrm{Coeff}(\epsilon^2)] \epsilon^2 + o(\epsilon^2)$.
+
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(XX^TY)}^2 - \norm{X^T\xi(XX^TY)}^2 - \norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
 \end{equation}
-Below we assume $X$ is given (the expectation is taken first about $Y$ and then about $X$), the columns of $X$ are orthogonal ($X^TX=I_k$) and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = AY$. Then $Z \sim N(0, \frac{AA^T}{n})$. Let $\widetilde{A} = \frac{AA^T}{n} = \frac{A}{n}$ and $p(z| \sigma^2)$ denotes the pdf of Gaussian distribution with zero mean and variance $\sigma^2$. We then have
+Below we assume $X$ is given (the expectation is taken first about $Y$ and then about $X$), the columns of $X$ are orthogonal by the given condition ($X^TX=I_k$) and $Y_1, \dots, Y_n  \sim N(0, \frac{1}{n})$ and they are independent. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. Let $Z = AY$. Then $Z \sim N(0, \frac{AA^T}{n})$. Let $\widetilde{A} = \frac{AA^T}{n} = \frac{A}{n}$ and $p(z| \sigma^2)$ denotes the pdf of Gaussian distribution with zero mean and variance $\sigma^2$. We then have
 \begin{equation*}
 I_1 = \sum_{i=1}^n \int_z \xi^2(z) p(z| \widetilde{A}_{i}) dz
 \end{equation*}

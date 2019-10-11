@@ -39,7 +39,7 @@ To show $\E[A]=\frac{k}{n}I_n$ we need to show respectively $\E[X_iX_i^T]=\frac{
 then $b_1, \dots, b_{n-1}, x_1$ are an orthogonal unit basis for the $n$ dimensional space. Therefore we have
 $\sum_{i=1}^{n-1} b_i b_i^T = I_n -  x_1 x_1^T $. The RHS is fixed for given $x_1$, which is irrelevant with the choice of $b_1, \dots, b_{n-1}$. We can show that the inner expectation $\E[X_2 X_2^T |X_1] = \frac{1}{n-1}(I_n - x_1 x_1^T)$ since we can choose $X_2 = \frac{1}{\sqrt{a_1^2 + \dots + a_{n-1}^2}} \sum_{i=1}^{n-1} a_i b_i$ ($b_i$ is fixed vector while $a_i$ is scalar random vector). Then taking the outer expectation we have $\E[X_2 X_2^T] = \frac{1}{n-1} (I_n - \frac{1}{n} I_n) = \frac{1}{n} I_n$.
 
-For $i>2$, the proof is the similar as we have $$
+For $i>2$, the proof is similar as we have $$
 \E[X_i X_i^T] = \E_{X_1, \dots, X_{i-1}} [\E[X_i X_i^T | x_1, \dots x_{i-1}]]
 $$
  which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
@@ -48,12 +48,13 @@ We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w
 $\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
 \norm{Y - \sigma (X w ) }^2 & = \norm{Y - XX^T Y - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(XX^T Y + \epsilon X\hat{w}) }^2 \\
-& = \norm{ Y - XX^T Y - \epsilon (X\hat{w} + \xi(XX^T Y)) - \epsilon^2(X\tilde{w} + X\hat{w} + \nabla \xi(XX^TY)X\hat{w})}^2 \\
+& = \norm{ Y - XX^T Y - \epsilon (X\hat{w} + \xi(XX^T Y)) - \epsilon^2(X\tilde{w} + \nabla \xi(XX^TY)X\hat{w})}^2 \\
 & = \norm{Y-XX^T Y }^2 - 2 \epsilon (X \hat{w} + \xi(XX^TY))^T (Y-XX^TY) +\\
-& +\epsilon^2(\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (X\hat{w} + X \tilde{w}+ \nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY))
+& +\epsilon^2(\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (X \tilde{w}+ \nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY))
 \end{align*}
+In the above formula,  we expand $\xi$ at $XX^TY$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([XX^TY]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
 We first notice that for given $X$, $XX^TY$ is the projection of $Y$ onto linear subspace spanned by columns of $X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
-$XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y|X$ is zero. For the coefficent of $\epsilon^2$ we have
+$XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
 \textrm{Coeff}(\epsilon^2)  =  \norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)
 \end{equation*}
@@ -83,7 +84,7 @@ Since we have $XX^T + \bar{X}\bar{X}^T = I_n$, $A_{ii} = \sum_{j=1}^k x^2_{ij} <
 \begin{equation*}
 I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p_i(z) dz  - \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p_{ij}(x,y) dx dy
 \end{equation*}
-For $I_3$, the formula is quite tricky. We assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. $[\cdot]_i$ represents the $i$-th element of a vector.
+For $I_3$, the formula is quite tricky. We assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. 
 Then
 \begin{align*}
 -I_3 & = \E_Y[\norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2] \\ 
@@ -91,34 +92,39 @@ Then
 \end{align*}
 For $\Sigma_{ii}$ we have
 \begin{equation*}
-\Sigma_{ii} = \int_y [(I - A)Y]^2_i (2[AY]_i + a)^2 dy
+\Sigma_{ii} = \int_y [(I - A)Y]^2_i (2[AY]_i + a)^2 p(y)dy
 \end{equation*}
 The above integral is about $y_1, \dots, y_n$, which is a quadratic function about $a$.
 For $\Sigma_{ij}$ with $i\neq j$ we have
 \begin{equation*}
-\Sigma_{ij} = \int_y [(I - A)Y]_i (2[AY]_i + a)[(I - A)Y]_j (2[AY]_j + a) dy
+\Sigma_{ij} = \int_y [(I - A)Y]_i (2[AY]_i + a)[(I - A)Y]_j (2[AY]_j + a) p(y)dy
 \end{equation*}
 which is also a quadratic function about $a$.
 For $I_1 + I_2$, the coefficient of $ab$ is zero since the expectation of $Z$ is zero. The other terms are all quandratic about $a$ and $b$ respectively. Therefore, we can find optimal $a$ and $b$ such that $I_1 + I_2 + I_3$ takes the maximum value.
 
-The coefficient of $b^2, b$ takes the following form respectively:
+The coefficient of $b^2, b$ of $I_1 + I_2$ takes the following form respectively ($I_3$ is irrelevant with $b$):
 \begin{align*}
 \textrm{Coeff}(b^2) & = \sum_{i=1}^n (1-A_{ii}) - \sum_{i,j=1, i\neq j} A_{ij} \\
 \textrm{Coeff}(b) & = \frac{2}{n}\sum_{i=1}^n A_{ii} [ 1 - A_{ii} - \sum_{j=1, j\neq i} A_{ij} ]
 \end{align*}
 The expectation about $\textrm{Coeff}(b^2)$ is positive. From Lemma \ref{lem:uniform}
 $$
-E[A_{ij}]= \begin{cases}
+\E[A_{ij}]= \begin{cases}
 \frac{k}{n} & i = j\\
 0 & i\neq j 
 \end{cases}
 $$
 Then $\E_X[\textrm{Coeff}(b^2)]  = n-k > 0$. 
-Therefore we can take apprropriate $b$ such that $\min \textrm{Coeff}(\epsilon^2)$ is positive.
-It can be shown that the coefficient of $a^2$ in $\textrm{Coeff}(a^2)$ is 
-\begin{equation}
-\textrm{Coeff}(a^2) = -\frac{1}{n}( \sum_{i,j=1}^n (n-2) A_{ij} + \sum_{i=1}^n A_{ii})
-\end{equation}
+Therefore we can take appropriate $b$ such that $\min \textrm{Coeff}(\epsilon^2)$ is positive.
+To compute the coefficient of $a^2$, we let $\widetilde{Z}=(I-A)Y$, which has zero mean and covariance matrix $(I-A)(I-A)^T = \frac{I-A}{n}$.  We use $\textrm{Coeff}(a^2 | \Sigma_{ij})$ to represent the coefficient of $a^2$ for expression $\Sigma_{ij}$. Then  we have
+\begin{align*}
+\textrm{Coeff}(a^2 | \Sigma_{ii}) & = \frac{1-A_{ii}}{n} \\
+\textrm{Coeff}(a^2 | \Sigma_{ij}) & = \frac{-A_{ij}}{n}  \textrm{ for } i \neq j
+\end{align*}
+\begin{align*}
+\textrm{Coeff}(a^2) & = \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii}  - \sum_{i,j=1, i\neq j}^n \frac{A_{ij}^2}{n} - \sum_{i,j=1, i \neq j}^n \frac{A^2_{ij}}{n} - \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii} \\
+& = -\frac{2}{n} \sum_{i,j=1, i\neq j }^n A^2_{ij} \\
+\end{align*}
 The expectation of $\textrm{Coeff}(a^2)$ is negative. Therefore, we can choose $a$ such that $\textrm{Coeff}(\epsilon^2)$ is negative.
 
 We conclude that the sign of $\min \textrm{Coeff}(\epsilon^2)$ is undetermined in the case of quadratic linear function pertubation.

@@ -72,9 +72,8 @@ I_1 = \sum_{i=1}^n \int_z \xi^2(z) p_i(z) dz
 \end{equation*}
 where $Z_i$ has the distribution $p_i$.
  
-We use $p(x,y | \sigma^2_x, \sigma^2_y, \rho \sigma_x \sigma_y)$ to denote the pdf of two dimensional Gaussian distribution with zero mean. 
-We further assume that every two rows of $A$ are linear independent.
-We then have
+For $I_2$
+we have
 \begin{equation*}
 -I_2   = \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p_{ij}(x,y) dx dy + \sum_{i=1}^n A_{ii} \int_z \xi^2(z) p_i(z) dz 
 \end{equation*}
@@ -128,4 +127,6 @@ To compute the coefficient of $a^2$, we let $\widetilde{Z}=(I-A)Y$, which has ze
 The expectation of $\textrm{Coeff}(a^2)$ is negative. Therefore, we can choose $a$ such that $\textrm{Coeff}(\epsilon^2)$ is negative.
 
 We conclude that the sign of $\min \textrm{Coeff}(\epsilon^2)$ is undetermined in the case of quadratic linear function pertubation.
+
+To compute the coefficient of $a$, we can show that $\E[Y^3]=0$  and $\E[Z^3]=0$ and further show that the coefficient is zero.
 \end{document}

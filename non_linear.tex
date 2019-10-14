@@ -44,6 +44,36 @@ For $i>2$, the proof is similar as we have $$
 $$
  which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
+\begin{lemma}\label{lem:x2y2}
+Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
+\begin{equation}
+\E[X^2 Y^2] =\Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $\Sigma = L^T L $ and $\binom{x}{y} = L^T \binom{x'}{y'}$, then $\binom{x'}{y'}$ has identity covariance. By Cholesky decomposition we can make $L$ be upper trianglar matrix (
+$L_{12}=0$) with $L_{11}^2 = \Sigma_{11}, L_{11}L_{12} = \Sigma_{12}, L_{22}^2 = \Sigma_{22} - \frac{\Sigma_{12}^2}{\Sigma_{11}}$. Then we have $x = L_{11} x', y = L_{12} x' + L_{22} y'$. Therefore
+\begin{align*}
+\E[X^2 Y^2] & = L_{11}^2 (L_{12}^2\E[X^4]+ L^2_{22}\E[X^2]\E[Y^2]) \\
+& = L_{11}^2(3L_{12}^2 + L^2_{22}) \\
+& = \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2
+\end{align*}
+\end{proof}
+\begin{lemma}\label{lem:abcd}
+Suppose $X_1, X_2, Y_1, Y_2$ are gaussian random variables and the covariance of their join distribution is block diagonal:
+$(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$. Then the following equality holds:
+\begin{equation}
+\E[X_1X_2Y_1Y_2] = \E[X_1 X_2] \E[Y_1 Y_2]
+\end{equation}
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\E[X_1X_2Y_1Y_2] & = \int \frac{x_1 x_2 y_1 y_2 }{(2\pi)^2 \sqrt{\abs{\Sigma_1}\abs{\Sigma_2}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2}-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dx_1 d x_2 dy_1 dy_2 \\
+& = \int \frac{x_1 x_2  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2})dx_1 d x_2  \\
+&\cdot  \int \frac{y_1 y_2  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dy_1 d y_2 \\
+& = \E[X_1 X_2] \E[Y_1 Y_2]
+\end{align*}
+\end{proof}
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
 $\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
@@ -80,9 +110,9 @@ we have
 where $Z_i, Z_j$ have the joint distribution $p_{ij}$.
 
 Since we have $XX^T + \bar{X}\bar{X}^T = I_n$, $A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. Then we have
-\begin{equation*}
+\begin{equation}\label{eq:I1plusI2}
 I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p_i(z) dz  - \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p_{ij}(x,y) dx dy
-\end{equation*}
+\end{equation}
 For $I_3$, the formula is quite tricky. We assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. 
 Then
 \begin{align*}
@@ -90,9 +120,9 @@ Then
  & = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii} 
 \end{align*}
 For $\Sigma_{ii}$ we have
-\begin{equation*}
+\begin{equation}\label{eq:sigmaii}
 \Sigma_{ii} = \int_y [(I - A)Y]^2_i (2[AY]_i + a)^2 p(y)dy
-\end{equation*}
+\end{equation}
 The above integral is about $y_1, \dots, y_n$, which is a quadratic function about $a$.
 For $\Sigma_{ij}$ with $i\neq j$ we have
 \begin{equation*}
@@ -129,4 +159,21 @@ The expectation of $\textrm{Coeff}(a^2)$ is negative. Therefore, we can choose $
 We conclude that the sign of $\min \textrm{Coeff}(\epsilon^2)$ is undetermined in the case of quadratic linear function pertubation.
 
 To compute the coefficient of $a$, we can show that $\E[Y^3]=0$  and $\E[Z^3]=0$ and further show that the coefficient is zero.
+
+To compute the coefficient of the constant term, we further assume $Y \sim N(0, \frac{1}{n}I_n)$, then $Z \sim N(0, \frac{1}{n}A)$. From Equation \eqref{eq:I1plusI2} and Lemma \ref{lem:x2y2} The contribution of $I_1+ I_2$ to the constant term is 
+$ \sum_{i=1}^ n \frac{3}{n^2} A_{ii}^2 (1-A_{ii}) - \frac{1}{n^2} \sum_{i,j=1, i\neq j}^n A_{ij}(A_{ii}A_{jj}+2A_{ij}^2)$.
+
+To compute the constant term in Equation \eqref{eq:sigmaii}, we have $\Sigma_{ii} = 4\E[Z_i^2 (Y_i-Z_i)^2] = \frac{4}{n^2} A_{ii}(1-A_{ii})$;
+Using Lemma \ref{lem:abcd} and $(Z_i, Z_j)$ are independent with $(Y_i - Z_i, Y_j - Y_j)$ we have $\Sigma_{ij} = -\frac{4}{n^2} A_{ij}^2$ for $i \neq j$. Combining the contribution from $I_3$ we have:
+\begin{equation}
+\textrm{Coeff(Const)} = \frac{7}{n^2} \sum_{i=1}^n A^2_{ii} (1 -A_{ii}) - \frac{1}{n^2} \sum_{i,j=1,i\neq j}^n (A_{ij}A_{ii}A_{jj} + 6 A_{ij}^3)
+\end{equation}
+Now we assume $\xi(z) = \alpha z^2 + \beta z + \gamma$, fixing $A$ we can get $I_1 + I_2 + I_3$ is a quadratic form of $p^T = (\alpha, \beta, \gamma)$:
+$$
+I_1 + I_2 + I_3 =p^T \begin{pmatrix} 
+\textrm{Coeff(Const)}  & 0 & \textrm{Coeff}(b) \\ 
+0  & \textrm{Coeff}(a^2) & 0 \\ 
+\textrm{Coeff}(b)   & 0 & \textrm{Coeff}(b^2) 
+\end{pmatrix} p
+$$
 \end{document}

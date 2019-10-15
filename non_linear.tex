@@ -86,9 +86,9 @@ In the above formula,  we expand $\xi$ at $XX^TY$. The Jacobi is actually a diag
 We first notice that for given $X$, $XX^TY$ is the projection of $Y$ onto linear subspace spanned by columns of $X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
 $XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
-\textrm{Coeff}(\epsilon^2)  =  \norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)
+\textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)]
 \end{equation*}
-We have written Equation \eqref{eq:Eminw} in $ \norm{Y - X X^T Y}^2 + \E[\textrm{Coeff}(\epsilon^2)] \epsilon^2 + o(\epsilon^2)$.
+We have written Equation \eqref{eq:Eminw} in $ \norm{Y - X X^T Y}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$.
 
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
@@ -151,10 +151,10 @@ To compute the coefficient of $a^2$, we let $\widetilde{Z}=(I-A)Y$, which has ze
 \textrm{Coeff}(a^2 | \Sigma_{ij}) & = \frac{-A_{ij}}{n}  \textrm{ for } i \neq j
 \end{align*}
 \begin{align*}
-\textrm{Coeff}(a^2) & = \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii}  - \sum_{i,j=1, i\neq j}^n \frac{A_{ij}^2}{n} - \sum_{i,j=1, i \neq j}^n \frac{A^2_{ij}}{n} - \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii} \\
-& = -\frac{2}{n} \sum_{i,j=1, i\neq j }^n A^2_{ij} \\
+\textrm{Coeff}(a^2) & = \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii}  - \sum_{i,j=1, i\neq j}^n \frac{A_{ij}^2}{n} + \sum_{i,j=1, i \neq j}^n \frac{A^2_{ij}}{n} - \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii} \\
+& = 0\\
 \end{align*}
-The expectation of $\textrm{Coeff}(a^2)$ is negative. Therefore, we can choose $a$ such that $\textrm{Coeff}(\epsilon^2)$ is negative.
+The expectation of $\textrm{Coeff}(a^2)$ is 0.
 
 We conclude that the sign of $\min \textrm{Coeff}(\epsilon^2)$ is undetermined in the case of quadratic linear function pertubation.
 
@@ -172,7 +172,7 @@ Now we assume $\xi(z) = \alpha z^2 + \beta z + \gamma$, fixing $A$ we can get $I
 $$
 I_1 + I_2 + I_3 =p^T \begin{pmatrix} 
 \textrm{Coeff(Const)}  & 0 & \textrm{Coeff}(b) \\ 
-0  & \textrm{Coeff}(a^2) & 0 \\ 
+0  & 0 & 0 \\ 
 \textrm{Coeff}(b)   & 0 & \textrm{Coeff}(b^2) 
 \end{pmatrix} p
 $$

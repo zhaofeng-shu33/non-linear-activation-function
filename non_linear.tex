@@ -176,4 +176,18 @@ I_1 + I_2 + I_3 =p^T \begin{pmatrix}
 \textrm{Coeff}(b)   & 0 & \textrm{Coeff}(b^2) 
 \end{pmatrix} p
 $$
+Therefore, the result is irrelevant with the coefficient of $\beta$.  We can simplify the above formular as:
+\begin{equation}\label{eq:simI3}
+I_1+I_2+I_3 = p^T M p \textrm{ with } p^T = (\alpha, \gamma), M = \begin{pmatrix} \textrm{Coeff(Const)}  &  \textrm{Coeff}(b) \\ \textrm{Coeff}(b) &  \textrm{Coeff}(b^2)  \end{pmatrix}
+\end{equation}
+
+The expectation of $\E[A_{ii} A_{ij}]$ for $i \neq j $ is zero since if $X= [x_1, \dots, x_k]$ is a bunch of orthogonal basis, $-X$ is also a basis set. Therefore, if we replace $X$ with $-X$ the integral is unchanged. That is $\E[A_{ii} A_{ij}] = -\E[A_{ii}A_{ij}]$ since $A_{ij}$ is odd. 
+
+Therefore, the expectation of $M$ in Equation \ref{eq:simI3} is:
+\begin{equation}
+\E[M] = \begin{pmatrix} \frac{7}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
+\frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
+ \end{pmatrix}
+\end{equation}
+
 \end{document}

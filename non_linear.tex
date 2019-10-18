@@ -189,5 +189,15 @@ Therefore, the expectation of $M$ in Equation \ref{eq:simI3} is:
 \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
  \end{pmatrix}
 \end{equation}
-
+Let $X^T=[\hat{x}_1, \dots, \hat{x}_n]$, $A_{ii}= \hat{x}_i^T \hat{x}_i$. We assume that $\E[x_{i1}^2] = \E[x_{11}^2]$ and for very large $n$ $X_{11} \sim N(0,\frac{1}{n})$. Therefore
+approximation can be made about $\E[A_{ii}^2]$ and 
+$\E[A_{ii}^3]$, which equals $\frac{k^2}{n^2}$ and $\frac{k^3}{n^3}$ respectively. Let $ r = \frac{k}{n}$, 
+$\E[M] $ can be approximated by 
+$$
+\begin{pmatrix}
+\frac{7}{n}(r^2 - r^3) & 2(r-r^2) \\
+2(r-r^2) & n(1-r)
+\end{pmatrix}
+$$
+the determinant of $\E[M]$ is equal to $3r^2(1-r^2) > 0 $. Therefore, $\E[M]$ is positive definite matrix.
 \end{document}

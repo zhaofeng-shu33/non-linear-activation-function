@@ -46,15 +46,16 @@ $$
 \end{proof}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
-\begin{equation}
-\E[X^2 Y^2] =\Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2
-\end{equation}
+\begin{align}
+\E[X^2 Y^2] &= \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2 \\
+\E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12}
+\end{align}
 \end{lemma}
 \begin{proof}
 Let $\Sigma = L^T L $ and $\binom{x}{y} = L^T \binom{x'}{y'}$, then $\binom{x'}{y'}$ has identity covariance. By Cholesky decomposition we can make $L$ be upper trianglar matrix (
 $L_{12}=0$) with $L_{11}^2 = \Sigma_{11}, L_{11}L_{12} = \Sigma_{12}, L_{22}^2 = \Sigma_{22} - \frac{\Sigma_{12}^2}{\Sigma_{11}}$. Then we have $x = L_{11} x', y = L_{12} x' + L_{22} y'$. Therefore
 \begin{align*}
-\E[X^2 Y^2] & = L_{11}^2 (L_{12}^2\E[X^4]+ L^2_{22}\E[X^2]\E[Y^2]) \\
+\E[X^2 Y^2] & = L_{11}^2 (L_{12}^2\E[X'^4]+ L^2_{22}\E[X'^2]\E[Y'^2]) \\
 & = L_{11}^2(3L_{12}^2 + L^2_{22}) \\
 & = \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2
 \end{align*}

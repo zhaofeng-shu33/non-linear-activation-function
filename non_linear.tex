@@ -48,7 +48,8 @@ $$
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
 \begin{align}
 \E[X^2 Y^2] &= \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2 \\
-\E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12}
+\E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12} \\
+\E[X^3 Y^3] & = 6 \Sigma_{12}^3 + 9 \Sigma_{12} \Sigma_{11} \Sigma_{22}
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -64,15 +65,15 @@ $L_{12}=0$) with $L_{11}^2 = \Sigma_{11}, L_{11}L_{12} = \Sigma_{12}, L_{22}^2 =
 Suppose $X_1, X_2, Y_1, Y_2$ are gaussian random variables and the covariance of their join distribution is block diagonal:
 $(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$. Then the following equality holds:
 \begin{equation}
-\E[X_1X_2Y_1Y_2] = \E[X_1 X_2] \E[Y_1 Y_2]
+\E[f(X_1X_2)g(Y_1Y_2)] = \E[f(X_1 X_2)] \E[g(Y_1 Y_2)]
 \end{equation}
 \end{lemma}
 \begin{proof}
 \begin{align*}
-\E[X_1X_2Y_1Y_2] & = \int \frac{x_1 x_2 y_1 y_2 }{(2\pi)^2 \sqrt{\abs{\Sigma_1}\abs{\Sigma_2}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2}-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dx_1 d x_2 dy_1 dy_2 \\
-& = \int \frac{x_1 x_2  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2})dx_1 d x_2  \\
-&\cdot  \int \frac{y_1 y_2  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dy_1 d y_2 \\
-& = \E[X_1 X_2] \E[Y_1 Y_2]
+\E[f(X_1X_2)g(Y_1Y_2)] & = \int \frac{f(x_1 x_2) g(y_1 y_2) }{(2\pi)^2 \sqrt{\abs{\Sigma_1}\abs{\Sigma_2}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2}-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dx_1 d x_2 dy_1 dy_2 \\
+& = \int \frac{f(x_1 x_2)  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2})dx_1 d x_2  \\
+&\cdot  \int \frac{ g(y_1 y_2)  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dy_1 d y_2 \\
+& = \E[f(X_1 X_2)] \E[g(Y_1 Y_2)]
 \end{align*}
 \end{proof}
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
@@ -201,4 +202,22 @@ $$
 \end{pmatrix}
 $$
 the determinant of $\E[M]$ is equal to $3r^2(1-r^2) > 0 $. Therefore, $\E[M]$ is positive definite matrix.
+
+Now we consider $ \xi(z) = z^3 + cz^2 + az + b$, then $\nabla \xi (AY) $ is a diagonal matrix whose $(i,i)$ entry is 
+ $[\nabla \xi (AY)]_{i,i} = 3 [AY]_i^2 + 2c [AY]_i + a $, then $\Sigma_{ii}$ for $I_3$ has the following form:
+\begin{align*}
+\Sigma_{ii} & = \E[ [(I-A)Y]_i^2 [\nabla \xi(AY)]_{i,i}^2] \\
+& =  \frac{6a}{n^2} A_{ii}(1-A_{ii}) + \frac{27}{n^3} (1-A_{ii})A_{ii}^2 + \dots
+\end{align*}
+Similarly, we have
+\begin{align*}
+\Sigma_{ij} & = \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}] \\
+& = -\frac{3a}{n^2} A_{ij}(A_{ii}+A_{jj}) - \frac{9}{n^3}(A_{ij}A_{ii} A_{jj} + 2 A_{ij}^3) + \dots
+\end{align*}
+Therefore, $I_3$ has the following form:
+\begin{align*}
+I_3 & = - \sum_{i=1}^n A_{ii} \Sigma_{ii} - \sum_{i,j=1, i\neq j}^n A_{ij} \Sigma_{ij} \\
+& = \textrm{Coeff}(a | I_3, \xi) a  + \textrm{Coeff}( \textrm{Const} | I_3, \xi) + \dots
+\end{align*}
+
 \end{document}

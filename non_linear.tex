@@ -186,7 +186,7 @@ I_1+I_2+I_3 = p^T M p \textrm{ with } p^T = (\alpha, \gamma), M = \begin{pmatrix
 The expectation of $\E[A_{ii} A_{ij}]$ for $i \neq j $ is zero since if $X= [x_1, \dots, x_k]$ is a bunch of orthogonal basis, $-X$ is also a basis set. Therefore, if we replace $X$ with $-X$ the integral is unchanged. That is $\E[A_{ii} A_{ij}] = -\E[A_{ii}A_{ij}]$ since $A_{ij}$ is odd. 
 
 Therefore, the expectation of $M$ in Equation \ref{eq:simI3} is:
-\begin{equation}
+\begin{equation}\label{eq:2t2}
 \E[M] = \begin{pmatrix} \frac{7}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
 \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
  \end{pmatrix}
@@ -219,5 +219,14 @@ Therefore, $I_3$ has the following form:
 I_3 & = - \sum_{i=1}^n A_{ii} \Sigma_{ii} - \sum_{i,j=1, i\neq j}^n A_{ij} \Sigma_{ij} \\
 & = \textrm{Coeff}(a | I_3, \xi) a  + \textrm{Coeff}( \textrm{Const} | I_3, \xi) + \dots
 \end{align*}
-
+We can show that $\textrm{Coeff}(a | I_1 + I_2, \xi) =- \textrm{Coeff}(a | I_3, \xi)$. Therefore, $\textrm{Coeff}(a | I_1 + I_2 + I_3, \xi) = 0$.
+For the constant coefficient, we have
+\begin{equation*}
+\textrm{Coeff}(\textrm{Const} | I_1 + I_2, \xi) = \frac{15}{n^3}\sum_{i=1}^n (1-A_{ii}) A_{ii}^3 - \frac{1}{n^3}\sum_{i,j=1,i\neq j}^n (9 A^2_{ij} A_{ii}A_{jj} + 6 A_{ij}^4)
+\end{equation*}
+Summing with $\textrm{Coeff}(\textrm{Const} | I_3, \xi) $ we have:
+\begin{equation}\label{eq:c3}
+\textrm{Coeff}(\textrm{Const} | \xi) = \frac{12}{n^3} \sum_{i=1}^n (\sum_{j=1}^n A_{ij}^4 - A_{ii}^3)
+\end{equation}
+For third order $\xi(z)$, the coefficient of $\epsilon^2$ can be written as the quandratic form of $(c,a,b)$ plus a constant term. We can show that the quandratic form is irrelevant with $a$ and the remaining $2\times 2 $ matrix is equal to the matrix in Equation \eqref{eq:2t2}, which is positive definite. The constant term is shown in Equation \eqref{eq:c3}.
 \end{document}

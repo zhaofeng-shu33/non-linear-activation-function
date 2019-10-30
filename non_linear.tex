@@ -46,11 +46,12 @@ $$
 \end{proof}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
-\begin{align}
+\begin{align*}
 \E[X^2 Y^2] &= \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2 \\
 \E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12} \\
-\E[X^3 Y^3] & = 6 \Sigma_{12}^3 + 9 \Sigma_{12} \Sigma_{11} \Sigma_{22}
-\end{align}
+\E[X^3 Y^3] & = 6 \Sigma_{12}^3 + 9 \Sigma_{12} \Sigma_{11} \Sigma_{22}\\
+\E[X^4 Y^4] & = 24 \Sigma_{12}^4 + 72 \Sigma_{12}^2 \Sigma_{11} \Sigma_{22} + 9\Sigma_{11}^2 \Sigma_{22}^2 
+\end{align*}
 \end{lemma}
 \begin{proof}
 Let $\Sigma = L^T L $ and $\binom{x}{y} = L^T \binom{x'}{y'}$, then $\binom{x'}{y'}$ has identity covariance. By Cholesky decomposition we can make $L$ be upper trianglar matrix (
@@ -168,7 +169,7 @@ $ \sum_{i=1}^ n \frac{3}{n^2} A_{ii}^2 (1-A_{ii}) - \frac{1}{n^2} \sum_{i,j=1, i
 To compute the constant term in Equation \eqref{eq:sigmaii}, we have $\Sigma_{ii} = 4\E[Z_i^2 (Y_i-Z_i)^2] = \frac{4}{n^2} A_{ii}(1-A_{ii})$;
 Using Lemma \ref{lem:abcd} and $(Z_i, Z_j)$ are independent with $(Y_i - Z_i, Y_j - Y_j)$ we have $\Sigma_{ij} = -\frac{4}{n^2} A_{ij}^2$ for $i \neq j$. Combining the contribution from $I_3$ we have:
 \begin{equation}
-\textrm{Coeff(Const)} = \frac{7}{n^2} \sum_{i=1}^n A^2_{ii} (1 -A_{ii}) - \frac{1}{n^2} \sum_{i,j=1,i\neq j}^n (A_{ij}A_{ii}A_{jj} + 6 A_{ij}^3)
+\textrm{Coeff(Const)} = -\frac{1}{n^2} \sum_{i=1}^n A^2_{ii} (1 -A_{ii}) - \frac{1}{n^2} \sum_{i,j=1,i\neq j}^n (A_{ij}A_{ii}A_{jj} + 2 A_{ij}^3)
 \end{equation}
 Now we assume $\xi(z) = \alpha z^2 + \beta z + \gamma$, fixing $A$ we can get $I_1 + I_2 + I_3$ is a quadratic form of $p^T = (\alpha, \beta, \gamma)$:
 $$
@@ -187,7 +188,7 @@ The expectation of $\E[A_{ii} A_{ij}]$ for $i \neq j $ is zero since if $X= [x_1
 
 Therefore, the expectation of $M$ in Equation \ref{eq:simI3} is:
 \begin{equation}\label{eq:2t2}
-\E[M] = \begin{pmatrix} \frac{7}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
+\E[M] = \begin{pmatrix} -\frac{1}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
 \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
  \end{pmatrix}
 \end{equation}
@@ -196,12 +197,12 @@ approximation can be made about $\E[A_{ii}^2]$ and
 $\E[A_{ii}^3]$, which equals $\frac{k^2}{n^2}$ and $\frac{k^3}{n^3}$ respectively. Let $ r = \frac{k}{n}$, 
 $\E[M] $ can be approximated by 
 $$
-\begin{pmatrix}
-\frac{7}{n}(r^2 - r^3) & 2(r-r^2) \\
-2(r-r^2) & n(1-r)
+(1-r)\begin{pmatrix}
+-\frac{1}{n}r^2 & 2r \\
+2r & n
 \end{pmatrix}
 $$
-the determinant of $\E[M]$ is equal to $3r^2(1-r^2) > 0 $. Therefore, $\E[M]$ is positive definite matrix.
+the determinant of $\E[M]$ is negative. 
 
 Now we consider $ \xi(z) = z^3 + cz^2 + az + b$, then $\nabla \xi (AY) $ is a diagonal matrix whose $(i,i)$ entry is 
  $[\nabla \xi (AY)]_{i,i} = 3 [AY]_i^2 + 2c [AY]_i + a $, then $\Sigma_{ii}$ for $I_3$ has the following form:
@@ -243,5 +244,9 @@ If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is 
 \textrm{Coeff}(b) &  0 & \textrm{Coeff}(bc) & \textrm{Coeff}(b^2) \\
 \end{pmatrix}
 \end{equation*}
-$\textrm{Coeff}(b) = \frac{6}{n} \sum_{i=1}^n A_{ii}^2 (1 - \sum_{j=1}^n A_{ij}) \approx \frac{6}{n} r^2$
+\begin{align*}
+\textrm{Coeff}(b) & = \frac{6}{n} \sum_{i=1}^n A_{ii}^2 (1 - \sum_{j=1}^n A_{ij}) \approx \frac{6}{n} (1-r)r^2 \\
+\textrm{Coeff}(c) & =  -\frac{18}{n^2} r^3(1-r)\\
+\textrm{Coeff}(\textrm{Const}) & = -\frac{135}{n^3} r^4(1-r)
+\end{align*}
 \end{document}

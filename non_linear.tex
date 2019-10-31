@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{mathtools}
+\usepackage{hyperref}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclarePairedDelimiter\inner{\langle}{\rangle}
@@ -15,6 +16,7 @@
 \newtheorem{lemma}{Lemma}
 \title{Non-linearity in random variable approximation}
 \author{Feng Zhao}
+
 \begin{document}
 \maketitle
 Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. We would like to compute the following quantity:
@@ -249,4 +251,8 @@ If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is 
 \textrm{Coeff}(c) & =  -\frac{18}{n^2} r^3(1-r)\\
 \textrm{Coeff}(\textrm{Const}) & = -\frac{135}{n^3} r^4(1-r)
 \end{align*}
+
+Source document is available at 
+
+\url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
 \end{document}

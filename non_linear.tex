@@ -253,13 +253,15 @@ If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is 
 \textrm{Coeff}(\textrm{Const}) & = -\frac{135}{n^3} r^4(1-r)
 \end{align*}
 
-Source document is available at 
-
-\url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
-
 Now we consider $\xi(z) = a_1 + a_2 z^2 + \dots + a_{n-1} z^{n-1} + a_n z^n $, there will be an $n \times n $ matrix $M$, a vector  $q = [a_1, \dots, a_n]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{11} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
 
 For $M_{1j}$ where $j \neq 1$, it equals to zero if $j$ is odd number, let $j=2k$ we can compute that $M_{1,2k}=\frac{2}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 
-For $i \neq 1$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2(2k-1-ij)}{n^{k-1}} (1-r)r^k (2k-3)!!$.
+For $i \neq 1$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2(2k-1-ij)}{n^{k-1}} (1-r)r^k (2k-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
+-\frac{(i-1)^2}{n^{i-1}} (1-r)r^i (2i-3)!!$.
+
+Source document is available at 
+
+\url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
+
 \end{document}

@@ -234,7 +234,7 @@ Summing with $\textrm{Coeff}(\textrm{Const} | I_3, \xi) $ we have:
 \end{equation}
 For third order $\xi(z)$, the coefficient of $\epsilon^2$ can be written as the quandratic form of $(c,a,b)$ plus a constant term. We can show that the quandratic form is irrelevant with $a$ and the remaining $2\times 2 $ matrix is equal to the matrix in Equation \eqref{eq:2t2}, which is positive definite. The constant term is shown in Equation \eqref{eq:c3}.
 
-$\E[A_{ij}^4]$ can be approximated by $\frac{k^2}{n^4}$. Therefore $\textrm{Coeff}(\textrm{Const} | \xi) < 0 $ for sufficient large $n$. Therefore we can take $\xi(z) = z^3$ which performs better than linear function approximation.
+$\E[A_{ij}^4]$ can be approximated by $\frac{k^2}{n^4}$. Therefore $\E[\textrm{Coeff}(\textrm{Const} | \xi)]=-\frac{12}{n^2} r^3(1-r) < 0 $ for sufficient large $n$. Therefore we can take $\xi(z) = z^3$ which performs better than linear function approximation.
 
 We can further show that for $\xi(z) = z^{2n-1} + a z $, the coefficient of $a$ is zero. This proposition still uses the assumption that $Y_i$ are i.i.d Gaussian distributed random variable but is independent with the distribution of $X$.
 
@@ -256,4 +256,10 @@ If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is 
 Source document is available at 
 
 \url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
+
+Now we consider $\xi(z) = a_1 + a_2 z^2 + \dots + a_{n-1} z^{n-1} + a_n z^n $, there will be an $n \times n $ matrix $M$, a vector  $q = [a_1, \dots, a_n]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{11} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
+
+For $M_{1j}$ where $j \neq 1$, it equals to zero if $j$ is odd number, let $j=2k$ we can compute that $M_{1,2k}=\frac{2}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
+
+For $i \neq 1$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2(2k-1-ij)}{n^{k-1}} (1-r)r^k (2k-3)!!$.
 \end{document}

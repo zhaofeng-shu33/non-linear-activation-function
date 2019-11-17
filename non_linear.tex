@@ -254,7 +254,7 @@ If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is 
 \textrm{Coeff}(\textrm{Const}) & = -\frac{135}{n^3} r^4(1-r)
 \end{align*}
 
-Now we consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{n-1} z^{n-1} + a_n z^n $, there will be an $(n+1) \times (n+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_n]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{00} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
+Now we consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{n-1} z^{n-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{00} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
 
 For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 
@@ -268,16 +268,20 @@ M_{ij} = \begin{cases} 0 & i=1 \textrm{ or } j=1 \textrm{ or } i + j \textrm{ is
 (1-r)n & i=j=0
 \end{cases}
 \end{equation}
-For example, consider $n = 4$ we can write the $ 5 \times 5 $ matrix as follows:
+For example, consider $m = 4$ we can write the $ 5 \times 5 $ matrix as follows:
 $$
 (1-r)\begin{pmatrix}
-n & 0 & 2r  & 0 & \frac{6}{n}r^2\\
+n & 0 & r  & 0 & \frac{3}{n}r^2\\
 0 & 0 & 0  & 0 & 0\\
-2r &  0 & -\frac{1}{n} r^2 & 0 & -\frac{18}{n^2} r^3 \\
+r &  0 & -\frac{1}{n} r^2 & 0 & -\frac{9}{n^2} r^3 \\
 0 & 0 & 0 & -\frac{12}{n^2}r^3 & 0 \\
-\frac{6}{n}r^2 & 0 & -\frac{18}{n^2} r^3 & 0 & -\frac{135}{n^3}r^4 
+\frac{3}{n}r^2 & 0 & -\frac{9}{n^2} r^3 & 0 & -\frac{135}{n^3}r^4 
 \end{pmatrix}
 $$
+
+Now we consider the normalization condition: $I_1 = 1$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
+Then we have $q^T N q = 1$ where $N_{ij} = \frac{r^{(i+j) / 2}}{n^{(i+j)/2 -1}} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = n$. Now if we rescale the parameter: $b_0 = \sqrt{n} a_0, b_1 = a_1, b_2 = \frac{1}{\sqrt{n}} a_2$ and $b_m = \frac{1}{n^{(m-1)/2}} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} = r^{(i+j) / 2} (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r)r^{(i+j)/ 2 } (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
+
 \section{External Link}
 Source document is available at 
 

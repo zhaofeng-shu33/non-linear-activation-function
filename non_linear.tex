@@ -178,22 +178,22 @@ Using Lemma \ref{lem:abcd} and $(Z_i, Z_j)$ are independent with $(Y_i - Z_i, Y_
 Now we assume $\xi(z) = \alpha z^2 + \beta z + \gamma$, fixing $A$ we can get $I_1 + I_2 + I_3$ is a quadratic form of $p^T = (\alpha, \beta, \gamma)$:
 $$
 I_1 + I_2 + I_3 =p^T \begin{pmatrix} 
-\textrm{Coeff(Const)}  & 0 & \textrm{Coeff}(b) \\ 
+\textrm{Coeff(Const)}  & 0 & \frac{1}{2}\textrm{Coeff}(b) \\ 
 0  & 0 & 0 \\ 
-\textrm{Coeff}(b)   & 0 & \textrm{Coeff}(b^2) 
+\frac{1}{2}\textrm{Coeff}(b)   & 0 & \textrm{Coeff}(b^2) 
 \end{pmatrix} p
 $$
 Therefore, the result is irrelevant with the coefficient of $\beta$.  We can simplify the above formular as:
 \begin{equation}\label{eq:simI3}
-I_1+I_2+I_3 = p^T M p \textrm{ with } p^T = (\alpha, \gamma), M = \begin{pmatrix} \textrm{Coeff(Const)}  &  \textrm{Coeff}(b) \\ \textrm{Coeff}(b) &  \textrm{Coeff}(b^2)  \end{pmatrix}
+I_1+I_2+I_3 = p^T M p \textrm{ with } p^T = (\alpha, \gamma), M = \begin{pmatrix} \textrm{Coeff(Const)}  & \frac{1}{2} \textrm{Coeff}(b) \\ \frac{1}{2}\textrm{Coeff}(b) &  \textrm{Coeff}(b^2)  \end{pmatrix}
 \end{equation}
 
 The expectation of $\E[A_{ii} A_{ij}]$ for $i \neq j $ is zero since if $X= [x_1, \dots, x_k]$ is a bunch of orthogonal basis, $-X$ is also a basis set. Therefore, if we replace $X$ with $-X$ the integral is unchanged. That is $\E[A_{ii} A_{ij}] = -\E[A_{ii}A_{ij}]$ since $A_{ij}$ is odd. 
 
 Therefore, the expectation of $M$ in Equation \ref{eq:simI3} is:
 \begin{equation}\label{eq:2t2}
-\E[M] = \begin{pmatrix} -\frac{1}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
-\frac{2}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
+\E[M] = \begin{pmatrix} -\frac{1}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{1}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
+\frac{1}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
  \end{pmatrix}
 \end{equation}
 Let $X^T=[\hat{x}_1, \dots, \hat{x}_n]$, $A_{ii}= \hat{x}_i^T \hat{x}_i$. We assume that $\E[x_{i1}^2] = \E[x_{11}^2]$ and for very large $n$ $X_{11} \sim N(0,\frac{1}{n})$. Therefore
@@ -202,8 +202,8 @@ $\E[A_{ii}^3]$, which equals $\frac{k^2}{n^2}$ and $\frac{k^3}{n^3}$ respectivel
 $\E[M] $ can be approximated by 
 $$
 (1-r)\begin{pmatrix}
--\frac{1}{n}r^2 & 2r \\
-2r & n
+-\frac{1}{n}r^2 & r \\
+r & n
 \end{pmatrix}
 $$
 the determinant of $\E[M]$ is negative. 
@@ -242,10 +242,10 @@ We can further show that for $\xi(z) = z^{2n-1} + a z $, the coefficient of $a$ 
 If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is $4\times 4$:
 \begin{equation*}
 \begin{pmatrix}
-\textrm{Coeff}(\textrm{Const}) & 0 & \textrm{Coeff}(c) & \textrm{Coeff}(b) \\
+\textrm{Coeff}(\textrm{Const}) & 0 &\frac{1}{2} \textrm{Coeff}(c) & \frac{1}{2}\textrm{Coeff}(b) \\
 0 & \textrm{Coeff}(d^2) & 0 & 0\\
-\textrm{Coeff}(c) & 0 & \textrm{Coeff}(c^2) & \textrm{Coeff}(bc) \\
-\textrm{Coeff}(b) &  0 & \textrm{Coeff}(bc) & \textrm{Coeff}(b^2) \\
+\frac{1}{2}\textrm{Coeff}(c) & 0 & \textrm{Coeff}(c^2) & \frac{1}{2}\textrm{Coeff}(bc) \\
+\frac{1}{2}\textrm{Coeff}(b) &  0 &\frac{1}{2} \textrm{Coeff}(bc) & \textrm{Coeff}(b^2) \\
 \end{pmatrix}
 \end{equation*}
 \begin{align*}
@@ -256,16 +256,15 @@ If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is 
 
 Now we consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{n-1} z^{n-1} + a_n z^n $, there will be an $(n+1) \times (n+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_n]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{00} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
 
-For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{2}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
+For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2(2k-1-ij)}{n^{k-1}} (1-r)r^k (2k-3)!! = -\frac{2(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
+For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2k-1-ij}{n^{k-1}} (1-r)r^k (2k-3)!! = -\frac{(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
 -\frac{(i-1)^2}{n^{i-1}} (1-r)r^i (2i-3)!!$.
 
 We summarize our deduction as follows:
 \begin{equation}
 M_{ij} = \begin{cases} 0 & i=1 \textrm{ or } j=1 \textrm{ or } i + j \textrm{ is odd} \\
- -\frac{2(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } \\
--\frac{(i-1)^2}{n^{i-1}} (1-r)r^i (2i-3)!! & i  = j > 1 \\
+ -\frac{(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } i,j \neq 1 \\
 (1-r)n & i=j=0
 \end{cases}
 \end{equation}

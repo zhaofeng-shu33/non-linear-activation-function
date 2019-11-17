@@ -258,11 +258,27 @@ Now we consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{n-1} z^{n-1} + a_n 
 
 For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{2}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2(2k-1-ij)}{n^{k-1}} (1-r)r^k (2k-3)!! = -\frac{2(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (2k-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
+For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2(2k-1-ij)}{n^{k-1}} (1-r)r^k (2k-3)!! = -\frac{2(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
 -\frac{(i-1)^2}{n^{i-1}} (1-r)r^i (2i-3)!!$.
 
 We summarize our deduction as follows:
-
+\begin{equation}
+M_{ij} = \begin{cases} 0 & i=1 \textrm{ or } j=1 \textrm{ or } i + j \textrm{ is odd} \\
+ -\frac{2(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } \\
+-\frac{(i-1)^2}{n^{i-1}} (1-r)r^i (2i-3)!! & i  = j > 1 \\
+(1-r)n & i=j=0
+\end{cases}
+\end{equation}
+For example, consider $n = 4$ we can write the $ 5 \times 5 $ matrix as follows:
+$$
+(1-r)\begin{pmatrix}
+n & 0 & 2r  & 0 & \frac{6}{n}r^2\\
+0 & 0 & 0  & 0 & 0\\
+2r &  0 & -\frac{1}{n} r^2 & 0 & -\frac{18}{n^2} r^3 \\
+0 & 0 & 0 & -\frac{12}{n^2}r^3 & 0 \\
+\frac{6}{n}r^2 & 0 & -\frac{18}{n^2} r^3 & 0 & -\frac{135}{n^3}r^4 
+\end{pmatrix}
+$$
 \section{External Link}
 Source document is available at 
 

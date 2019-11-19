@@ -282,6 +282,15 @@ $$
 Now we consider the normalization condition: $I_1 = 1$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
 Then we have $q^T N q = 1$ where $N_{ij} = \frac{r^{(i+j) / 2}}{n^{(i+j)/2 -1}} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = n$. Now if we rescale the parameter: $b_0 = \sqrt{n} a_0, b_1 = \sqrt{r} a_1, b_2 = r \frac{1}{\sqrt{n}} a_2$ and $b_m = \frac{r^{m/2}}{n^{(m-1)/2}} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
 
+First we let $U^T U = \widetilde{N}$. We show that $U_{ij} = \delta(i,j)\frac{j!}{(j-i)!!\sqrt{i!}}$ where $U$ is an upper triangular matrix. $\delta(i,j)$ is an indicator function:
+\begin{equation}
+\delta_{ij} = \begin{cases}
+1 & i+j \textrm{ is even} \\
+0 & i+j \textrm{ is odd}
+\end{cases}
+\end{equation}
+We can show that $\widetilde{M} = U^T \Lambda U$ where $\Lambda = \diag\{1,0, -1, -2, \dots, -(m-1)\}$.
+
 \section{External Link}
 Source document is available at 
 

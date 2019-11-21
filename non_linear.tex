@@ -91,7 +91,9 @@ $\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \ha
 \end{align*}
 In the above formula,  we expand $\xi$ at $XX^TY$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([XX^TY]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
 We first notice that for given $X$, $XX^TY$ is the projection of $Y$ onto linear subspace spanned by columns of $X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
-$XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). For the coefficient of $\epsilon^2$ we have
+$XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. This refers to $\xi(XX^TY)^T (Y-XX^TY)$. For $(X\hat{w})^T (Y-XX^T Y)$, we use the property that $X^T X = I_k$.
+By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). 
+ For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
 \textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)]
 \end{equation*}

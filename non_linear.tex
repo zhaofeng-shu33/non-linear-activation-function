@@ -99,7 +99,7 @@ By symmetric property, the integration of coefficient of $\epsilon$ with respect
 \begin{equation*}
 \textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 - 2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)
 \end{equation*}
-We have written Equation \eqref{eq:Eminw} in $ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$.
+We have written Equation \eqref{eq:Eminw} in $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$$.
 
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
@@ -109,21 +109,21 @@ Below we assume $\bar{X}$ is given (the expectation is taken first about $Y$ and
 Let $Z = AY$. Then the covariance matrix of $Z$ is $AA^T = A$.
 Also, both $Y$ and $Z$ have zero mean (vector). We then have
 \begin{equation*}
-I_1 = \sum_{i=1}^n \int_z \xi^2(z) p_i(z) dz
+I_1 =\E[\norm{\xi(Z)}^2] + \sum_{i=1}^n \E[\xi^2(z_i)]
 \end{equation*}
 where $Z_i$ has the distribution $p_i$.
  
 For $I_2$
 we have
 \begin{equation*}
--I_2   = \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p_{ij}(x,y) dx dy + \sum_{i=1}^n A_{ii} \int_z \xi^2(z) p_i(z) dz 
+-I_2   = \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)] + \sum_{i=1}^n A_{ii}  \E[\xi^2(z_i)]
 \end{equation*}
 where $Z_i, Z_j$ have the joint distribution $p_{ij}$.
 
 %$A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. 
 Then we have
 \begin{equation}\label{eq:I1plusI2}
-I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p_i(z) dz  - \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p_{ij}(x,y) dx dy
+I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \E[\xi^2(z_i)]  - \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)] 
 \end{equation}
 For $I_3$, we have
 \begin{align*}
@@ -140,33 +140,33 @@ For $\Sigma_{ij}$ with $i\neq j$ we have
 \Sigma_{ij} =  \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]
 \end{equation*}
 
-We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{00} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
+We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  we can write $\textrm{Coeff}(\epsilon^2)$ as the quadratic form $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. Since $M$ is symmetric we only consider $i\leq j$.
 
-For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
+For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=n (1-r)r^k (2k-1)!! $. 
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{2k-1-ij}{n^{k-1}} (1-r)r^k (2k-3)!! = -\frac{(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
--\frac{(i-1)^2}{n^{i-1}} (1-r)r^i (2i-3)!!$.
+For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = n(2k-1-ij) (1-r)r^k (2k-3)!! = -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
+-n(i-1)^2 (1-r)r^i (2i-3)!!$.
 
 We summarize our deduction as follows:
 \begin{equation}
 M_{ij} = \begin{cases} 0 & i=1 \textrm{ or } j=1 \textrm{ or } i + j \textrm{ is odd} \\
- -\frac{(i-1)(j-1)}{n^{(i+j)/2-1}} (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } i,j \neq 1 \\
+ -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } i,j \neq 1 \\
 (1-r)n & i=j=0
 \end{cases}
 \end{equation}
 For example, consider $m = 4$ we can write the $ 5 \times 5 $ matrix as follows:
 $$
-(1-r)\begin{pmatrix}
-n & 0 & r  & 0 & \frac{3}{n}r^2\\
+(1-r)n\begin{pmatrix}
+1 & 0 & r  & 0 & 3r^2\\
 0 & 0 & 0  & 0 & 0\\
-r &  0 & -\frac{1}{n} r^2 & 0 & -\frac{9}{n^2} r^3 \\
-0 & 0 & 0 & -\frac{12}{n^2}r^3 & 0 \\
-\frac{3}{n}r^2 & 0 & -\frac{9}{n^2} r^3 & 0 & -\frac{135}{n^3}r^4 
+r &  0 & - r^2 & 0 & -9 r^3 \\
+0 & 0 & 0 & -12r^3 & 0 \\
+3r^2 & 0 & -9 r^3 & 0 & -135r^4 
 \end{pmatrix}
 $$
 
 Now we consider the normalization condition: $I_1 = 1$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
-Then we have $q^T N q = 1$ where $N_{ij} = \frac{r^{(i+j) / 2}}{n^{(i+j)/2 -1}} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = n$. Now if we rescale the parameter: $b_0 = \sqrt{n} a_0, b_1 = \sqrt{r} a_1, b_2 = r \frac{1}{\sqrt{n}} a_2$ and $b_m = \frac{r^{m/2}}{n^{(m-1)/2}} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
+Then we have $q^T N q = 1$ where $N_{ij} =nr^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = n$. Now if we rescale the parameter: $b_0 =  a_0, b_1 = \sqrt{r} a_1, b_2 = r a_2$ and $b_m = r^{m/2} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
 
 First we let $U^T U = \widetilde{N}$. We show that $U_{ij} = \delta(i,j)\frac{j!}{(j-i)!!\sqrt{i!}}$ where $U$ is an upper triangular matrix. $\delta(i,j)$ is an indicator function:
 \begin{equation}
@@ -179,7 +179,7 @@ We can show that $\widetilde{M} = (1-r)U^T \Lambda U$ where $\Lambda = \diag\{1,
 
 Since $p^T U^T U p = 1$, and the minimum for $p^T U^T \Lambda U p $ is achieved when $U p = (0, \dots, 0, 1)^T = e_m$. Solving $ U p = e_m $ can we get the value of $p$. That is: $p_i = (-1)^{(m-i)/2} \frac{m!}{i!(m-i)!! \sqrt{m!}} $ when $i+m$ is even; $p_i = 0 $ when $i+m$ is odd. Transforming back to $a_i$ we have:
 \begin{equation}
-a_i =(-1)^{(m-i)/2} \delta(i,m) \frac{n^{(i-1)/2}}{r^{i/2}} \frac{m!}{i!(m-i)!! \sqrt{m!}}
+a_i =(-1)^{(m-i)/2} \delta(i,m) \frac{1}{r^{i/2}} \frac{m!}{i!(m-i)!! \sqrt{m!}}
 \end{equation}
 \section{External Link}
 Source document is available at 

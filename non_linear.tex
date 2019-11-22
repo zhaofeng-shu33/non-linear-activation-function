@@ -20,13 +20,13 @@
 \begin{document}
 \maketitle
 \section{Problem}
-Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. We would like to compute the following quantity:
+Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. Suppose $\norm{Y}=n$. We would like to compute the following quantity:
 \begin{equation}\label{eq:Eminw}
 \E[\min_w \norm{Y - \sigma (X w ) }^2]
 \end{equation}
 $\sigma$ is generally a non-linear scalar function. Its application on a vector is element-wise.
 \begin{lemma}\label{lem:uniform}
-Suppose $X$ is an $n$ by $k$ random matrix. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0, \norm{x_i}=1$ where $x_i$ is the $i$-th column.  Let $A=X X^T$, then we have
+Suppose $X$ is an $n$ by $k$ random matrix. The samples $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0, \norm{x_i}=1$ where $x_i$ is the $i$-th column.  We also require $X_i$ is uniformly distributed on an unit sphere. Let $A=X X^T$, then we have
 \begin{equation}
 E[A_{ij}]= \begin{cases}
 \frac{k}{n} & i = j\\
@@ -80,6 +80,7 @@ $(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$. Then the fol
 &\cdot  \int \frac{ g(y_1 y_2)  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dy_1 d y_2 \\
 & = \E[f(X_1 X_2)] \E[g(Y_1 Y_2)]
 \end{align*}
+We can also use the property of Gaussian distribution directly: $X=(X_1, X_2)$ and $Y=(Y_1, Y_2)$ are both joint Gaussian random vector and these two are independent with each other from their join distribution. Then they are uncorrelated.
 \end{proof}
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
 $\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:

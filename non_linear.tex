@@ -105,8 +105,8 @@ Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
 \end{equation}
-Below we assume $X$ is given (the expectation is taken first about $Y$ and then about $X$), the columns of $X$ are orthogonal by the given condition ($X^TX=I_k$) and $Y_1, \dots, Y_n $ be component variable of $Y$. The covariance matrix of $Y$ is $\frac{1}{n}I_n$ from Lemma \ref{lem:uniform}. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. That is $ \min \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
-Let $Z = AY$. Then the covariance matrix of $Z$ is $\frac{AA^T}{n} = \frac{A}{n}$.
+Below we assume $\bar{X}$ is given (the expectation is taken first about $Y$ and then about $\bar{X}$), the columns of $\bar{X}$ are orthogonal by the given condition ($\bar{X}^T\bar{X}=I_k$) and $Y_1, \dots, Y_n $ be component variable of $Y$. The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian. We use $I_1, I_2, I_3$ to denote the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=\bar{X}\bar{X}^T$ is an $n\times n$ matrix. That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
+Let $Z = AY$. Then the covariance matrix of $Z$ is $AA^T = A$.
 Also, both $Y$ and $Z$ have zero mean (vector). We then have
 \begin{equation*}
 I_1 = \sum_{i=1}^n \int_z \xi^2(z) p_i(z) dz
@@ -120,145 +120,27 @@ we have
 \end{equation*}
 where $Z_i, Z_j$ have the joint distribution $p_{ij}$.
 
-Since we have $XX^T + \bar{X}\bar{X}^T = I_n$, $A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. Then we have
+%$A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. 
+Then we have
 \begin{equation}\label{eq:I1plusI2}
 I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \int_z \xi^2(z) p_i(z) dz  - \sum_{i,j=1, i \neq j}^n A_{ij} \iint_{x,y} \xi(x)\xi(y) p_{ij}(x,y) dx dy
 \end{equation}
-For $I_3$, the formula is quite tricky. We assume $\xi(z) = z^2 + a z + b $, then $\nabla \xi (AY) = \diag\{2AY+ a\}$. 
-Then
+For $I_3$, we have
 \begin{align*}
 -I_3 & = \E_Y[\norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2] \\ 
  & = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii} 
 \end{align*}
 For $\Sigma_{ii}$ we have
 \begin{equation}\label{eq:sigmaii}
-\Sigma_{ii} = \int_y [(I - A)Y]^2_i (2[AY]_i + a)^2 p(y)dy
+\Sigma_{ii} =  \E[ [(I-A)Y]_i^2 [\nabla \xi(AY)]_{i,i}^2]
 \end{equation}
-The above integral is about $y_1, \dots, y_n$, which is a quadratic function about $a$.
+
 For $\Sigma_{ij}$ with $i\neq j$ we have
 \begin{equation*}
-\Sigma_{ij} = \int_y [(I - A)Y]_i (2[AY]_i + a)[(I - A)Y]_j (2[AY]_j + a) p(y)dy
+\Sigma_{ij} =  \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]
 \end{equation*}
-which is also a quadratic function about $a$.
-For $I_1 + I_2$, the coefficient of $ab$ is zero since the expectation of $Z$ is zero. The other terms are all quandratic about $a$ and $b$ respectively. Therefore, we can find optimal $a$ and $b$ such that $I_1 + I_2 + I_3$ takes the maximum value.
 
-The coefficient of $b^2, b$ of $I_1 + I_2$ takes the following form respectively ($I_3$ is irrelevant with $b$):
-\begin{align*}
-\textrm{Coeff}(b^2) & = \sum_{i=1}^n (1-A_{ii}) - \sum_{i,j=1, i\neq j} A_{ij} \\
-\textrm{Coeff}(b) & = \frac{2}{n}\sum_{i=1}^n A_{ii} [ 1 - A_{ii} - \sum_{j=1, j\neq i} A_{ij} ]
-\end{align*}
-The expectation about $\textrm{Coeff}(b^2)$ is positive. From Lemma \ref{lem:uniform}
-$$
-\E[A_{ij}]= \begin{cases}
-\frac{k}{n} & i = j\\
-0 & i\neq j 
-\end{cases}
-$$
-Then $\E_X[\textrm{Coeff}(b^2)]  = n-k > 0$. 
-Therefore we can take appropriate $b$ such that $\min \textrm{Coeff}(\epsilon^2)$ is positive.
-To compute the coefficient of $a^2$, we let $\widetilde{Z}=(I-A)Y$, which has zero mean and covariance matrix $(I-A)(I-A)^T = \frac{I-A}{n}$.  We use $\textrm{Coeff}(a^2 | \Sigma_{ij})$ to represent the coefficient of $a^2$ for expression $\Sigma_{ij}$. Then  we have
-\begin{align*}
-\textrm{Coeff}(a^2 | \Sigma_{ii}) & = \frac{1-A_{ii}}{n} \\
-\textrm{Coeff}(a^2 | \Sigma_{ij}) & = \frac{-A_{ij}}{n}  \textrm{ for } i \neq j
-\end{align*}
-\begin{align*}
-\textrm{Coeff}(a^2) & = \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii}  - \sum_{i,j=1, i\neq j}^n \frac{A_{ij}^2}{n} + \sum_{i,j=1, i \neq j}^n \frac{A^2_{ij}}{n} - \frac{1}{n}\sum_{i=1}^n (1-A_{ii})A_{ii} \\
-& = 0\\
-\end{align*}
-The expectation of $\textrm{Coeff}(a^2)$ is 0.
-
-We conclude that the sign of $\min \textrm{Coeff}(\epsilon^2)$ is undetermined in the case of quadratic linear function pertubation.
-
-To compute the coefficient of $a$, we can show that $\E[Y^3]=0$  and $\E[Z^3]=0$ and further show that the coefficient is zero.
-
-To compute the coefficient of the constant term, we further assume $Y \sim N(0, \frac{1}{n}I_n)$, then $Z \sim N(0, \frac{1}{n}A)$. From Equation \eqref{eq:I1plusI2} and Lemma \ref{lem:x2y2} The contribution of $I_1+ I_2$ to the constant term is 
-$ \sum_{i=1}^ n \frac{3}{n^2} A_{ii}^2 (1-A_{ii}) - \frac{1}{n^2} \sum_{i,j=1, i\neq j}^n A_{ij}(A_{ii}A_{jj}+2A_{ij}^2)$.
-
-To compute the constant term in Equation \eqref{eq:sigmaii}, we have $\Sigma_{ii} = 4\E[Z_i^2 (Y_i-Z_i)^2] = \frac{4}{n^2} A_{ii}(1-A_{ii})$;
-Using Lemma \ref{lem:abcd} and $(Z_i, Z_j)$ are independent with $(Y_i - Z_i, Y_j - Y_j)$ we have $\Sigma_{ij} = -\frac{4}{n^2} A_{ij}^2$ for $i \neq j$. Combining the contribution from $I_3$ we have:
-\begin{equation}
-\textrm{Coeff(Const)} = -\frac{1}{n^2} \sum_{i=1}^n A^2_{ii} (1 -A_{ii}) - \frac{1}{n^2} \sum_{i,j=1,i\neq j}^n (A_{ij}A_{ii}A_{jj} + 2 A_{ij}^3)
-\end{equation}
-Now we assume $\xi(z) = \alpha z^2 + \beta z + \gamma$, fixing $A$ we can get $I_1 + I_2 + I_3$ is a quadratic form of $p^T = (\alpha, \beta, \gamma)$:
-$$
-I_1 + I_2 + I_3 =p^T \begin{pmatrix} 
-\textrm{Coeff(Const)}  & 0 & \frac{1}{2}\textrm{Coeff}(b) \\ 
-0  & 0 & 0 \\ 
-\frac{1}{2}\textrm{Coeff}(b)   & 0 & \textrm{Coeff}(b^2) 
-\end{pmatrix} p
-$$
-Therefore, the result is irrelevant with the coefficient of $\beta$.  We can simplify the above formular as:
-\begin{equation}\label{eq:simI3}
-I_1+I_2+I_3 = p^T M p \textrm{ with } p^T = (\alpha, \gamma), M = \begin{pmatrix} \textrm{Coeff(Const)}  & \frac{1}{2} \textrm{Coeff}(b) \\ \frac{1}{2}\textrm{Coeff}(b) &  \textrm{Coeff}(b^2)  \end{pmatrix}
-\end{equation}
-
-The expectation of $\E[A_{ii} A_{ij}]$ for $i \neq j $ is zero since if $X= [x_1, \dots, x_k]$ is a bunch of orthogonal basis, $-X$ is also a basis set. Therefore, if we replace $X$ with $-X$ the integral is unchanged. That is $\E[A_{ii} A_{ij}] = -\E[A_{ii}A_{ij}]$ since $A_{ij}$ is odd. 
-
-Therefore, the expectation of $M$ in Equation \ref{eq:simI3} is:
-\begin{equation}\label{eq:2t2}
-\E[M] = \begin{pmatrix} -\frac{1}{n^2} \sum_{i=1}^n (\E[A_{ii}^2 ]-\E[A_{ii}^3]) & \frac{1}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) \\
-\frac{1}{n} \sum_{i=1}^n (\E[A_{ii}]-\E[A^2_{ii}]) & \sum_{i=1}^n (1-\E[A_{ii}])
- \end{pmatrix}
-\end{equation}
-Let $X^T=[\hat{x}_1, \dots, \hat{x}_n]$, $A_{ii}= \hat{x}_i^T \hat{x}_i$. We assume that $\E[x_{i1}^2] = \E[x_{11}^2]$ and for very large $n$ $X_{11} \sim N(0,\frac{1}{n})$. Therefore
-approximation can be made about $\E[A_{ii}^2]$ and 
-$\E[A_{ii}^3]$, which equals $\frac{k^2}{n^2}$ and $\frac{k^3}{n^3}$ respectively. Let $ r = \frac{k}{n}$, 
-$\E[M] $ can be approximated by 
-$$
-(1-r)\begin{pmatrix}
--\frac{1}{n}r^2 & r \\
-r & n
-\end{pmatrix}
-$$
-the determinant of $\E[M]$ is negative. 
-
-Now we consider $ \xi(z) = z^3 + cz^2 + az + b$, then $\nabla \xi (AY) $ is a diagonal matrix whose $(i,i)$ entry is 
- $[\nabla \xi (AY)]_{i,i} = 3 [AY]_i^2 + 2c [AY]_i + a $, then $\Sigma_{ii}$ for $I_3$ has the following form:
-\begin{align*}
-\Sigma_{ii} & = \E[ [(I-A)Y]_i^2 [\nabla \xi(AY)]_{i,i}^2] \\
-& =  \frac{6a}{n^2} A_{ii}(1-A_{ii}) + \frac{27}{n^3} (1-A_{ii})A_{ii}^2 + \dots
-\end{align*}
-Similarly, we have
-\begin{align*}
-\Sigma_{ij} & = \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}] \\
-& = -\frac{3a}{n^2} A_{ij}(A_{ii}+A_{jj}) - \frac{9}{n^3}(A_{ij}A_{ii} A_{jj} + 2 A_{ij}^3) + \dots
-\end{align*}
-Therefore, $I_3$ has the following form:
-\begin{align*}
-I_3 & = - \sum_{i=1}^n A_{ii} \Sigma_{ii} - \sum_{i,j=1, i\neq j}^n A_{ij} \Sigma_{ij} \\
-& = \textrm{Coeff}(a | I_3, \xi) a  + \textrm{Coeff}( \textrm{Const} | I_3, \xi) + \dots
-\end{align*}
-We can show that $\textrm{Coeff}(a | I_1 + I_2, \xi) =- \textrm{Coeff}(a | I_3, \xi)$. Therefore, $\textrm{Coeff}(a | I_1 + I_2 + I_3, \xi) = 0$.
-For the constant coefficient, we have
-\begin{equation*}
-\textrm{Coeff}(\textrm{Const} | I_1 + I_2, \xi) = \frac{15}{n^3}\sum_{i=1}^n (1-A_{ii}) A_{ii}^3 - \frac{1}{n^3}\sum_{i,j=1,i\neq j}^n (9 A^2_{ij} A_{ii}A_{jj} + 6 A_{ij}^4)
-\end{equation*}
-Summing with $\textrm{Coeff}(\textrm{Const} | I_3, \xi) $ we have:
-\begin{equation}\label{eq:c3}
-\textrm{Coeff}(\textrm{Const} | \xi) = \frac{12}{n^3} \sum_{i=1}^n (\sum_{j=1}^n A_{ij}^4 - A_{ii}^3)
-\end{equation}
-For third order $\xi(z)$, the coefficient of $\epsilon^2$ can be written as the quandratic form of $(c,a,b)$ plus a constant term. We can show that the quandratic form is irrelevant with $a$ and the remaining $2\times 2 $ matrix is equal to the matrix in Equation \eqref{eq:2t2}, which is positive definite. The constant term is shown in Equation \eqref{eq:c3}.
-
-$\E[A_{ij}^4]$ can be approximated by $\frac{k^2}{n^4}$. Therefore $\E[\textrm{Coeff}(\textrm{Const} | \xi)]=-\frac{12}{n^2} r^3(1-r) < 0 $ for sufficient large $n$. Therefore we can take $\xi(z) = z^3$ which performs better than linear function approximation.
-
-We can further show that for $\xi(z) = z^{2n-1} + a z $, the coefficient of $a$ is zero. This proposition still uses the assumption that $Y_i$ are i.i.d Gaussian distributed random variable but is independent with the distribution of $X$.
-
-If $\xi(z) = z^4 + d z^3 + c z^2 + a z + b $ is considered, the final matrix is $4\times 4$:
-\begin{equation*}
-\begin{pmatrix}
-\textrm{Coeff}(\textrm{Const}) & 0 &\frac{1}{2} \textrm{Coeff}(c) & \frac{1}{2}\textrm{Coeff}(b) \\
-0 & \textrm{Coeff}(d^2) & 0 & 0\\
-\frac{1}{2}\textrm{Coeff}(c) & 0 & \textrm{Coeff}(c^2) & \frac{1}{2}\textrm{Coeff}(bc) \\
-\frac{1}{2}\textrm{Coeff}(b) &  0 &\frac{1}{2} \textrm{Coeff}(bc) & \textrm{Coeff}(b^2) \\
-\end{pmatrix}
-\end{equation*}
-\begin{align*}
-\textrm{Coeff}(b) & = \frac{6}{n} \sum_{i=1}^n A_{ii}^2 (1 - \sum_{j=1}^n A_{ij}) \approx \frac{6}{n} (1-r)r^2 \\
-\textrm{Coeff}(c) & =  -\frac{18}{n^2} r^3(1-r)\\
-\textrm{Coeff}(\textrm{Const}) & = -\frac{135}{n^3} r^4(1-r)
-\end{align*}
-
-Now we consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{00} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
+We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  the quadratic form as $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. $M_{00} = (1-r) n $, which is calculated in previous. Since $M$ is symmetric we only consider $i\leq j$.
 
 For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 

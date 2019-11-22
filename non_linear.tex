@@ -82,27 +82,28 @@ $(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$. Then the fol
 \end{align*}
 We can also use the property of Gaussian distribution directly: $X=(X_1, X_2)$ and $Y=(Y_1, Y_2)$ are both joint Gaussian random vector and these two are independent with each other from their join distribution. Then they are uncorrelated.
 \end{proof}
+
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
-$\bar{w} = X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
+$\bar{w} = \frac{1}{n}X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
-\norm{Y - \sigma (X w ) }^2 & = \norm{Y - XX^T Y - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(XX^T Y + \epsilon X\hat{w}) }^2 \\
-& = \norm{ Y - XX^T Y - \epsilon (X\hat{w} + \xi(XX^T Y)) - \epsilon^2(X\tilde{w} + \nabla \xi(XX^TY)X\hat{w})}^2 \\
-& = \norm{Y-XX^T Y }^2 - 2 \epsilon (X \hat{w} + \xi(XX^TY))^T (Y-XX^TY) +\\
-& +\epsilon^2(\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (X \tilde{w}+ \nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY))
+\norm{Y - \sigma (X w ) }^2 & = \norm{Y - X \bar{w} - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(X \bar{w} + \epsilon X\hat{w}) }^2 \\
+& = \norm{ Y - X  \bar{w}  - \epsilon (X\hat{w} + \xi(X \bar{w} )) - \epsilon^2(X\tilde{w} + \nabla \xi(X \bar{w} )X\hat{w})}^2 \\
+& = \norm{Y-X \bar{w}  }^2 - 2 \epsilon (X \hat{w} + \xi(X \bar{w}))^T (Y-X \bar{w}) +\\
+& +\epsilon^2(\norm{X\hat{w} + \xi(X \bar{w})}^2 - 2 (X \tilde{w}+ \nabla \xi(X \bar{w})X\hat{w})^T(Y-X \bar{w}))
 \end{align*}
-In the above formula,  we expand $\xi$ at $XX^TY$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([XX^TY]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
-We first notice that for given $X$, $XX^TY$ is the projection of $Y$ onto linear subspace spanned by columns of $X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
-$XX^T Y = XX^T \tilde{Y}$ and $(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$. This refers to $\xi(XX^TY)^T (Y-XX^TY)$. For $(X\hat{w})^T (Y-XX^T Y)$, we use the property that $X^T X = I_k$.
+In the above formula,  we expand $\xi$ at $X \bar{w}$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([X\bar{w}]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
+We first notice that for given $X$, $X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by columns of $\bar{X} = \frac{1}{\sqrt{n}}X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
+$\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and $(Y- \bar{X}\bar{X}^TY) = -(\tilde{Y} - \bar{X}\bar{X}^T \tilde{Y})$. This refers to $\xi(X\bar{w})^T (Y-X\bar{w})$. For $(X\hat{w})^T (Y-X\bar{w})$, we use the property that $  \bar{X}^T \bar{X} = I_k$.
 By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). 
  For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
-\textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(XX^TY)}^2 - 2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)]
+\textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 - 2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)
 \end{equation*}
-We have written Equation \eqref{eq:Eminw} in $ \norm{Y - X X^T Y}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$.
+We have written Equation \eqref{eq:Eminw} in $ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$.
 
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
-\min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(XX^TY)}^2 - \norm{X^T\xi(XX^TY)}^2 - \norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
+\min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
 \end{equation}
 Below we assume $X$ is given (the expectation is taken first about $Y$ and then about $X$), the columns of $X$ are orthogonal by the given condition ($X^TX=I_k$) and $Y_1, \dots, Y_n $ be component variable of $Y$. The covariance matrix of $Y$ is $\frac{1}{n}I_n$ from Lemma \ref{lem:uniform}. We use $I_1, I_2, I_3$ to denote the three terms of $\min \textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=XX^T$ is an $n\times n$ matrix. That is $ \min \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
 Let $Z = AY$. Then the covariance matrix of $Z$ is $\frac{AA^T}{n} = \frac{A}{n}$.

@@ -14,13 +14,14 @@
 \DeclareMathOperator*{\diag}{diag}
 \DeclareMathOperator*{\argmin}{argmin}
 \newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
 \title{Non-linearity in random variable approximation}
 \author{Feng Zhao}
 
 \begin{document}
 \maketitle
 \section{Problem}
-Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. Suppose $\norm{Y}=n$. We would like to compute the following quantity:
+Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix truncated from a $n\times n$ random orthogonal matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. Suppose $\norm{Y}=n$. We would like to compute the following quantity:
 \begin{equation}\label{eq:Eminw}
 \E[\min_w \norm{Y - \sigma (X w ) }^2]
 \end{equation}
@@ -47,6 +48,9 @@ For $i>2$, the proof is similar as we have $$
 $$
  which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
+\begin{remark}
+To compute higher order moments $\E[A_{ii}^t]$. We should approximate it by $r^t$ where $r=\frac{k}{n}$.
+\end{remark}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
 \begin{align*}
@@ -105,6 +109,11 @@ Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
 \end{equation}
+The minimal value is achieved at 
+$$
+\hat{w} = \frac{1}{n} X^T(\nabla\xi(\bar{X}\bar{X}^T Y)
+(Y-\bar{X}\bar{X}^T Y) - \xi(\bar{X}\bar{X}^T Y))
+$$
 Below we assume $\bar{X}$ is given (the expectation is taken first about $Y$ and then about $\bar{X}$), the columns of $\bar{X}$ are orthogonal by the given condition ($\bar{X}^T\bar{X}=I_k$) and $Y_1, \dots, Y_n $ be component variable of $Y$. The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian. We use $I_1, I_2, I_3$ to denote the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=\bar{X}\bar{X}^T$ is an $n\times n$ matrix. That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
 Let $Z = AY$. Then the covariance matrix of $Z$ is $AA^T = A$.
 Also, both $Y$ and $Z$ have zero mean (vector). We then have
@@ -166,7 +175,7 @@ r &  0 & - r^2 & 0 & -9 r^3 \\
 $$
 
 Now we consider the normalization condition: $I_1 = n$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
-Then we have $q^T N q = 1$ where $N_{ij} =r^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = 1$. Now if we rescale the parameter: $b_0 =  a_0, b_1 = \sqrt{r} a_1, b_2 = r a_2$ and $b_m = r^{m/2} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
+Then we have $q^T N q = 1$ where $N_{ij} =r^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = 1$. Now if we rescale the parameter: $b_0 =  a_0, b_1 = \sqrt{r} a_1, b_2 = r a_2$ and $b_m = r^{m/2} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $nq^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
 
 First we let $U^T U = \widetilde{N}$. We show that $U_{ij} = \delta(i,j)\frac{j!}{(j-i)!!\sqrt{i!}}$ where $U$ is an upper triangular matrix. $\delta(i,j)$ is an indicator function:
 \begin{equation}

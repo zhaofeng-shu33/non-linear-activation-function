@@ -49,7 +49,12 @@ $$
  which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
 \begin{remark}
-To compute higher order moments $\E[A_{ii}^t]$. We should approximate it by $r^t$ where $r=\frac{k}{n}$.
+To compute higher order moments $\E[A_{ii}^t]$. We should approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$
+Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
+\begin{align*}
+\E[A^t_{ii}] & = \E[(\sum_{j=1}^k x_{ij}^2)^t] \\
+\approx & k^t \E[x_{ij_1}]
+\end{align*}
 \end{remark}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 

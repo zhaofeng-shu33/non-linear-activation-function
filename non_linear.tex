@@ -49,7 +49,7 @@ $$
  which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
 \begin{remark}
-To compute higher order moments $\E[A_{ii}^t]$. We should approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$
+To compute higher order moments $\E[A_{ii}^t]$. We can approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$
 Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 \begin{align*}
 \E[A^t_{ii}] & = \E[(\sum_{j=1}^k X_{ij}^2)^t] \\
@@ -109,7 +109,7 @@ $\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and $(Y- \bar{X}\bar{X}^TY) = 
 By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). 
  For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
-\textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 - 2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)
+\textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 - 2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)]
 \end{equation*}
 We have written Equation \eqref{eq:Eminw} in $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$$.
 

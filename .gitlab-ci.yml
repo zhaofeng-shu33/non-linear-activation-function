@@ -1,0 +1,10 @@
+build:
+  tags:
+    - bcm
+  script:
+    - bash /etc/profile.d/modules.sh
+    - module load docker
+    - mkdir -p build && latexdockercmd xelatex -output-directory=build non_linear.tex
+  artifacts:
+    paths:
+      - build/non_linear.pdf

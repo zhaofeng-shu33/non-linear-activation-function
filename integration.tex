@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\title{High order moment of uniform distribution on the sphere}
+\author{Feng Zhao}
+\begin{document}
+\maketitle
+Consider $X_1, \dots, X_n \sim N(0, 1)$. Let $X = \sqrt{X_1^2 + \dots + X_n^2}$.
+$Y_i = \frac{X_i}{X}$ Then $Y=(Y_1, \dots, Y_n)$ are uniformly distributed on the sphere.
+Using symmetric property we have $\E[Y_i^2] = \frac{1}{n}$. Our problem is to compute the higher order moments of $\E[Y_i^k]$ where $k$ is even. Notice that $\E[Y_i^k]=0$ if $k$ is odd.
+
+First we consider the simple case in which $n=2$ and we show that 
+\begin{equation}
+\int_{\R}\int_{\R} \frac{x^{2k}}{(x^2+y^2)^k} p(x)p(y)dxdy
+\end{equation}
+where $p(x) = \frac{1}{\sqrt{2\pi}} \exp(-\frac{x^2}{2})$.
+We can let $y=xt$ and the integral is transformed to 
+\begin{align*}
+\int_{\R}\int_{\R} \frac{x^{2k}}{(x^2+y^2)^k} p(x)p(y)dxdy & =
+\frac{2}{\pi}\int_{0}^{+\infty}\int_{0}^{+\infty} \frac{x}{(1+t^2)^k} \exp(-\frac{1}{2}x^2(1+t^2))dxdt \\
+&= 
+\frac{2}{\pi}\int_{0}^{+\infty} \frac{1}{(1+t^2)^{k+1}}dt \\
+&= \frac{2}{\pi}\int_{0}^{\frac{\pi}{2}} cos^{2k}(u)dt \\
+\end{align*}
+
+\end{document}

@@ -52,9 +52,12 @@ $$
 To compute higher order moments $\E[A_{ii}^t]$. We should approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$
 Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 \begin{align*}
-\E[A^t_{ii}] & = \E[(\sum_{j=1}^k x_{ij}^2)^t] \\
-\approx & k^t \E[x_{ij_1}]
+\E[A^t_{ii}] & = \E[(\sum_{j=1}^k X_{ij}^2)^t] \\
+\approx & k^t \E[X^2_{ij_1}X^2_{ij_2}\dots X^2_{ij_t}]
 \end{align*}
+Using the conclusion from Lemma \ref{lem:uniform}, we can get for example $\E[X_{11}^2 X_{12}^2]
+= \E_{X_1}[X_{11}^2 \E[ X^2_{12}| X_1]] = \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )]$ when $n$ is large,
+$X_{11} \sim N(0, \frac{1}{n})$ and $\E[X_{11}^4]$ is one order smaller than $\E[X_{11}^2]$ and can be  omitted. Therefore we get the result that $\E[X_{11}^2 X_{12}^2] \sim \frac{1}{n^2}$
 \end{remark}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 

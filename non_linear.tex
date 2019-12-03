@@ -49,7 +49,7 @@ $$
  which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
 \begin{remark}
-To compute higher order moments $\E[A_{ii}^t]$. We can approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$
+To compute higher order moments $\E[A_{ii}^t]$. We can approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$.
 Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 \begin{align*}
 \E[A^t_{ii}] & = \E[(\sum_{j=1}^k X_{ij}^2)^t] \\
@@ -207,6 +207,12 @@ We only need to consider $m_1 + m_2$ is even. WLOG, $m_1 < m_2$, we can pad the 
 and $<p_{m_1}(x), p_{m_2}(x)> = p_{m_1}U^TUp_{m_2} = e^T_{m_1} e_{m_2} = 0$.
 
 We can further show that $p_m(x)$ belongs to Hermite polynomials under some scaling.
+
+\section{Experiment Results}
+We consider $r=\frac{2}{3}, k=40, n=60, \epsilon=0.1$ and $m=2$. The sampling time is 6000.
+For linear approximation the results is $0.3338$ ,  which corresponds to theoretical value $\frac{1}{3}$. 
+If we add $\epsilon \xi_2(z)$ perturbation, the improvement is $0.01 * \frac{1}{3}$. The simulation shows that the mse is $0.3317$. If we use sigmoid function instead of second order of Hermite polynomial, the result is $0.3923$, which is worse than linear case.
+
 \section{External Link}
 Source document is available at 
 

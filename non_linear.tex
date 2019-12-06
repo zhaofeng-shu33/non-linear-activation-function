@@ -21,7 +21,7 @@
 \begin{document}
 \maketitle
 \section{Problem}
-Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix truncated from a $n\times n$ random orthogonal matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. Suppose $\norm{Y}=n$. We would like to compute the following quantity:
+Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix truncated from a $n\times n$ random orthogonal matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. Suppose $\norm{Y}=1$. We would like to compute the following quantity:
 \begin{equation}\label{eq:Eminw}
 \E[\min_w \norm{Y - \sigma (X w ) }^2]
 \end{equation}
@@ -107,7 +107,7 @@ We can also use the property of Gaussian distribution directly: $X=(X_1, X_2)$ a
 \end{proof}
 
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
-$\bar{w} = \frac{1}{n}X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
+$\bar{w} =X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
 \norm{Y - \sigma (X w ) }^2 & = \norm{Y - X \bar{w} - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(X \bar{w} + \epsilon X\hat{w}) }^2 \\
 & = \norm{ Y - X  \bar{w}  - \epsilon (X\hat{w} + \xi(X \bar{w} )) - \epsilon^2(X\tilde{w} + \nabla \xi(X \bar{w} )X\hat{w})}^2 \\
@@ -115,7 +115,7 @@ $\bar{w} = \frac{1}{n}X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \
 & +\epsilon^2(\norm{X\hat{w} + \xi(X \bar{w})}^2 - 2 (X \tilde{w}+ \nabla \xi(X \bar{w})X\hat{w})^T(Y-X \bar{w}))
 \end{align*}
 In the above formula,  we expand $\xi$ at $X \bar{w}$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([X\bar{w}]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
-We first notice that for given $X$, $X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by columns of $\bar{X} = \frac{1}{\sqrt{n}}X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
+We first notice that for given $X$, $X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by columns of $\bar{X} =X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
 $\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and $(Y- \bar{X}\bar{X}^TY) = -(\tilde{Y} - \bar{X}\bar{X}^T \tilde{Y})$. This refers to $\xi(X\bar{w})^T (Y-X\bar{w})$. For $(X\hat{w})^T (Y-X\bar{w})$, we use the property that $  \bar{X}^T \bar{X} = I_k$.
 By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). 
  For the coefficient of $\epsilon^2$ we have
@@ -130,11 +130,11 @@ Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \end{equation}
 The minimal value is achieved at 
 $$
-\hat{w} = \frac{1}{n} X^T(\nabla\xi(\bar{X}\bar{X}^T Y)
+\hat{w} =  X^T(\nabla\xi(\bar{X}\bar{X}^T Y)
 (Y-\bar{X}\bar{X}^T Y) - \xi(\bar{X}\bar{X}^T Y))
 $$
 Below we assume $\bar{X}$ is given (the expectation is taken first about $Y$ and then about $\bar{X}$), the columns of $\bar{X}$ are orthogonal by the given condition ($\bar{X}^T\bar{X}=I_k$) and $Y_1, \dots, Y_n $ be component variable of $Y$. The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian. We use $I_1, I_2, I_3$ to denote the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=\bar{X}\bar{X}^T$ is an $n\times n$ matrix. That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
-Let $Z = AY$. Then the covariance matrix of $Z$ is $AA^T = A$.
+Let $Z = AY$. Then the covariance matrix of $Z$ is $A\E[YY^T]A^T = \frac{1}{n}AA^T = \frac{1}{n}A$ (from Lemma \ref{lem:uniform}).
 Also, both $Y$ and $Z$ have zero mean (vector). We then have
 \begin{equation*}
 I_1 =\E[\norm{\xi(Z)}^2] = \sum_{i=1}^n \E[\xi^2(z_i)]
@@ -170,31 +170,31 @@ For $\Sigma_{ij}$ with $i\neq j$ we have
 
 We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  we can write $\textrm{Coeff}(\epsilon^2) = I_1 + I_2 + I_3$ as the quadratic form $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. Since $M$ is symmetric we only consider $i\leq j$.
 
-For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=n (1-r)r^k (2k-1)!! $. 
+For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = n(2k-1-ij) (1-r)r^k (2k-3)!! = -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
--n(i-1)^2 (1-r)r^i (2i-3)!!$.
+For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2k$ we then have $M_{ij} = \frac{1}{n^{k-1}} (2k-1-ij) (1-r)r^k (2k-3)!! = -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
+-\frac{1}{n^{i-1}} (i-1)^2 (1-r)r^i (2i-3)!!$.
 
 We summarize our deduction as follows:
 \begin{equation}
 M_{ij} = \begin{cases} 0 & i=1 \textrm{ or } j=1 \textrm{ or } i + j \textrm{ is odd} \\
- -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } i,j \neq 1 \\
+ -\frac{1}{n^{(i+j)/2-1}}(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!! & i+j \textrm{ is even and } i,j \neq 1 \\
 (1-r)n & i=j=0
 \end{cases}
 \end{equation}
-For example, consider $m = 4$ we can write the $ 5 \times 5 $ matrix as follows:
+For example, consider $m = 4$ we can write the $ 5 \times 5 $ matrix as follows ($r'=\frac{r}{n}$):
 $$
 (1-r)n\begin{pmatrix}
-1 & 0 & r  & 0 & 3r^2\\
+1 & 0 & r'  & 0 & 3r'^2\\
 0 & 0 & 0  & 0 & 0\\
-r &  0 & - r^2 & 0 & -9 r^3 \\
-0 & 0 & 0 & -12r^3 & 0 \\
-3r^2 & 0 & -9 r^3 & 0 & -135r^4 
+r' &  0 & - r'^2 & 0 & -9 r'^3 \\
+0 & 0 & 0 & -12r'^3 & 0 \\
+3r'^2 & 0 & -9 r'^3 & 0 & -135r'^4 
 \end{pmatrix}
 $$
 
-Now we consider the normalization condition: $I_1 = n$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
-Then we have $q^T N q = 1$ where $N_{ij} =r^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = 1$. Now if we rescale the parameter: $b_0 =  a_0, b_1 = \sqrt{r} a_1, b_2 = r a_2$ and $b_m = r^{m/2} a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $nq^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
+Now we consider the normalization condition: $I_1 = 1$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
+Then we have $q^T N q = 1$ where $N_{ij} =\frac{1}{n^{(i+j)/2-1}}r^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = 1$. Now if we rescale the parameter: $b_0 =  \sqrt{n}a_0, b_1 = \sqrt{r} a_1, b_2 = r \frac{1}{\sqrt{n}}a_2$ and $b_m = r^{m/2} \frac{1}{n^{(m-1)/2}}a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
 
 First we let $U^T U = \widetilde{N}$. We show that $U_{ij} = \delta(i,j)\frac{j!}{(j-i)!!\sqrt{i!}}$ where $U$ is an upper triangular matrix. $\delta(i,j)$ is an indicator function:
 \begin{equation}
@@ -207,10 +207,10 @@ We can show that $\widetilde{M} = (1-r)U^T \Lambda U$ where $\Lambda = \diag\{1,
 
 Since $p^T U^T U p = 1$, and the minimal value $-(m-1)$ for $\textrm{Coeff}(\epsilon^2) = p^T U^T \Lambda U p $ is achieved when $U p = (0, \dots, 0, 1)^T = e_m$. Solving $ U p = e_m $ can we get the value of $p$. That is: $p_i = (-1)^{(m-i)/2} \frac{m!}{i!(m-i)!! \sqrt{m!}} $ when $i+m$ is even; $p_i = 0 $ when $i+m$ is odd. Transforming back to $a_i$ we have:
 \begin{equation}
-a_i =(-1)^{(m-i)/2} \delta(i,m) \frac{1}{r^{i/2}} \frac{m!}{i!(m-i)!! \sqrt{m!}}
+a_i =(-1)^{(m-i)/2} \delta(i,m) \frac{n^{(i-1)/2}}{r^{i/2}} \frac{m!}{i!(m-i)!! \sqrt{m!}}
 \end{equation}
 
-Suppose  $ m = 4$ we have $ \xi(z) = \frac{1}{\sqrt{24}}(3 - \frac{6}{r} z^2 + \frac{1}{r^2}z^4)  = \frac{1}{\sqrt{24}}((\frac{z^2}{r} - 3)^2 - 6)$. In such case we have $\E[\min \norm{Y - \sigma(Xw)}^2]=n(1-r)(1-3\epsilon^2)$
+Suppose  $ m = 4$ we have $ \xi(z) = \frac{1}{\sqrt{24}}(3 - \frac{6}{r} z^2 + \frac{1}{r^2}z^4)  = \frac{1}{\sqrt{24}}((\frac{z^2}{r} - 3)^2 - 6)$. In such case we have $\E[\min \norm{Y - \sigma(Xw)}^2]=(1-r)(1-3\epsilon^2)$
 \section{Orthogonal Polynomial}
 Let $p_m(x) = \xi(\frac{z}{\sqrt{r}})$ where the highest order term of $p_m(x)$ is $m$. We can show that $p_m(x)$ is a series of orthogonal polynomial sequence with respect to the inner product 
 $<x^i, x^j> = \delta(i,j)(i+j-1)!!$. Indeed, if $m_1 + m_2$ is odd, $<p_{m_1}(x), p_{m_2}(x)> = 0$.

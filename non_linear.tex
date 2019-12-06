@@ -65,7 +65,10 @@ Exact solution for $t=2$. The fourth order moment for each component of uniform 
 \E[(X_{11}^2 + \dots + X_{1k}^2)^2] &= k\frac{3}{n(n+2)} + k(k-1)\frac{1}{n-1} (\frac{1}{n} - \frac{3}{n(n+2)}) \\
 &=\frac{k(k+2)}{n(n+2)}
 \end{align*}
-
+In general, we can treat $X_{11}, \dots, X_{1k}$ as k components of a uniform random vector on the sphere. And we have 
+\begin{equation}
+\E[A_{ii}^t] = \prod_{i=0}^{t-1}\frac{k+2i}{n+2i}
+\end{equation}
 \end{remark}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
@@ -221,6 +224,8 @@ We consider $r=\frac{2}{3}, k=40, n=60, \epsilon=0.1$ and $m=2$. The sampling ti
 For linear approximation the results is $0.3338$ ,  which corresponds to theoretical value $\frac{1}{3}$. 
 If we add $\epsilon \xi_2(z)$ perturbation, the improvement is $0.01 * \frac{1}{3}$. The simulation shows that the mse is $0.3317$. If we use sigmoid function instead of second order of Hermite polynomial, the result is $0.3923$, which is worse than linear case.
 
+\section{Exact solution}
+Below we use some approximation $n, k >> 1$ and $ t << k$. Without these two assumptions we can compute $N_{ij} = \prod_{i=0}^{t-1} \frac{(2i+1)(2i+k)}{(2i+n)^2}$ when $i+j = 2t$; otherwise $N_{ij}=0$.
 \section{External Link}
 Source document is available at 
 

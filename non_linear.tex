@@ -167,34 +167,40 @@ For $I_3$, we have
 For $\Sigma_{ii}$ we have
 \begin{align}\label{eq:sigmaii}
 \Sigma_{ii} &=  \E[ [(I-A)Y]_i^2 [\nabla \xi(AY)]_{i,i}^2] \\
-&= (1-A_{ii}) \E[ [\nabla \xi(AY)]_{i,i}^2]
+&= \frac{1}{n}(1-A_{ii}) \E[ [\nabla \xi(AY)]_{i,i}^2]
 \end{align}
 
 For $\Sigma_{ij}$ with $i\neq j$ we have
 \begin{align*}
 \Sigma_{ij} &=  \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]  \\
-&= -A_{ij} \E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]
+&= - \frac{1}{n}A_{ij} \E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]
 \end{align*}
 
 We then have
 \begin{align*}
-I_1+I_2+I_3 &= \sum_{i=1}^n (1-A_{ii})(\E[\xi^2(z_i)] - A_{ii} \E[ [\nabla \xi(AY)]_{i,i}^2]) \\
-&- \sum_{i,j=1, i \neq j}^n A_{ij} (\E[\xi(z_i)\xi(z_j)] - A_{ij}\E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}])
+I_1+I_2+I_3 &= \sum_{i=1}^n (1-A_{ii})(\E[\xi^2(z_i)] -\frac{1}{n} A_{ii} \E[ [\nabla \xi(AY)]_{i,i}^2]) \\
+&- \sum_{i,j=1, i \neq j}^n A_{ij} (\E[\xi(z_i)\xi(z_j)] - \frac{1}{n}A_{ij}\E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}])
 \end{align*}
-By symmetric property, we can simplfy the above equation as:
+By symmetric property, we can simplify the above equation as:
 \begin{align}\label{formularI123}
-I_1+I_2+I_3 &=n(1-A_{11})(\E[\xi^2(z_1)] - A_{11} \E[ [\nabla \xi(AY)]_{1,1}^2]) \\
-&- n(n-1)A_{12}(\E[\xi(z_1)\xi(z_2)] - A_{12}\E[[\nabla \xi(AY)]_{1,1} [\nabla \xi(AY)]_{2,2}])\nonumber
+I_1+I_2+I_3 &=n(1-A_{11})(\E[\xi^2(z_1)] - \frac{1}{n} A_{11} \E[ [\nabla \xi(AY)]_{1,1}^2]) \\
+&- n(n-1)A_{12}(\E[\xi(z_1)\xi(z_2)] -  \frac{1}{n}A_{12}\E[[\nabla \xi(AY)]_{1,1} [\nabla \xi(AY)]_{2,2}])\nonumber
 \end{align}
 
 We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  we can write $\textrm{Coeff}(\epsilon^2) = I_1 + I_2 + I_3$ as the quadratic form $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. Since $M$ is symmetric we only consider $i\leq j$.
 
 Using Equation \ref{formularI123}, we have 
 \begin{align*}
-M_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] - ijA_{11} \E[Z_1^{i+j-2}])  \\
-&-n(n-1)A_{12}(\E[Z_1^i Z_2^j] - ijA_{12}\E[Z_1^{i-1}Z_2^{j-1}])
+M_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] - ij \frac{1}{n}A_{11} \E[Z_1^{i+j-2}])  \\
+&-n(n-1)A_{12}(\E[Z_1^i Z_2^j] - ij \frac{1}{n}A_{12}\E[Z_1^{i-1}Z_2^{j-1}])
 \end{align*}
 We can approximate $\E[Z_1^{2k}]$ where $Z=AY$ assuming $Y$ is a Gaussian vector with variance $\frac{1}{n}$. Then $\E[Z_1^{2k}] = A_{11}^k (2k-1)!!$.
+
+Let $i+j=2k$. Then we have 
+\begin{align*}
+M_{ij} &= n(1-A_{11})\frac{A^k_{11}}{n^k}  ((2k-1)!!- ij (2k-3)!!)  \\
+&+n(n-1)\frac{1}{n^k}A_{12} \sum_{t=2, t+i \textrm{ is even}}^{\min\{i,j\}} \frac{i!j!}{(t-2)!(i-t)!!(j-t)!!} A_{12}^t A_{11}^{(i-t)/2}A_{22}^{(j-t)/2}
+\end{align*}
 
 For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 
 

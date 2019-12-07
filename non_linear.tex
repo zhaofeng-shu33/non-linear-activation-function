@@ -199,7 +199,7 @@ We can approximate $\E[Z_1^{2k}]$ where $Z=AY$ assuming $Y$ is a Gaussian vector
 Let $i+j=2k$. Then we have 
 \begin{align*}
 M_{ij} &= n(1-A_{11})\frac{A^k_{11}}{n^k}  ((2k-1)!!- ij (2k-3)!!)  \\
-&+n(n-1)\frac{1}{n^k}A_{12} \sum_{t=2, t+i \textrm{ is even}}^{\min\{i,j\}} \frac{i!j!}{(t-2)!(i-t)!!(j-t)!!} A_{12}^t A_{11}^{(i-t)/2}A_{22}^{(j-t)/2}
+&+n(n-1)\frac{1}{n^k}A_{12} \sum_{t=2, t+i \textrm{ is even}}^{\min\{i,j\}} \frac{(t-1)i!j!}{t!(i-t)!!(j-t)!!} A_{12}^t A_{11}^{(i-t)/2}A_{22}^{(j-t)/2}
 \end{align*}
 
 For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2k$ we can compute that $M_{0,2k}=\frac{1}{n^{k-1}} (1-r)r^k (2k-1)!! $. 

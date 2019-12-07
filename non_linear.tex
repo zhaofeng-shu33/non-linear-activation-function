@@ -76,10 +76,16 @@ Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance
 \E[X^2 Y^2] &= \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2 \\
 \E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12} \\
 \E[X^3 Y^3] & = 6 \Sigma_{12}^3 + 9 \Sigma_{12} \Sigma_{11} \Sigma_{22}\\
-\E[X^4 Y^4] & = 24 \Sigma_{12}^4 + 72 \Sigma_{12}^2 \Sigma_{11} \Sigma_{22} + 9\Sigma_{11}^2 \Sigma_{22}^2 
+\E[X^4 Y^4] & = 24 \Sigma_{12}^4 + 72 \Sigma_{12}^2 \Sigma_{11} \Sigma_{22} + 9\Sigma_{11}^2 \Sigma_{22}^2
 \end{align*}
 For more formulas, please see Isserlis' theorem, or \href{https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Higher_moments}{Higher moments} in wikipedia.
 \end{lemma}
+\begin{remark}
+Suppose $ i + j $ is even, using Isserlis's theorem we have
+\begin{equation}
+\E[X^i Y^j] = \sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}\frac{i! j!}{k! (i-k)!!(j-k)!!} \Sigma_{12}^k \Sigma_{11}^{(i-k)/2}\Sigma_{22}^{(j-k)/2}
+\end{equation}
+\end{remark}
 \begin{proof}
 Let $\Sigma = L^T L $ and $\binom{x}{y} = L^T \binom{x'}{y'}$, then $\binom{x'}{y'}$ has identity covariance. By Cholesky decomposition we can make $L$ be upper trianglar matrix (
 $L_{12}=0$) with $L_{11}^2 = \Sigma_{11}, L_{11}L_{12} = \Sigma_{12}, L_{22}^2 = \Sigma_{22} - \frac{\Sigma_{12}^2}{\Sigma_{11}}$. Then we have $x = L_{11} x', y = L_{12} x' + L_{22} y'$. Therefore

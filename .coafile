@@ -1,0 +1,4 @@
+[TeX]
+bears = SpaceConsistencyBear
+files = *.tex
+use_spaces = True

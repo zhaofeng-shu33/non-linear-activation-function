@@ -32,7 +32,7 @@ Suppose $X$ is an $n$ by $k$ random matrix. The samples $x_1, \dots, x_k$ from $
 \begin{equation}
 E[A_{ij}]= \begin{cases}
 \frac{k}{n} & i = j\\
-0 & i\neq j 
+0 & i\neq j
 \end{cases}
 \end{equation}
 \end{lemma}
@@ -66,7 +66,7 @@ Exact solution for $t=2$. The fourth order moment for each component of uniform 
 \E[(X_{11}^2 + \dots + X_{1k}^2)^2] &= k\frac{3}{n(n+2)} + k(k-1)\frac{1}{n-1} (\frac{1}{n} - \frac{3}{n(n+2)}) \\
 &=\frac{k(k+2)}{n(n+2)}
 \end{align*}
-In general, we can treat $X_{11}, \dots, X_{1k}$ as k components of a uniform random vector on the sphere. And we have 
+In general, we can treat $X_{11}, \dots, X_{1k}$ as k components of a uniform random vector on the sphere. And we have
 \begin{equation}
 \E[A_{ii}^t] = \prod_{i=0}^{t-1}\frac{k+2i}{n+2i}
 \end{equation}
@@ -75,7 +75,7 @@ In general, we can treat $X_{11}, \dots, X_{1k}$ as k components of a uniform ra
 $\E[A_{12}^2] = \frac{k}{n(n+2)} \Rightarrow \E[A_{12}^{2t}] \leq \E[A_{12}^2]^t$
 \end{remark}
 \begin{lemma}\label{lem:x2y2}
-Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then 
+Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then
 \begin{align*}
 \E[X^2 Y^2] &= \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2 \\
 \E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12} \\
@@ -116,7 +116,7 @@ $(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$. Then the fol
 We can also use the property of Gaussian distribution directly: $X=(X_1, X_2)$ and $Y=(Y_1, Y_2)$ are both joint Gaussian random vector and these two are independent with each other from their join distribution. Then they are uncorrelated.
 \end{proof}
 
-We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is 
+We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is
 $\bar{w} =X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
 \norm{Y - \sigma (X w ) }^2 & = \norm{Y - X \bar{w} - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(X \bar{w} + \epsilon X\hat{w}) }^2 \\
@@ -127,7 +127,7 @@ $\bar{w} =X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat
 In the above formula,  we expand $\xi$ at $X \bar{w}$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([X\bar{w}]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
 We first notice that for given $X$, $X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by columns of $\bar{X} =X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
 $\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and $(Y- \bar{X}\bar{X}^TY) = -(\tilde{Y} - \bar{X}\bar{X}^T \tilde{Y})$. This refers to $\xi(X\bar{w})^T (Y-X\bar{w})$. For $(X\hat{w})^T (Y-X\bar{w})$, we use the property that $  \bar{X}^T \bar{X} = I_k$.
-By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$). 
+By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$).
  For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
 \textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 - 2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)]
@@ -138,7 +138,7 @@ Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
 \end{equation}
-The minimal value is achieved at 
+The minimal value is achieved at
 $$
 \hat{w} =  X^T(\nabla\xi(\bar{X}\bar{X}^T Y)
 (Y-\bar{X}\bar{X}^T Y) - \xi(\bar{X}\bar{X}^T Y))
@@ -150,7 +150,7 @@ Also, both $Y$ and $Z$ have zero mean (vector). We then have
 I_1 =\E[\norm{\xi(Z)}^2] = \sum_{i=1}^n \E[\xi^2(z_i)]
 \end{equation*}
 where $Z_i$ has the distribution $p_i$.
- 
+
 For $I_2$
 we have
 \begin{equation*}
@@ -158,15 +158,15 @@ we have
 \end{equation*}
 where $Z_i, Z_j$ have the joint distribution $p_{ij}$.
 
-%$A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$. 
+%$A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$.
 Then we have
 \begin{equation}\label{eq:I1plusI2}
-I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \E[\xi^2(z_i)]  - \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)] 
+I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \E[\xi^2(z_i)]  - \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)]
 \end{equation}
 For $I_3$, we have
 \begin{align*}
--I_3 & = \E_Y[\norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2] \\ 
- & = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii} 
+-I_3 & = \E_Y[\norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2] \\
+ & = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii}
 \end{align*}
 For $\Sigma_{ii}$ we have
 \begin{align}\label{eq:sigmaii}
@@ -193,22 +193,22 @@ I_1+I_2+I_3 &=n(1-A_{11})(\E[\xi^2(z_1)] - \frac{1}{n} A_{11} \E[ [\nabla \xi(AY
 
 We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  we can write $\textrm{Coeff}(\epsilon^2) = I_1 + I_2 + I_3$ as the quadratic form $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. Since $M$ is symmetric we only consider $i\leq j$.
 
-Using Equation \ref{formularI123}, we have 
+Using Equation \ref{formularI123}, we have
 \begin{align*}
 M_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] - ij \frac{1}{n}A_{11} \E[Z_1^{i+j-2}])  \\
 &-n(n-1)A_{12}(\E[Z_1^i Z_2^j] - ij \frac{1}{n}A_{12}\E[Z_1^{i-1}Z_2^{j-1}])
 \end{align*}
 We can approximate $\E[Z_1^{2t}]$ where $Z=AY$ assuming $Y$ is a Gaussian vector with variance $\frac{1}{n}$. Then $\E[Z_1^{2t}] = A_{11}^k (2t-1)!!$.
 
-Let $i+j=2t$. Then we have 
+Let $i+j=2t$. Then we have
 \begin{align*}
 M_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)  \\
 &+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}} \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!} A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}
 \end{align*}
 
-For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2t$ we can compute that $M_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $. 
+For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2t$ we can compute that $M_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $.
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2t$ we then have $M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! = -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} = 
+For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2t$ we then have $M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! = -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} =
 -\frac{1}{n^{i-1}} (i-1)^2 (1-r)r^i (2i-3)!!$.
 
 Average over $A_{11}, A^2_{12}(\approx r' = \frac{k}{n^2}), A_{22}(\approx r = \frac{k}{n}) $
@@ -229,7 +229,7 @@ $$
 0 & 0 & 0  & 0 & 0\\
 r' &  0 & - r'^2 & 0 & -9 r'^3 \\
 0 & 0 & 0 & -12r'^3 & 0 \\
-3r'^2 & 0 & -9 r'^3 & 0 & -135r'^4 
+3r'^2 & 0 & -9 r'^3 & 0 & -135r'^4
 \end{pmatrix}
 $$
 
@@ -252,7 +252,7 @@ a_i =(-1)^{(m-i)/2} \delta(i,m) \frac{n^{(i-1)/2}}{r^{i/2}} \frac{m!}{i!(m-i)!! 
 
 Suppose  $ m = 4$ we have $ \xi(z) = \frac{1}{\sqrt{24}}(\frac{3}{\sqrt{n}} - \frac{6\sqrt{n}}{r} z^2 + \frac{n^{3/2}}{r^2}z^4)  = \frac{1}{\sqrt{24}}((\frac{z^2}{r} - 3)^2 - 6)$. In such case we have $\E[\min \norm{Y - \sigma(Xw)}^2]=(1-r)(1-3\epsilon^2)$
 \section{Orthogonal Polynomial}
-Let $p_m(x) = \xi(\frac{z}{\sqrt{r}})$ where the highest order term of $p_m(x)$ is $m$. We can show that $p_m(x)$ is a series of orthogonal polynomial sequence with respect to the inner product 
+Let $p_m(x) = \xi(\frac{z}{\sqrt{r}})$ where the highest order term of $p_m(x)$ is $m$. We can show that $p_m(x)$ is a series of orthogonal polynomial sequence with respect to the inner product
 $<x^i, x^j> = \delta(i,j)(i+j-1)!!$. Indeed, if $m_1 + m_2$ is odd, $<p_{m_1}(x), p_{m_2}(x)> = 0$.
 We only need to consider $m_1 + m_2$ is even. WLOG, $m_1 < m_2$, we can pad the higher order terms of polynomial $p_{m_1}(x)$. Let $p_{m_i}$ be the resulting coefficient of $p_{m_i}(x)$
 and $<p_{m_1}(x), p_{m_2}(x)> = p_{m_1}U^TUp_{m_2} = e^T_{m_1} e_{m_2} = 0$.
@@ -261,23 +261,23 @@ We can further show that $p_m(x)$ belongs to Hermite polynomials under some scal
 
 \section{Experiment Results}
 We consider $r=\frac{2}{3}, k=40, n=60, \epsilon=0.1$ and $m=2$. The sampling time is 6000.
-For linear approximation the results is $0.3338$ ,  which corresponds to theoretical value $\frac{1}{3}$. 
+For linear approximation the results is $0.3338$ ,  which corresponds to theoretical value $\frac{1}{3}$.
 If we add $\epsilon \xi_2(z)$ perturbation $\xi(z) = \frac{1}{\sqrt{2n}}(\frac{n}{r} z^2 -1)$, the improvement is $0.01 * \frac{1}{3}$. The simulation shows that the mse is $0.3317$. If we use sigmoid function instead of second order of Hermite polynomial, the result is $0.3923$, which is worse than linear case.
 
 \section{Further discussion when $t$ is large}
-Above we use some approximation $n, k >> 1$ and $ t << k$. 
+Above we use some approximation $n, k >> 1$ and $ t << k$.
 We can weaken the assumptions. That is, we only preserve $ n >> 1$.
 We can compute $N_{ij} =\frac{(2t-1)!!}{n^{t-1}} \prod_{s=0}^{t-1} \frac{(2s+k)}{(2s+n)}$ when $i+j = 2t$; otherwise $N_{ij}=0$. $M_{ij}=-\frac{1-r}{n^{t-1}} \prod_{s=0}^{t-1} \frac{(2s+k)}{(2s+n+2)} (i-1)(j-1) (i+j-3)!!$
 \section{External Link}
-Source document is available at 
+Source document is available at
 \url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
 
 \appendix
 \section{Decomposition of $\widetilde{N}$}
-This section provides math induction proof for $\widetilde{N}= U^T U$ where 
+This section provides math induction proof for $\widetilde{N}= U^T U$ where
 \begin{align}
 \widetilde{N}_{ij} & = \delta(i, j) (i+j-1)!! \\
-U_{ij} & = \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} \textrm{ for } i\leq j 
+U_{ij} & = \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} \textrm{ for } i\leq j
 \end{align}
 \begin{proposition}
 \begin{equation}

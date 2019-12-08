@@ -1,4 +1,4 @@
 [TeX]
-bears = SpaceConsistencyBear
-files = *.tex
+bears = SpaceConsistencyBear,LineLengthBear
+files = integration.tex
 use_spaces = True

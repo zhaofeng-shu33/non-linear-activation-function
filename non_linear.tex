@@ -203,7 +203,7 @@ We can approximate $\E[Z_1^{2t}]$ where $Z=AY$ assuming $Y$ is a Gaussian vector
 Let $i+j=2t$. Then we have 
 \begin{align*}
 M_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)  \\
-&+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}} \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!} A_{12}^t A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}
+&+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}} \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!} A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}
 \end{align*}
 
 For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2t$ we can compute that $M_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $. 

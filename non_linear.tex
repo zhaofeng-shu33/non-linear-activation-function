@@ -15,6 +15,7 @@
 \DeclareMathOperator*{\argmin}{argmin}
 \newtheorem{lemma}{Lemma}
 \newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
 \title{Non-linearity in random variable approximation}
 \author{Feng Zhao}
 
@@ -233,7 +234,7 @@ r' &  0 & - r'^2 & 0 & -9 r'^3 \\
 $$
 
 Now we consider the normalization condition: $I_1 = 1$. Let $N$ be an $(m+1) \times (m+1)$ matrix.
-Then we have $q^T N q = 1$ where $N_{ij} =\frac{1}{n^{(i+j)/2-1}}r^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = 1$. Now if we rescale the parameter: $b_0 =  \sqrt{n}a_0, b_1 = \sqrt{r} a_1, b_2 = r \frac{1}{\sqrt{n}}a_2$ and $b_m = r^{m/2} \frac{1}{n^{(m-1)/2}}a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} =  (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
+Then we have $q^T N q = 1$ where $N_{ij} =\frac{1}{n^{(i+j)/2-1}}r^{(i+j) / 2} (i+j -1)!!$ when $i+j$ is even and $N_{ij} = 0$ when $i+j$ is odd. The special case is $N_{00} = 1$. Now if we rescale the parameter: $b_0 =  \sqrt{n}a_0, b_1 = \sqrt{r} a_1, b_2 = r \frac{1}{\sqrt{n}}a_2$ and $b_m = r^{m/2} \frac{1}{n^{(m-1)/2}}a_m$. Let $p = [b_0, b_1, \dots, b_m]$. Then $p^T \widetilde{N} p =1$ where $\widetilde{N}_{ij} = \delta(i,j) (i+j -1)!!$. Also, the object function $q^T M q$ is simplified as $q^T \widetilde{M} q$ where $\widetilde{M}_{ij} =  -(i-1)(j-1)(1-r) (i+j-3)!! $. This transformation makes the matrix irrelevant with $n$.
 
 First we let $U^T U = \widetilde{N}$. We show that $U_{ij} = \delta(i,j)\frac{j!}{(j-i)!!\sqrt{i!}}$ where $U$ is an upper triangular matrix. $\delta(i,j)$ is an indicator function:
 \begin{equation}
@@ -269,7 +270,18 @@ We can weaken the assumptions. That is, we only preserve $ n >> 1$.
 We can compute $N_{ij} =\frac{(2t-1)!!}{n^{t-1}} \prod_{s=0}^{t-1} \frac{(2s+k)}{(2s+n)}$ when $i+j = 2t$; otherwise $N_{ij}=0$. $M_{ij}=-\frac{1-r}{n^{t-1}} \prod_{s=0}^{t-1} \frac{(2s+k)}{(2s+n+2)} (i-1)(j-1) (i+j-3)!!$
 \section{External Link}
 Source document is available at 
-
 \url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
 
+\appendix
+\section{Decomposition of $\widetilde{N}$}
+This section provides math induction proof for $\widetilde{N}= U^T U$ where 
+\begin{align}
+\widetilde{N}_{ij} & = \delta(i, j) (i+j-1)!! \\
+U_{ij} & = \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} \textrm{ for } i\leq j 
+\end{align}
+\begin{proposition}
+\begin{equation}
+\delta(i, j) (i+j-1)!! = \sum_{k=0}^{\min\{i, j\}} \delta(k, i) \delta(k, j) \frac{i!}{(i-k)!!\sqrt{k!}}   \frac{j!}{(j-k)!!\sqrt{k!}}
+\end{equation}
+\end{proposition}
 \end{document}

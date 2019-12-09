@@ -83,7 +83,8 @@ $\E[X_2 X_2^T] = \frac{1}{n-1} (I_n - \frac{1}{n} I_n) = \frac{1}{n} I_n$.
 
 For $i>2$, the proof is similar as we have
 $$
-\E[X_i X_i^T] = \E_{X_1, \dots, X_{i-1}} [\E[X_i X_i^T | x_1, \dots x_{i-1}]]
+\E[X_i X_i^T] =
+\E_{X_1, \dots, X_{i-1}} [\E[X_i X_i^T | x_1, \dots x_{i-1}]]
 $$
 which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
@@ -96,43 +97,64 @@ Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 \E[A^t_{ii}] & = \E[(\sum_{j=1}^k X_{ij}^2)^t] \\
 \approx & k^t \E[X^2_{ij_1}X^2_{ij_2}\dots X^2_{ij_t}]
 \end{align*}
-Using the conclusion from Lemma \ref{lem:uniform}, we can get for example $\E[X_{11}^2 X_{12}^2]
-= \E_{X_1}[X_{11}^2 \E[ X^2_{12}| X_1]] = \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )]$ when $n$ is large,
-$X_{11} \sim N(0, \frac{1}{n})$ and $\E[X_{11}^4]$ is one order smaller than $\E[X_{11}^2]$ and can be  omitted. Therefore we get the result that $\E[X_{11}^2 X_{12}^2] \sim \frac{1}{n^2}$
+Using the conclusion from Lemma \ref{lem:uniform},
+we can get for example $\E[X_{11}^2 X_{12}^2]
+= \E_{X_1}[X_{11}^2 \E[ X^2_{12}| X_1]]
+= \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )]$ when $n$ is large,
+$X_{11} \sim N(0, \frac{1}{n})$ and $\E[X_{11}^4]$
+is one order smaller than $\E[X_{11}^2]$ and can be omitted.
+Therefore we get the result that $\E[X_{11}^2 X_{12}^2] \sim \frac{1}{n^2}$
 \end{remark}
 \begin{remark}
-Exact solution for $t=2$. The fourth order moment for each component of uniform distribution on the sphere is $\frac{3}{n(n+2)}$. Then we have
+Exact solution for $t=2$. The fourth order moment for each component of
+uniform distribution on the sphere is $\frac{3}{n(n+2)}$. Then we have
 \begin{align*}
-\E[(X_{11}^2 + \dots + X_{1k}^2)^2] &= k\frac{3}{n(n+2)} + k(k-1)\frac{1}{n-1} (\frac{1}{n} - \frac{3}{n(n+2)}) \\
+\E[(X_{11}^2 + \dots + X_{1k}^2)^2] &=
+k\frac{3}{n(n+2)} + k(k-1)\frac{1}{n-1} (\frac{1}{n} - \frac{3}{n(n+2)}) \\
 &=\frac{k(k+2)}{n(n+2)}
 \end{align*}
-In general, we can treat $X_{11}, \dots, X_{1k}$ as k components of a uniform random vector on the sphere. And we have
+In general, we can treat $X_{11}, \dots, X_{1k}$
+as k components of a uniform random vector on the sphere. And we have
 \begin{equation}
 \E[A_{ii}^t] = \prod_{i=0}^{t-1}\frac{k+2i}{n+2i}
 \end{equation}
 \end{remark}
 \begin{remark}
-$\E[A_{12}^2] = \frac{k}{n(n+2)} \Rightarrow \E[A_{12}^{2t}] \leq \E[A_{12}^2]^t$
+$\E[A_{12}^2] = \frac{k}{n(n+2)}
+\Rightarrow \E[A_{12}^{2t}] \leq \E[A_{12}^2]^t$
 \end{remark}
 \begin{lemma}\label{lem:x2y2}
-Suppose $(X,Y)$ is two-dimensional Gaussian vector, has zero mean and covariance vector $\Sigma$, then
+Suppose $(X,Y)$ is two-dimensional Gaussian vector,
+has zero mean and covariance vector $\Sigma$, then
 \begin{align*}
 \E[X^2 Y^2] &= \Sigma_{11}\Sigma_{22} + 2\Sigma_{12}^2 \\
 \E[X^3 Y + Y^3 X ] &= 3 (\Sigma_{11} + \Sigma_{22}) \Sigma_{12} \\
 \E[X^3 Y^3] & = 6 \Sigma_{12}^3 + 9 \Sigma_{12} \Sigma_{11} \Sigma_{22}\\
-\E[X^4 Y^4] & = 24 \Sigma_{12}^4 + 72 \Sigma_{12}^2 \Sigma_{11} \Sigma_{22} + 9\Sigma_{11}^2 \Sigma_{22}^2
+\E[X^4 Y^4] & = 24 \Sigma_{12}^4 +
+72 \Sigma_{12}^2 \Sigma_{11} \Sigma_{22} + 9\Sigma_{11}^2 \Sigma_{22}^2
 \end{align*}
-For more formulas, please see Isserlis' theorem, or \href{https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Higher_moments}{Higher moments} in wikipedia.
+For more formulas, please see Isserlis' theorem, or
+\href{https://en.wikipedia.org/wiki/
+Multivariate_normal_distribution#Higher_moments}{Higher moments}
+in wikipedia.
 \end{lemma}
 \begin{remark}
 Suppose $ i + j $ is even, using Isserlis's theorem we have
 \begin{equation}
-\E[X^i Y^j] = \sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}\frac{i! j!}{k! (i-k)!!(j-k)!!} \Sigma_{12}^k \Sigma_{11}^{(i-k)/2}\Sigma_{22}^{(j-k)/2}
+\E[X^i Y^j] =
+\sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{i! j!}{k! (i-k)!!(j-k)!!}
+\Sigma_{12}^k \Sigma_{11}^{(i-k)/2}\Sigma_{22}^{(j-k)/2}
 \end{equation}
 \end{remark}
 \begin{proof}
-Let $\Sigma = L^T L $ and $\binom{x}{y} = L^T \binom{x'}{y'}$, then $\binom{x'}{y'}$ has identity covariance. By Cholesky decomposition we can make $L$ be upper trianglar matrix (
-$L_{12}=0$) with $L_{11}^2 = \Sigma_{11}, L_{11}L_{12} = \Sigma_{12}, L_{22}^2 = \Sigma_{22} - \frac{\Sigma_{12}^2}{\Sigma_{11}}$. Then we have $x = L_{11} x', y = L_{12} x' + L_{22} y'$. Therefore
+Let $\Sigma = L^T L $ and $\binom{x}{y} = L^T \binom{x'}{y'}$,
+then $\binom{x'}{y'}$ has identity covariance.
+By Cholesky decomposition we can make $L$ be upper trianglar matrix 
+($L_{12}=0$) with $L_{11}^2 = \Sigma_{11},
+L_{11}L_{12} = \Sigma_{12},
+L_{22}^2 = \Sigma_{22} - \frac{\Sigma_{12}^2}{\Sigma_{11}}$.
+Then we have $x = L_{11} x', y = L_{12} x' + L_{22} y'$. Therefore
 \begin{align*}
 \E[X^2 Y^2] & = L_{11}^2 (L_{12}^2\E[X'^4]+ L^2_{22}\E[X'^2]\E[Y'^2]) \\
 & = L_{11}^2(3L_{12}^2 + L^2_{22}) \\
@@ -140,20 +162,32 @@ $L_{12}=0$) with $L_{11}^2 = \Sigma_{11}, L_{11}L_{12} = \Sigma_{12}, L_{22}^2 =
 \end{align*}
 \end{proof}
 \begin{lemma}\label{lem:abcd}
-Suppose $X_1, X_2, Y_1, Y_2$ are gaussian random variables and the covariance of their join distribution is block diagonal:
-$(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$. Then the following equality holds:
+Suppose $X_1, X_2, Y_1, Y_2$ are gaussian random variables and
+the covariance of their join distribution is block diagonal:
+$(X_1, X_2, Y_1, Y_2) \sim N(0, \binom{\Sigma_1, 0}{0, \Sigma_2})$.
+Then the following equality holds:
 \begin{equation}
 \E[f(X_1X_2)g(Y_1Y_2)] = \E[f(X_1 X_2)] \E[g(Y_1 Y_2)]
 \end{equation}
 \end{lemma}
 \begin{proof}
 \begin{align*}
-\E[f(X_1X_2)g(Y_1Y_2)] & = \int \frac{f(x_1 x_2) g(y_1 y_2) }{(2\pi)^2 \sqrt{\abs{\Sigma_1}\abs{\Sigma_2}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2}-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dx_1 d x_2 dy_1 dy_2 \\
-& = \int \frac{f(x_1 x_2)  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2})dx_1 d x_2  \\
-&\cdot  \int \frac{ g(y_1 y_2)  }{(2\pi) \sqrt{\abs{\Sigma_1}}}\exp(-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dy_1 d y_2 \\
+\E[f(X_1X_2)g(Y_1Y_2)] & =
+\int \frac{f(x_1 x_2) g(y_1 y_2)}
+{(2\pi)^2 \sqrt{\abs{\Sigma_1}\abs{\Sigma_2}}}
+\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2} - 
+\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dx_1 d x_2 dy_1 dy_2 \\
+& = \int \frac{f(x_1 x_2)  }{(2\pi) \sqrt{\abs{\Sigma_1}}}
+\exp(-\frac{1}{2}(x_1, x_2) \Sigma_1^{-1} \binom{x_1}{x_2})dx_1 dx_2  \\
+&\cdot \int \frac{g(y_1 y_2)}{(2\pi) \sqrt{\abs{\Sigma_1}}}
+\exp(-\frac{1}{2}(y_1, y_2) \Sigma_1^{-1} \binom{y_1}{y_2})dy_1 dy_2 \\
 & = \E[f(X_1 X_2)] \E[g(Y_1 Y_2)]
 \end{align*}
-We can also use the property of Gaussian distribution directly: $X=(X_1, X_2)$ and $Y=(Y_1, Y_2)$ are both joint Gaussian random vector and these two are independent with each other from their join distribution. Then they are uncorrelated.
+We can also use the property of Gaussian distribution directly:
+$X=(X_1, X_2)$ and $Y=(Y_1, Y_2)$
+are both joint Gaussian random vector and
+these two are independent with each other from their join distribution.
+Then they are uncorrelated.
 \end{proof}
 
 We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is
@@ -310,7 +344,8 @@ We can weaken the assumptions. That is, we only preserve $ n >> 1$.
 We can compute $N_{ij} =\frac{(2t-1)!!}{n^{t-1}} \prod_{s=0}^{t-1} \frac{(2s+k)}{(2s+n)}$ when $i+j = 2t$; otherwise $N_{ij}=0$. $M_{ij}=-\frac{1-r}{n^{t-1}} \prod_{s=0}^{t-1} \frac{(2s+k)}{(2s+n+2)} (i-1)(j-1) (i+j-3)!!$
 \section{External Link}
 Source document is available at
-\url{https://gitee.com/freewind201301/non-linear-activation-function/blob/master/non_linear.tex}
+\url{https://gitee.com/freewind201301/non-linear-activation-function/blob/
+master/non_linear.tex}
 
 \appendix
 \section{Decomposition of $\widetilde{N}$}

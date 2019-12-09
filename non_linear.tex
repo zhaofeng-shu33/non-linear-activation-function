@@ -22,13 +22,25 @@
 \begin{document}
 \maketitle
 \section{Problem}
-Let $Y, X_1, \dots, X_k$ be n-dimensional uniformly distributed random vector on unit sphere. $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix truncated from a $n\times n$ random orthogonal matrix. $Y$ is independent with $X$. Each sample $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0$. Suppose $\norm{Y}=1$. We would like to compute the following quantity:
+Let $Y, X_1, \dots, X_k$ be
+n-dimensional uniformly distributed random vector on unit sphere.
+$X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix
+truncated from a $n\times n$ random orthogonal matrix.
+$Y$ is independent with $X$.
+Each sample $x_1, \dots, x_k$ from $X$ have the property that
+$x_i \cdot x_j = 0$. Suppose $\norm{Y}=1$.
+We would like to compute the following quantity:
 \begin{equation}\label{eq:Eminw}
 \E[\min_w \norm{Y - \sigma (X w ) }^2]
 \end{equation}
-$\sigma$ is generally a non-linear scalar function. Its application on a vector is element-wise.
+$\sigma$ is generally a non-linear scalar function.
+Its application on a vector is element-wise.
 \begin{lemma}\label{lem:uniform}
-Suppose $X$ is an $n$ by $k$ random matrix. The samples $x_1, \dots, x_k$ from $X$ have the property that $x_i \cdot x_j = 0, \norm{x_i}=1$ where $x_i$ is the $i$-th column.  We also require $X_i$ is uniformly distributed on an unit sphere. Let $A=X X^T$, then we have
+Suppose $X$ is an $n$ by $k$ random matrix.
+The samples $x_1, \dots, x_k$ from $X$ have the property that
+$x_i \cdot x_j = 0, \norm{x_i}=1$ where $x_i$ is the $i$-th column.
+We also require $X_i$ is uniformly distributed on an unit sphere.
+Let $A=X X^T$, then we have
 \begin{equation}
 E[A_{ij}]= \begin{cases}
 \frac{k}{n} & i = j\\
@@ -37,20 +49,48 @@ E[A_{ij}]= \begin{cases}
 \end{equation}
 \end{lemma}
 \begin{proof}
-We can use a generator model to simulate the sampling of $X$. First we random select $x_1$ from uniform distributed random variable on an $n$ dimensional sphere. Then $x_2$ should be selected from the $n-1$ dimensional sphere orthogonal to $x_1$ and so on.
-It is easier to show $\E[X_1X_1^T] = \frac{1}{n} I_n$ since we can write $X_1 = \frac{(a_1, a_2, \dots a_n) }{\sqrt{a_1^2+\dots + a_n^2}}$ where $a_1, \dots a_n$ are i.i.d Gaussian.
+We can use a generator model to simulate the sampling of $X$.
+First we random select $x_1$
+from uniform distributed random variable on an $n$ dimensional sphere.
+Then $x_2$ should be selected from the $n-1$ dimensional sphere
+orthogonal to $x_1$ and so on.
+It is easier to show $\E[X_1X_1^T] = \frac{1}{n} I_n$
+since we can write
+$X_1 = \frac{(a_1, a_2, \dots a_n) }{\sqrt{a_1^2+\dots + a_n^2}}$
+where $a_1, \dots a_n$ are i.i.d Gaussian.
 
-To show $\E[A]=\frac{k}{n}I_n$ we need to show respectively $\E[X_iX_i^T]=\frac{1}{n} I_n$. We first show this equality holds for $i=2$. From the generator model, $X_2$ depends on $X_1$. By the Law of total expectation we have $\E[X_2 X_2^T] = \E_{X_1}[\E[X_2 X_2^T |X_1 = x_1]]$. $X_2 | x_1$ is a random variable distributed on an $n-1$ sphere. We assume $b_1, \dots, b_{n-1}$ is an orthogonal unit basis for this $n-1$ dimensional space,
-then $b_1, \dots, b_{n-1}, x_1$ are an orthogonal unit basis for the $n$ dimensional space. Therefore we have
-$\sum_{i=1}^{n-1} b_i b_i^T = I_n -  x_1 x_1^T $. The RHS is fixed for given $x_1$, which is irrelevant with the choice of $b_1, \dots, b_{n-1}$. We can show that the inner expectation $\E[X_2 X_2^T |X_1] = \frac{1}{n-1}(I_n - x_1 x_1^T)$ since we can choose $X_2 = \frac{1}{\sqrt{a_1^2 + \dots + a_{n-1}^2}} \sum_{i=1}^{n-1} a_i b_i$ ($b_i$ is fixed vector while $a_i$ is scalar random vector). Then taking the outer expectation we have $\E[X_2 X_2^T] = \frac{1}{n-1} (I_n - \frac{1}{n} I_n) = \frac{1}{n} I_n$.
+To show $\E[A]=\frac{k}{n}I_n$ we need to show respectively
+$\E[X_iX_i^T]=\frac{1}{n} I_n$.
+We first show this equality holds for $i=2$.
+From the generator model, $X_2$ depends on $X_1$.
+By the Law of total expectation we have
+$\E[X_2 X_2^T] = \E_{X_1}[\E[X_2 X_2^T |X_1 = x_1]]$.
+$X_2 | x_1$ is a random variable distributed on an $n-1$ sphere.
+We assume $b_1, \dots, b_{n-1}$ is an orthogonal unit basis
+for this $n-1$ dimensional space,
+then $b_1, \dots, b_{n-1}, x_1$ are an orthogonal unit basis
+for the $n$ dimensional space. Therefore we have
+$\sum_{i=1}^{n-1} b_i b_i^T = I_n -  x_1 x_1^T $.
+The RHS is fixed for given $x_1$,
+which is irrelevant with the choice of $b_1, \dots, b_{n-1}$.
+We can show that the inner expectation
+$\E[X_2 X_2^T |X_1] = \frac{1}{n-1}(I_n - x_1 x_1^T)$
+since we can choose
+$X_2 = \frac{1}{\sqrt{a_1^2 + \dots + a_{n-1}^2}}\sum_{i=1}^{n-1} a_i b_i$
+($b_i$ is fixed vector while $a_i$ is scalar random vector).
+Then taking the outer expectation we have
+$\E[X_2 X_2^T] = \frac{1}{n-1} (I_n - \frac{1}{n} I_n) = \frac{1}{n} I_n$.
 
-For $i>2$, the proof is similar as we have $$
+For $i>2$, the proof is similar as we have
+$$
 \E[X_i X_i^T] = \E_{X_1, \dots, X_{i-1}} [\E[X_i X_i^T | x_1, \dots x_{i-1}]]
 $$
- which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
+which equals $\frac{1}{n-i+1}(I_n - \frac{i-1}{n} I_n) = \frac{1}{n} I_n$.
 \end{proof}
 \begin{remark}
-To compute higher order moments $\E[A_{ii}^t]$. We can approximate it by $r^t$ where $r=\frac{k}{n}$. We require that $k$ is large and  $ t << k$.
+To compute higher order moments $\E[A_{ii}^t]$.
+We can approximate it by $r^t$ where $r=\frac{k}{n}$.
+We require that $k$ is large and  $ t << k$.
 Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 \begin{align*}
 \E[A^t_{ii}] & = \E[(\sum_{j=1}^k X_{ij}^2)^t] \\

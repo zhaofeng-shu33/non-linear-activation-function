@@ -190,23 +190,50 @@ these two are independent with each other from their join distribution.
 Then they are uncorrelated.
 \end{proof}
 
-We assume $\sigma(z) = z + \epsilon \xi(z)$. When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is
-$\bar{w} =X^T Y $. For small $\epsilon$, we assume $ w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$. Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
+We assume $\sigma(z) = z + \epsilon \xi(z)$.
+When $\epsilon = 0$, the optimal $w$ for given $X, Y$ is
+$\bar{w} =X^T Y $.
+For small $\epsilon$, we assume
+$w = \bar{w} + \epsilon \hat{w} + \epsilon^2 \tilde{w}$.
+Then we can expand $\norm{Y - \sigma (X w ) }^2$ as follows:
 \begin{align*}
-\norm{Y - \sigma (X w ) }^2 & = \norm{Y - X \bar{w} - \epsilon X \hat{w} - \epsilon^2 X \tilde{w} - \epsilon \xi(X \bar{w} + \epsilon X\hat{w}) }^2 \\
-& = \norm{ Y - X  \bar{w}  - \epsilon (X\hat{w} + \xi(X \bar{w} )) - \epsilon^2(X\tilde{w} + \nabla \xi(X \bar{w} )X\hat{w})}^2 \\
-& = \norm{Y-X \bar{w}  }^2 - 2 \epsilon (X \hat{w} + \xi(X \bar{w}))^T (Y-X \bar{w}) +\\
-& +\epsilon^2(\norm{X\hat{w} + \xi(X \bar{w})}^2 - 2 (X \tilde{w}+ \nabla \xi(X \bar{w})X\hat{w})^T(Y-X \bar{w}))
+\norm{Y - \sigma (X w ) }^2 &=
+\norm{Y - X \bar{w} - \epsilon X \hat{w} -
+\epsilon^2 X \tilde{w} - \epsilon \xi(X \bar{w} + \epsilon X\hat{w}) }^2 \\
+& = \norm{ Y - X  \bar{w}  -
+\epsilon (X\hat{w} + \xi(X \bar{w} )) -
+\epsilon^2(X\tilde{w} + \nabla \xi(X \bar{w} )X\hat{w})}^2 \\
+& = \norm{Y-X \bar{w}  }^2 -
+2 \epsilon (X \hat{w} + \xi(X \bar{w}))^T (Y-X \bar{w}) +\\
+& +\epsilon^2(\norm{X\hat{w} + \xi(X \bar{w})}^2 -
+2 (X \tilde{w}+ \nabla \xi(X \bar{w})X\hat{w})^T(Y-X \bar{w}))
 \end{align*}
-In the above formula,  we expand $\xi$ at $X \bar{w}$. The Jacobi is actually a diagonal matrix whose $i$-th entry is $\xi'([X\bar{w}]_i)$. $[\cdot]_i$ represents the $i$-th element of a vector.
-We first notice that for given $X$, $X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by columns of $\bar{X} =X$. We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace. Then we have
-$\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and $(Y- \bar{X}\bar{X}^TY) = -(\tilde{Y} - \bar{X}\bar{X}^T \tilde{Y})$. This refers to $\xi(X\bar{w})^T (Y-X\bar{w})$. For $(X\hat{w})^T (Y-X\bar{w})$, we use the property that $  \bar{X}^T \bar{X} = I_k$.
-By symmetric property, the integration of coefficient of $\epsilon$ with respect to $Y$ is zero (given $X$).
- For the coefficient of $\epsilon^2$ we have
+In the above formula,  we expand $\xi$ at $X \bar{w}$.
+The Jacobi is actually a diagonal matrix whose $i$-th entry is
+$\xi'([X\bar{w}]_i)$.
+$[\cdot]_i$ represents the $i$-th element of a vector.
+We first notice that for given $X$,
+$X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by
+columns of $\bar{X} =X$.
+We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace.
+Then we have
+$\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and
+$(Y- \bar{X}\bar{X}^TY) = -(\tilde{Y} - \bar{X}\bar{X}^T \tilde{Y})$.
+This refers to $\xi(X\bar{w})^T (Y-X\bar{w})$.
+For $(X\hat{w})^T (Y-X\bar{w})$,
+we use the property that $\bar{X}^T \bar{X} = I_k$.
+By symmetric property,
+the integration of coefficient of $\epsilon$ with respect to $Y$
+is zero (given $X$).
+For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
-\textrm{Coeff}(\epsilon^2)  =  \E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 - 2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)]
+\textrm{Coeff}(\epsilon^2) =
+\E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 -
+2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)]
 \end{equation*}
-We have written Equation \eqref{eq:Eminw} in $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2) \epsilon^2 + o(\epsilon^2)$$.
+We have written Equation \eqref{eq:Eminw} in
+$$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2)
+\epsilon^2 + o(\epsilon^2)$$.
 
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
@@ -416,4 +443,31 @@ A(t+1, t+1) & = (2t+1)A(t+1, t) + (2t+2)B(t, t) \\
 \end{align*}
 From Equation \eqref{eq:Bij} we can get the expression for $B(i, j)$.
 \end{proof}
+\section{Decomposition of $\widetilde{M}$}
+This section provides math induction proof for
+$\widetilde{M}= (1-r) U^T \Lambda U$ where
+\begin{align}
+\widetilde{M}_{ij} & = -(1-r)\delta(i, j) (i-1)(j-1) (i+j-3)!! \\
+U_{ij} & = \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} \textrm{ for } i\leq j \\
+\Lambda_{ij} & = 1_{i = j} (1-i)
+\end{align}
+\begin{proposition}\label{prop:UUM}
+\begin{equation}
+\delta(i, j)(i-1)(j-1)(i+j-3)!! = \sum_{k=0}^{\min\{i, j\}}
+\delta(k, i) \delta(k, j) \frac{(1-k)i!j!}{(i-k)!!(j-k)!!k!}
+\end{equation}
+\begin{proof}
+\begin{align*}
+RHS & = \sum_{k=0}^{\min\{i, j\}}
+\delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!k!}
+- \sum_{k=1}^{\min\{i, j\}}
+\delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!(k-1)!} \\
+& = \delta(i, j)(i+j-1)!! - ij\sum_{k=0}^{\min\{i-1, j-1\}}
+\delta(k, i) \delta(k, j) \frac{(i-1)!(j-1)!}{(i-1-k)!!(j-1-k)!!k!} \\
+& = \delta(i, j)(i+j-1)!! - \delta(i, j)ij(i+j-3)!! \\
+& = \delta(i, j)(i-1)(j-1)(i+j-3)!!
+\end{align*}
+\end{proof}
+\end{proposition}
+\section{Proof of $Up=e_m$}
 \end{document}

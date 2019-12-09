@@ -237,15 +237,30 @@ $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2)
 
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
-\min \textrm{Coeff}(\epsilon^2) = \E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 - \norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
+\min \textrm{Coeff}(\epsilon^2) =
+\E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 -
+\norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 -
+\norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
 \end{equation}
 The minimal value is achieved at
 $$
 \hat{w} =  X^T(\nabla\xi(\bar{X}\bar{X}^T Y)
 (Y-\bar{X}\bar{X}^T Y) - \xi(\bar{X}\bar{X}^T Y))
 $$
-Below we assume $\bar{X}$ is given (the expectation is taken first about $Y$ and then about $\bar{X}$), the columns of $\bar{X}$ are orthogonal by the given condition ($\bar{X}^T\bar{X}=I_k$) and $Y_1, \dots, Y_n $ be component variable of $Y$. The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian. We use $I_1, I_2, I_3$ to denote the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$ and $A=\bar{X}\bar{X}^T$ is an $n\times n$ matrix. That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
-Let $Z = AY$. Then the covariance matrix of $Z$ is $A\E[YY^T]A^T = \frac{1}{n}AA^T = \frac{1}{n}A$ (from Lemma \ref{lem:uniform}).
+Below we assume $\bar{X}$ is given
+(the expectation is taken first about $Y$ and then about $\bar{X}$),
+the columns of $\bar{X}$ are orthogonal by the given condition
+($\bar{X}^T\bar{X}=I_k$) and
+$Y_1, \dots, Y_n $ be component variable of $Y$.
+The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian.
+We use $I_1, I_2, I_3$ to denote
+the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$
+and $A=\bar{X}\bar{X}^T$ is an $n\times n$ matrix.
+That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
+Let $Z = AY$.
+Then the covariance matrix of $Z$ is
+$A\E[YY^T]A^T = \frac{1}{n}AA^T = \frac{1}{n}A$
+(from Lemma \ref{lem:uniform}).
 Also, both $Y$ and $Z$ have zero mean (vector). We then have
 \begin{equation*}
 I_1 =\E[\norm{\xi(Z)}^2] = \sum_{i=1}^n \E[\xi^2(z_i)]
@@ -255,19 +270,22 @@ where $Z_i$ has the distribution $p_i$.
 For $I_2$
 we have
 \begin{equation*}
--I_2   = \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)] + \sum_{i=1}^n A_{ii}  \E[\xi^2(z_i)]
+-I_2 = \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)] +
+\sum_{i=1}^n A_{ii}  \E[\xi^2(z_i)]
 \end{equation*}
 where $Z_i, Z_j$ have the joint distribution $p_{ij}$.
 
 %$A_{ii} = \sum_{j=1}^k x^2_{ij} < 1$.
 Then we have
 \begin{equation}\label{eq:I1plusI2}
-I_1+ I_2 =   \sum_{i=1}^n (1-A_{ii}) \E[\xi^2(z_i)]  - \sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)]
+I_1+ I_2 = \sum_{i=1}^n (1-A_{ii}) \E[\xi^2(z_i)] -
+\sum_{i,j=1, i \neq j}^n A_{ij}\E[\xi(z_i)\xi(z_j)]
 \end{equation}
 For $I_3$, we have
 \begin{align*}
 -I_3 & = \E_Y[\norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2] \\
- & = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} + \sum_{i=1}^n A_{ii}\Sigma_{ii}
+& = \sum_{i,j=1, i \neq j}^n A_{ij}\Sigma_{ij} +
+\sum_{i=1}^n A_{ii}\Sigma_{ii}
 \end{align*}
 For $\Sigma_{ii}$ we have
 \begin{align}\label{eq:sigmaii}
@@ -277,44 +295,74 @@ For $\Sigma_{ii}$ we have
 
 For $\Sigma_{ij}$ with $i\neq j$ we have
 \begin{align*}
-\Sigma_{ij} &=  \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]  \\
+\Sigma_{ij} &=  \E[ [(I-A)Y]_i [(I-A)Y]_j [\nabla \xi(AY)]_{i,i}
+[\nabla \xi(AY)]_{j,j}]  \\
 &= - \frac{1}{n}A_{ij} \E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}]
 \end{align*}
 
 We then have
 \begin{align*}
-I_1+I_2+I_3 &= \sum_{i=1}^n (1-A_{ii})(\E[\xi^2(z_i)] -\frac{1}{n} A_{ii} \E[ [\nabla \xi(AY)]_{i,i}^2]) \\
-&- \sum_{i,j=1, i \neq j}^n A_{ij} (\E[\xi(z_i)\xi(z_j)] - \frac{1}{n}A_{ij}\E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}])
+I_1+I_2+I_3 &= \sum_{i=1}^n (1-A_{ii})(\E[\xi^2(z_i)] -
+\frac{1}{n} A_{ii} \E[ [\nabla \xi(AY)]_{i,i}^2]) \\
+&- \sum_{i,j=1, i \neq j}^n A_{ij} (\E[\xi(z_i)\xi(z_j)] -
+\frac{1}{n}A_{ij}\E[[\nabla \xi(AY)]_{i,i} [\nabla \xi(AY)]_{j,j}])
 \end{align*}
 By symmetric property, we can simplify the above equation as:
 \begin{align}\label{formularI123}
-I_1+I_2+I_3 &=n(1-A_{11})(\E[\xi^2(z_1)] - \frac{1}{n} A_{11} \E[ [\nabla \xi(AY)]_{1,1}^2]) \\
-&- n(n-1)A_{12}(\E[\xi(z_1)\xi(z_2)] -  \frac{1}{n}A_{12}\E[[\nabla \xi(AY)]_{1,1} [\nabla \xi(AY)]_{2,2}])\nonumber
+I_1+I_2+I_3 &=n(1-A_{11})(\E[\xi^2(z_1)] -
+\frac{1}{n} A_{11} \E[ [\nabla \xi(AY)]_{1,1}^2]) \\
+&- n(n-1)A_{12}(\E[\xi(z_1)\xi(z_2)] - 
+\frac{1}{n}A_{12}\E[[\nabla \xi(AY)]_{1,1}
+[\nabla \xi(AY)]_{2,2}])\nonumber
 \end{align}
 
-We consider $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $, there will be an $(m+1) \times (m+1) $ matrix $M$, a vector  $q = [a_0, a_1, \dots, a_m]^T$ and  we can write $\textrm{Coeff}(\epsilon^2) = I_1 + I_2 + I_3$ as the quadratic form $ q^T M q $. The element $M_{ij}$ is the coefficient of $a_ia_j$. Since $M$ is symmetric we only consider $i\leq j$.
+We consider
+$\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $,
+there will be an $(m+1) \times (m+1) $ matrix $M$,
+a vector $q = [a_0, a_1, \dots, a_m]^T$ and
+we can write $\textrm{Coeff}(\epsilon^2) = I_1 + I_2 + I_3$
+as the quadratic form $ q^T M q $.
+The element $M_{ij}$ is the coefficient of $a_ia_j$.
+Since $M$ is symmetric we only consider $i\leq j$.
 
 Using Equation \ref{formularI123}, we have
 \begin{align*}
-M_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] - ij \frac{1}{n}A_{11} \E[Z_1^{i+j-2}])  \\
+M_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] -
+ij \frac{1}{n}A_{11} \E[Z_1^{i+j-2}])  \\
 &-n(n-1)A_{12}(\E[Z_1^i Z_2^j] - ij \frac{1}{n}A_{12}\E[Z_1^{i-1}Z_2^{j-1}])
 \end{align*}
-We can approximate $\E[Z_1^{2t}]$ where $Z=AY$ assuming $Y$ is a Gaussian vector with variance $\frac{1}{n}$. Then $\E[Z_1^{2t}] = A_{11}^k (2t-1)!!$.
+We can approximate $\E[Z_1^{2t}]$ where
+$Z=AY$ assuming $Y$ is a Gaussian vector with variance $\frac{1}{n}$.
+Then $\E[Z_1^{2t}] = A_{11}^k (2t-1)!!$.
 
 Let $i+j=2t$. Then we have
 \begin{align*}
 M_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)  \\
-&+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}} \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!} A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}
+&+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
+A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}
 \end{align*}
 
-For $M_{0j}$ where $j \neq 0$, it equals to zero if $j$ is an odd number, let $j=2t$ we can compute that $M_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $.
+For $M_{0j}$ where $j \neq 0$,
+it equals to zero if $j$ is an odd number,
+let $j=2t$ we can compute that
+$M_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $.
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$. Consider $i \neq j$ and $i+j = 2t$ we then have $M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! = -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$. Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} =
+For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$.
+Consider $i \neq j$ and $i+j = 2t$ we then have
+$M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! =
+-n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$.
+Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} =
 -\frac{1}{n^{i-1}} (i-1)^2 (1-r)r^i (2i-3)!!$.
 
-Average over $A_{11}, A^2_{12}(\approx r' = \frac{k}{n^2}), A_{22}(\approx r = \frac{k}{n}) $
-The summation must start with $t=3$. The order of $A_{12}^4$ in
-The second term of $M_{ij}$ must start with $4$. Therefore the order of $n$ in second term is smaller than the first term and we can neglect the second term if $n$ is sufficiently large.
+Average over $A_{11}, A^2_{12}(\approx r' = \frac{k}{n^2}),
+A_{22}(\approx r = \frac{k}{n})$
+The summation must start with $t=3$.
+The order of $A_{12}^4$ in
+the second term of $M_{ij}$ must start with $4$.
+Therefore the order of $n$ in second term is smaller than
+the first term and we can neglect the second term
+if $n$ is sufficiently large.
 
 We summarize our deduction as follows:
 \begin{equation}

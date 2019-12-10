@@ -1,0 +1,16 @@
+version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: coala/base
+jobs:
+  build:
+    executor: my-executor
+    steps:
+      - checkout
+      - run: coala -C
+workflows:
+  version: 2
+  experiment:
+    jobs:
+      - build

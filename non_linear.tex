@@ -573,4 +573,22 @@ RHS & = \sum_{k=0}^{\min\{i, j\}}
 \end{proof}
 \end{proposition}
 \section{Proof of $Up=e_m$}
+\begin{proof}
+$p_i = (-1)^{(m-i)/2}\delta(i, m) \frac{m!}{i!(m-i)!! \sqrt{m!}} $.
+First we can show that $U_{mm} p_m = 1 $. For $ 0\leq i < m $ we
+will show that $ \sum_{j=i}^m U_{ij} p_j = 0 $. In specific form as
+\begin{equation}
+\sum_{j=i}^m \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} (-1)^{(m-j)/2}\delta(j, m) \frac{m!}{j!(m-j)!! \sqrt{m!}} = 0
+\end{equation}
+It is equivalent to
+\begin{align*}
+\sum_{j=i, j+=2}^m (-1)^{(m-j)/2} \frac{1}{(m-j)!!(j-i)!!}  = 0 & \iff \\ 
+\sum_{j=0, j+=2}^{2m} (-1)^{(2m-j)/2} \frac{1}{(2m-j)!! j!!} = 0 & \iff \\
+\sum_{j=0}^{m} (-1)^{m-j} \frac{1}{(2m-2j)!! (2j)!!} = 0 & \iff \\
+\sum_{j=0}^{m} (-1)^{m-j} \frac{1}{(m-j)!! j!!} = 0 & \iff \\
+\sum_{j=0}^{m} (-1)^{m-j} \binom{m}{j} = 0 & \iff \\
+(1+x)^m = 0 (x=-1)
+\end{align*}
+
+\end{proof}
 \end{document}

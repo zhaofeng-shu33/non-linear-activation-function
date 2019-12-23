@@ -21,8 +21,23 @@
 
 \begin{document}
 \maketitle
+\section{Abstract}
+We find under orthogonal feature (which can be obtained by PCA techniques etc.), using Hermite orthogonal polynomial as activation function is universally good. 
+\section{Background}
+Suppose we have two discrete random variables $X, Y$. $Y$ is binary (0 or 1). $X$ is from $\{1, \dots, \abs{\mathcal{X}}\}$. We want to approximate $P_{Y|X=x}(0)$ (approximating $P_{Y|X=x}(0)$ is through $1-P_{Y|X=x}(1)$). We suppose the dimension $n$ of $X$ is very large. The observation of $X$ is through $k$ given feature function $f_1, \dots f_k$. 
+A simple approximation of $P_{Y|X=x}(0)$ is through $ \sum_{i=1}^k w_i f_i(x)$. To increase the approximation power we introduce a non-linear transformation function $ \sigma$. That is, we have
+$g(x)  = P_{Y|X=x}(0) \approx \sigma(\sum_{i=1}^k w_i f_i(x))$. This formulation is very similar to one-node neural networks. If we take $\sigma$ as sigmoid function and treat the output of neural network as
+posterior probability, our loss function is $ \E[y - \sigma(\sum_{i=1}^k w_i f_i(x))]$. 
+
+Now we have only $n$(very large) samples, the loss function to minimize globally is
+$\norm{g - \sigma(\sum_{i=1}^k w_i f_i)}^2$ using L2 loss. 
+$g, f_i$ is an $n\times 1 $ vector.
+
+We want to find an activation function that is good on average. We need to formulate the problem in more detail. Since We know little about $g$ and $f$, we can treat them as uniformly distributed. $g$ might have the non-negative constraint. We can make a simple transformation (e.g. $\log$) to remove the constraint and make some normalization. All these operations are inversible. We assume that $g$ is Gaussian distributed, $f_1, \dots, f_k$ are orthogonal to each other and they are uniformly distributed on a sphere.
+
 \section{Problem}
-Let $Y, X_1, \dots, X_k$ be
+Let $Y$ be standard Gaussian vector. each component has $ \frac{1}{n}$ variance.
+$X_1, \dots, X_k$ be
 n-dimensional uniformly distributed random vector on unit sphere.
 $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix
 truncated from a $n\times n$ random orthogonal matrix.

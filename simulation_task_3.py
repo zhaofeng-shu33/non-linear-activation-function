@@ -6,11 +6,13 @@ def delta(i, j):
     if (i + j) % 2 == 0:
         return 1
     return 0
+
 def doublefactorial(n): 
   
     if (n == 0 or n == 1): 
         return 1; 
-    return n * doublefactorial(n - 2); 
+    return n * doublefactorial(n - 2)
+
 if __name__ == '__main__':
     U = np.zeros([N,N])
     for i in range(0, N):

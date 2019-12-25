@@ -373,14 +373,20 @@ $M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! =
 Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} =
 -\frac{1}{n^{i-1}} (i-1)^2 (1-r)r^i (2i-3)!!$.
 
-Average over $A_{11}, A^2_{12}(\approx r' = \frac{k}{n^2}),
-A_{22}(\approx r = \frac{k}{n})$
+Average over $A_{11}, A^2_{12}$(We have $\E[A^2_{12}]= \frac{k}{n(n+2)}$),
+$A_{22}(\approx r = \frac{k}{n})$.
 The summation must start with $s=3$.
 The order of $A_{12}^4$ in
 the second term of $M_{ij}$ must start with $4$.
 Therefore the order of $n$ in second term is smaller than
 the first term and we can neglect the second term
 if $n$ is sufficiently large.
+
+The computation of $\E[A^2_{12}]$ is as follows:
+$\E[A^2_{12}] = k \E[X_1^2X_2^2]$ while
+$\E[A_{11}^2] = k\E[X_1^4] + k(k-1)\E[X_1^2 X_2^2] \Rightarrow
+\frac{k(k+2)}{n(n+2)} = \frac{3k}{n(n+2)} + (k-1)\E[A^2_{12}]$.
+Therefore $\E[A^2_{12}]= \frac{k}{n(n+2)}$.
 
 We summarize our deduction as follows:
 \begin{equation}

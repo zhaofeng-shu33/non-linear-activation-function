@@ -22,7 +22,7 @@
 \begin{document}
 \maketitle
 \section{Abstract}
-We find under orthogonal feature (which can be obtained by PCA techniques etc.), using Hermite orthogonal polynomial as activation function is universally good. 
+We find that under orthogonal feature (which can be obtained by PCA techniques etc.), using Hermite orthogonal polynomial as activation function is universally good. 
 \section{Background}
 Suppose we have two discrete random variables $X, Y$. $Y$ is binary (0 or 1). $X$ is from $\{1, \dots, \abs{\mathcal{X}}\}$. We want to approximate $P_{Y|X=x}(0)$ (approximating $P_{Y|X=x}(0)$ is through $1-P_{Y|X=x}(1)$). We suppose the dimension $n$ of $X$ is very large. The observation of $X$ is through $k$ given feature function $f_1, \dots f_k$. 
 A simple approximation of $P_{Y|X=x}(0)$ is through $ \sum_{i=1}^k w_i f_i(x)$. To increase the approximation power we introduce a non-linear transformation function $ \sigma$. That is, we have
@@ -604,6 +604,18 @@ It is equivalent to
 \sum_{j=0}^{m} (-1)^{m-j} \binom{m}{j} = 0 & \iff \\
 (1+x)^m = 0 (x=-1)
 \end{align*}
-
 \end{proof}
+\section{Another proof of $-(m-1)$}
+Using Lagrange multiplier we get an unconstraint optimization problem:
+$p^T \widetilde{M} p - \lambda p^T \widetilde{N} p $. Let the derivative of this expression equal to zero
+we have $(\widetilde{M}-\lambda \widetilde{N})p=0$ where $\lambda = p^T \widetilde{M} p$.
+Therefore, we choose the minimal $\lambda$ which make the determinant of $(\widetilde{M}-\lambda \widetilde{N})$ equal to zero.
+We have the following proposition:
+\begin{proposition}
+\begin{equation}
+\det[\widetilde{M}-\lambda \widetilde{N}] = \prod_{i=0}^m i!(-(i-1) - \lambda)
+\end{equation}
+\end{proposition}
+From the above proposition, we say that the minimal $\lambda$ is exactly $-(m-1)$.
+
 \end{document}

@@ -118,17 +118,20 @@ Then we have
 We let $z=(x^2+y^2)t$ first.
 \begin{align*}
 \int_{x,y\in \mathbb{R}}\int_{z\geq 0} \frac{x^{2k_1} y^{2k_2}}{(x^2+y^2+z)^{k_1 + k_2}} p(x)p(y)q(z) dxdydz & =\\
-\frac{1}{2^{n-2}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi} \int_{x,y\in \mathbb{R}}\int_{t\geq 0}\frac{x^{2k_1} y^{2k_2}t^{-2+\frac{n}{2}}}{(x^2+y^2)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}(x^2+y^2)(1+t))dxdydt =
+\frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi} \int_{x,y\in \mathbb{R}}\int_{t\geq 0}\frac{x^{2k_1} y^{2k_2}t^{-2+\frac{n}{2}}}{(x^2+y^2)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}(x^2+y^2)(1+t))dxdydt =
 \end{align*}
 Secondly we make the transformation $y^2=x^2u$ with $u>0$.
 \begin{align*}
-\frac{1}{2^{n-2}\Gamma(\frac{n-2}{2})}\frac{2}{(2\pi)^{3/2}}\int_{x,u,t\geq 0}\frac{x^{n-1} u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}x^2(1+u)(1+t))dxdudt =
+\frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{2}{2\pi}\int_{x,u,t\geq 0}\frac{x^{n-1} u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}x^2(1+u)(1+t))dxdudt =
 \end{align*}
-If $n$ is odd, we can first integrate about $x$ (we assume the variance $\sigma^2 = \frac{1}{(1+u)(1+t)}$)
+We can first integrate about $x$ first (we assume the variance $\sigma^2 = \frac{1}{(1+u)(1+t)}$)
 and get
 \begin{align*}
-\frac{(n-1)!!}{2^{n-2}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi}\int_{u,t\geq 0} \frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}\sigma^n}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}dudt =
+\frac{2^{n/2} \Gamma(\frac{n}{2})}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi}\int_{u,t\geq 0} \frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}\sigma^n}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}dudt = \\
+\frac{n-2}{2\pi}\int_{u,t\geq 0} \frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}{(1+u)^{k_1 + k_2+1}(1+t)^{k_1 + k_2 + \frac{n}{2}}}dudt = \\
+\frac{n-2}{2\pi} B(k_2 + \frac{1}{2}, k_1 + \frac{1}{2}) B(-1+\frac{n}{2}, k_1 + k_2 + 1) =\\
+\frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2}) \Gamma(k_2 + \frac{1}{2})\Gamma(\frac{n}{2}-1)}{\Gamma(k_1 + k_2 + \frac{n}{2})}
 \end{align*}
-If $n$ is even, we can first 
+
 
 \end{document}

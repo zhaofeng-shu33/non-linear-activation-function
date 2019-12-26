@@ -115,10 +115,8 @@ Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 Using the conclusion from Lemma \ref{lem:uniform},
 we can get for example $\E[X_{11}^2 X_{12}^2]
 = \E_{X_1}[X_{11}^2 \E[ X^2_{12}| X_1]]
-= \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )]$ when $n$ is large,
-$X_{11} \sim N(0, \frac{1}{n})$ and $\E[X_{11}^4]$
-is one order smaller than $\E[X_{11}^2]$ and can be omitted.
-Therefore we get the result that $\E[X_{11}^2 X_{12}^2] \sim \frac{1}{n^2}$
+= \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )] = \frac{1}{n-1}(\frac{1}{n} - \frac{3}{n(n+2)}$.
+Therefore we get the result that $\E[X_{11}^2 X_{12}^2]  =  \frac{1}{n(n+2)}$
 \end{remark}
 \begin{remark}
 Exact solution for $t=2$. The fourth order moment for each component of
@@ -135,8 +133,7 @@ as k components of a uniform random vector on the sphere. And we have
 \end{equation}
 \end{remark}
 \begin{remark}
-$\E[A_{12}^2] = \frac{(n-k)k}{(n-1)n(n+2)}
-\Rightarrow \E[A_{12}^{2t}] \leq \E[A_{12}^2]^t$
+$\E[A_{12}^2] = \frac{(n-k)k}{(n-1)n(n+2)}$
 \end{remark}
 \begin{lemma}\label{lem:x2y2}
 Suppose $(X,Y)$ is two-dimensional Gaussian vector,

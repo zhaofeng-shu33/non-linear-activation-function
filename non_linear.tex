@@ -226,22 +226,22 @@ $\xi'([X\bar{w}]_i)$.
 $[\cdot]_i$ represents the $i$-th element of a vector.
 We first notice that for given $X$,
 $X\bar{w}$ is the projection of $Y$ onto linear subspace spanned by
-columns of $\bar{X} =X$.
+columns of $X$.
 We use $\tilde{Y}$ to denote the mirror of $Y$ about this linear subspace.
 Then we have
-$\bar{X}\bar{X}^T Y = \bar{X}\bar{X}^T \tilde{Y}$ and
-$(Y- \bar{X}\bar{X}^TY) = -(\tilde{Y} - \bar{X}\bar{X}^T \tilde{Y})$.
+$XX^T Y = XX^T \tilde{Y}$ and
+$(Y- XX^TY) = -(\tilde{Y} - XX^T \tilde{Y})$.
 This refers to $\xi(X\bar{w})^T (Y-X\bar{w})$.
 For $(X\hat{w})^T (Y-X\bar{w})$,
-we use the property that $\bar{X}^T \bar{X} = I_k$.
+we use the property that $X^T X = I_k$.
 By symmetric property,
 the integration of coefficient of $\epsilon$ with respect to $Y$
 is zero (given $X$).
 For the coefficient of $\epsilon^2$ we have
 \begin{equation*}
 \textrm{Coeff}(\epsilon^2) =
-\E[\norm{X\hat{w} + \xi(\bar{X}\bar{X}^TY)}^2 -
-2 (\nabla \xi(\bar{X}\bar{X}^TY)X\hat{w})^T(Y-\bar{X}\bar{X}^TY)]
+\E[\norm{X\hat{w} + \xi(XX^TY)}^2 -
+2 (\nabla \xi(XX^TY)X\hat{w})^T(Y-XX^TY)]
 \end{equation*}
 We have written Equation \eqref{eq:Eminw} in
 $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2)
@@ -250,24 +250,24 @@ $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2)
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
 \begin{equation}
 \min \textrm{Coeff}(\epsilon^2) =
-\E[\norm{\xi(\bar{X}\bar{X}^TY)}^2 -
-\norm{\bar{X}^T\xi(\bar{X}\bar{X}^TY)}^2 -
-\norm{\bar{X}^T \nabla\xi(\bar{X}\bar{X}^TY)(Y-\bar{X}\bar{X}^TY)}^2]
+\E[\norm{\xi(XX^TY)}^2 -
+\norm{X^T\xi(XX^TY)}^2 -
+\norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
 \end{equation}
 The minimal value is achieved at
 $$
-\hat{w} =  X^T(\nabla\xi(\bar{X}\bar{X}^T Y)
-(Y-\bar{X}\bar{X}^T Y) - \xi(\bar{X}\bar{X}^T Y))
+\hat{w} =  X^T(\nabla\xi(XX^T Y)
+(Y-XX^T Y) - \xi(XX^T Y))
 $$
-Below we assume $\bar{X}$ is given
-(the expectation is taken first about $Y$ and then about $\bar{X}$),
-the columns of $\bar{X}$ are orthogonal by the given condition
-($\bar{X}^T\bar{X}=I_k$) and
+Below we assume $X$ is given
+(the expectation is taken first about $Y$ and then about $X$),
+the columns of $X$ are orthogonal by the given condition
+($X^TX=I_k$) and
 $Y_1, \dots, Y_n $ be component variable of $Y$.
 The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian.
 We use $I_1, I_2, I_3$ to denote
 the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$
-and $A=\bar{X}\bar{X}^T$ is an $n\times n$ matrix.
+and $A=XX^T$ is an $n\times n$ matrix.
 That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
 Let $Z = AY$.
 Then the covariance matrix of $Z$ is

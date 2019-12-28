@@ -79,7 +79,7 @@ B(\frac{n-1}{2}, \frac{2k+1}{2})
 \end{align*}
 
 Actually, we can caculate the exact distribution of $Y_1$.
-Suppose $w(n, q) = \frac{1}{2^{nq/2} \Gamma_p(\frac{n}{2})}$ which is called Wishart constant. 
+Suppose $w(n, q) = \frac{1}{2^{nq/2} \Gamma_q(\frac{n}{2})}$ which is called Wishart constant. $\Gamma_q$ is the multivariate Gamma function.
 The Proposition 7.3, Chapter 7 of \cite{eaton1989group} says:
 \begin{proposition}\label{prop:dens}
 Suppose $X$ is a random orthogonal matrix, $Y$ is the $p\times q$ upper submatrix of $X$. $q\leq p $ and $p+q \leq n$. Then the density function of $Y$ is given by
@@ -96,7 +96,8 @@ p(y) = \frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}\Gamma(\frac{n-1}{2})} (1-y^2)^{\fra
 Using the property of beta function 
 $\int_{-1}^{1} y^{2k} p(y)dy = \frac{\Gamma(\frac{n}{2})\Gamma(\frac{2k+1}{2})}
 {\sqrt{\pi} \Gamma(\frac{2k+n}{2})}$, which is same with Equation \eqref{eq:n3}.
-
+Notice that $\hat{Y}_1 = Y_1^2 (-1 \leq Y_1 \leq 1)$ is beta distribution $B(\frac{1}{2}, \frac{n-1}{2})$. The high order moment of $\hat{Y}_1$ is a well known result.
+See \href{https://en.wikipedia.org/wiki/Beta_distribution#Higher_moments}{Higher moments of Beta function}.
 We also consider the case when the moments of
 $\hat{Y} = Y_1^2 + \dots + Y_r^2$ is required.
 Let $Z = X_{r+1}^2 + \dots + X_n^2$. We have

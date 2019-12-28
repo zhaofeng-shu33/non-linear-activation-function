@@ -169,6 +169,33 @@ and get
 \end{align*}
 From Equation \eqref{eq:cor}, we choose $k_1 = k_2 = k$ and we have
 $\E[X_1^{2k}X_2^{2k}]=\frac{1}{n-2}\frac{((2k-1)!!)^2}{\prod_{i=0}^{2k} (n-2 + 2i)}$
+
+We consider the decomposition of a $2\times 2$ symmetric matrix:
+$$
+\begin{pmatrix}
+x & y \\
+y & z 
+\end{pmatrix} = 
+\begin{pmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta 
+\end{pmatrix}
+\begin{pmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2
+\end{pmatrix} 
+\begin{pmatrix}
+\cos \theta & \sin \theta \\
+-\sin \theta & \cos \theta 
+\end{pmatrix}
+$$
+We then have
+\begin{align*}
+x & = \cos^2\theta \lambda_1 + \sin^2 \theta \lambda_2 \\
+y & = \cos\theta \sin\theta (\lambda_1 - \lambda_2) \\
+z & = \sin^2\theta \lambda_1 + \cos^2 \theta \lambda_2
+\end{align*}
+If we have an integral over all $2\times 2$ positive definite matrices, we can convert the integral to $\theta, \lambda_1, \lambda_2$. The determinant of the Jacobi matrix is $2\abs{\lambda_1 - \lambda_2}(\sin^4 \theta + \cos^4 \theta)$
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

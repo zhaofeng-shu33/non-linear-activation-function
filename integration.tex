@@ -97,7 +97,7 @@ Using the property of beta function
 $\int_{-1}^{1} y^{2k} p(y)dy = \frac{\Gamma(\frac{n}{2})\Gamma(\frac{2k+1}{2})}
 {\sqrt{\pi} \Gamma(\frac{2k+n}{2})}$, which is same with Equation \eqref{eq:n3}.
 Notice that $\hat{Y}_1 = Y_1^2 (-1 \leq Y_1 \leq 1)$ is beta distribution $B(\frac{1}{2}, \frac{n-1}{2})$. The high order moment of $\hat{Y}_1$ is a well known result.
-See \href{https://en.wikipedia.org/wiki/Beta_distribution#Higher_moments}{Higher moments of Beta function}.
+See \href{https://en.wikipedia.org/wiki/Beta_distribution#Higher_moments}{Higher moments of Beta distribution}.
 We also consider the case when the moments of
 $\hat{Y} = Y_1^2 + \dots + Y_r^2$ is required.
 Let $Z = X_{r+1}^2 + \dots + X_n^2$. We have
@@ -144,7 +144,8 @@ make the spherical transformation and integrate over all those angle components:
 \frac{\Gamma(\frac{2t+r}{2})\Gamma(\frac{n}{2})}
 {\Gamma(\frac{2t+n}{2})\Gamma(\frac{r}{2})}
 \end{align*}
-The result is the same with Equation \eqref{eq:n4}.
+The result is the same with Equation \eqref{eq:n4}. We can further show that $\hat{Y}$ is beta distribution with $B(\frac{r}{2}, \frac{n-r}{2})$ using the techniques similar to \href{https://en.wikipedia.org/wiki/Proofs_related_to_chi-squared_distribution#Derivation_of_the_pdf_for_k_degrees_of_freedom}{Derivation of pdf for chi-square distributions}. Then the higher order moment of $\hat{Y}$ follows naturally.
+
 
 We like to compute $\E[X_1^{2k_1} X_2^{2k_2}]$. Let $ Z = X_3^2 + \dots + X_n^2$ which is a chi square distribution with $n-2$ degree of freedom.
 Then we have

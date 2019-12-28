@@ -8,6 +8,7 @@
 \newtheorem{proposition}{Proposition}
 \def\E{\mathbb{E}}
 \def\R{\mathbb{R}}
+\DeclareMathOperator*{\tr}{tr}
 \title{High order moment of uniform distribution on the sphere}
 \author{Feng Zhao}
 \begin{document}
@@ -195,7 +196,26 @@ x & = \cos^2\theta \lambda_1 + \sin^2 \theta \lambda_2 \\
 y & = \cos\theta \sin\theta (\lambda_1 - \lambda_2) \\
 z & = \sin^2\theta \lambda_1 + \cos^2 \theta \lambda_2
 \end{align*}
-If we have an integral over all $2\times 2$ positive definite matrices, we can convert the integral to $\theta, \lambda_1, \lambda_2$. The determinant of the Jacobi matrix is $2\abs{\lambda_1 - \lambda_2}(\sin^4 \theta + \cos^4 \theta)$
+If we have an integral over all $2\times 2$ positive definite matrices, we can convert the integral to $\theta, \lambda_1, \lambda_2$. The determinant of the Jacobi matrix is $\abs{\lambda_1 - \lambda_2}$. The domain for $(\theta, \lambda_1, \lambda_2)$ is
+$\lambda_1 \geq \lambda_2 \geq 0$ and $\theta \in [0,\pi]$.
+We show that $\Gamma_2(a) = \sqrt{\pi}\Gamma(a) \Gamma(a-\frac{1}{2})$ where
+$\Gamma_2(a) = \int_{S>0} \exp(-\tr(S)) \abs{S}^{a-\frac{3}{2}} dS$.
+
+First we transform the integral to $(\lambda_1, \lambda_2, \theta)$ space and integrate out $\theta$:
+$$
+\Gamma_2(a) = \pi \int_{\lambda_1 \geq \lambda_2} (\lambda_1 -\lambda_2) \exp(-\lambda_1 - \lambda_2) (\lambda_1 \lambda_2)^{a-\frac{3}{2}} d\lambda_1 d\lambda_2
+$$
+Next we make another transformation: $\lambda_1 = r \cos^2 \phi, \lambda_2 = r \sin^2 \phi$. The determinant of Jacobi is $2r\sin\phi \cos\phi$ where $ r >0, \phi \in [0, \frac{\pi}{4}]$.
+Then we have
+\begin{align*}
+\Gamma_2(a) =&  2\pi \int_0^{\frac{\pi}{4}} (\cos^2\phi - \sin^2 \phi) (\cos\phi\sin\phi)^{2a-2} d\phi \int_0^{+\infty} r^{2a-1} \exp(-r) dr \\
+= & 2\pi \Gamma(2a) \int_0^{\frac{pi}{4}} \cos(2\phi) \frac{1}{2^{2a-2}}\sin^{2a-2} (2\phi)d\phi \\
+= & \pi\frac{\Gamma(2a)}{2^{2a-2}} \int_0^1 x^{2a-2}dx \\
+= & \frac{\pi\Gamma(2a-1)}{2^{2a-2}}
+\end{align*}
+Using Legendre duplication formula $\Gamma(z) \Gamma(z+\frac{1}{2}) = 2^{1-2z} \sqrt{\pi} \Gamma(2z)$, let $ z = a - \frac{1}{2} $ we have
+$\Gamma_2(a) = \sqrt{\pi}\Gamma(a)\Gamma(a-\frac{1}{2})$.
+
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

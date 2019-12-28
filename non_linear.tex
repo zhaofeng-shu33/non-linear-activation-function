@@ -248,12 +248,13 @@ $$ \norm{Y - X \bar{w}}^2 + \textrm{Coeff}(\epsilon^2)
 \epsilon^2 + o(\epsilon^2)$$.
 
 Minimizing $\E[\textrm{Coeff}(\epsilon^2)]$ we have
-\begin{equation}
-\min \textrm{Coeff}(\epsilon^2) =
+\begin{align*}
+C[\xi] &:= \min \textrm{Coeff}(\epsilon^2) \\
+&=
 \E[\norm{\xi(XX^TY)}^2 -
 \norm{X^T\xi(XX^TY)}^2 -
 \norm{X^T \nabla\xi(XX^TY)(Y-XX^TY)}^2]
-\end{equation}
+\end{align*}
 The minimal value is achieved at
 $$
 \hat{w} =  X^T(\nabla\xi(XX^T Y)
@@ -266,18 +267,18 @@ the columns of $X$ are orthogonal by the given condition
 $Y_1, \dots, Y_n $ be component variable of $Y$.
 The covariance matrix of $Y$ is $I_n$ assuming $Y_i$ are i.i.d. std Gaussian.
 We use $I_1, I_2, I_3$ to denote
-the three terms of $\textrm{Coeff}(\epsilon^2)$ with given $X$
-and $A=XX^T$ is an $n\times n$ matrix.
-That is $ \textrm{Coeff}(\epsilon^2) = \E_{X} [I_1 + I_2 + I_3]$.
-Let $Z = AY$.
-Then the covariance matrix of $Z$ is
+the three terms of $C[\xi]$ with given $X$. That is
+$C[\xi] = \E_X[I_1 + I_2 + I_3]$.
+Also $A=XX^T$ is an $n\times n$ matrix.
+Let $Z = AY$. $Z | X$ is Gaussian and
+its covariance matrix is
 $A\E[YY^T]A^T = \frac{1}{n}AA^T = \frac{1}{n}A$
 (from Lemma \ref{lem:uniform}).
-Also, both $Y$ and $Z$ have zero mean (vector). We then have
+Also, both $Y$ and $Z$ have zero mean (vector). The joint distribution of $(Z, X)$ is the product of Gaussian and multivariant Beta distribution \cite{eaton1989group}.
+We then have
 \begin{equation*}
-I_1 =\E[\norm{\xi(Z)}^2] = \sum_{i=1}^n \E[\xi^2(z_i)]
+I_1 =\E[\norm{\xi(Z)}^2] = \sum_{i=1}^n \E_{Z|X}[\xi^2(Z_i)]
 \end{equation*}
-where $Z_i$ has the distribution $p_i$.
 
 For $I_2$
 we have
@@ -626,5 +627,6 @@ We have the following proposition:
 \end{equation}
 \end{proposition}
 From the above proposition, we say that the minimal $\lambda$ is exactly $-(m-1)$.
-
+\bibliographystyle{plain}
+\bibliography{exportlist}
 \end{document}

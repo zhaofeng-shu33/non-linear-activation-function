@@ -152,7 +152,7 @@ in wikipedia.
 \end{lemma}
 \begin{remark}
 Suppose $ i + j $ is even, using Isserlis's theorem we have
-\begin{equation}
+\begin{equation}\label{eq:Isserlis}
 \E[X^i Y^j] =
 \sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}
 \frac{i! j!}{k! (i-k)!!(j-k)!!}
@@ -331,16 +331,16 @@ I_1+I_2+I_3 &=n(1-A_{11})(\E[\xi^2(z_1)] -
 
 We consider
 $\xi(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_{m-1} z^{m-1} + a_m z^m $,
-there will be an $(m+1) \times (m+1) $ matrix $M$,
+there will be an $(m+1) \times (m+1) $ matrix $\bar{M}$,
 a vector $q = [a_0, a_1, \dots, a_m]^T$ and
-we can write $\textrm{Coeff}(\epsilon^2) = I_1 + I_2 + I_3$
-as the quadratic form $ q^T M q $.
-The element $M_{ij}$ is the coefficient of $a_ia_j$.
-Since $M$ is symmetric we only consider $i\leq j$.
+we can write $I_1 + I_2 + I_3$
+as the quadratic form $ q^T \bar{M} q $.
+The element $\bar{M}_{ij}$ is the coefficient of $a_ia_j$.
+Since $\bar{M}$ is symmetric we only consider $i\leq j$.
 
 Using Equation \ref{formularI123}, we have
 \begin{align*}
-M_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] -
+\bar{M}_{ij} &= n(1-A_{11}) (\E[Z_1^{i+j}] -
 ij \frac{1}{n}A_{11} \E[Z_1^{i+j-2}])  \\
 &-n(n-1)A_{12}(\E[Z_1^i Z_2^j] - ij \frac{1}{n}A_{12}\E[Z_1^{i-1}Z_2^{j-1}])
 \end{align*}
@@ -348,23 +348,42 @@ We can approximate $\E[Z_1^{2t}]$ where
 $Z=AY$ assuming $Y$ is a Gaussian vector with variance $\frac{1}{n}$.
 Then $\E[Z_1^{2t}] = \frac{1}{n^t}A_{11}^t (2t-1)!!$.
 
-Let $i+j=2t$. Then we have
+Let $i+j=2t$. Using Equation \eqref{eq:Isserlis} we have:
 \begin{align*}
-M_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)  \\
+\E[Z_1^i Z_2^j]  -  & ij \frac{1}{n}A_{12}\E[Z_1^{i-1}Z_2^{j-1}] =
+\frac{1}{n^t} \sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{i! j!}{k! (i-k)!!(j-k)!!}
+A_{12}^k A_{11}^{(i-k)/2}A_{22}^{(j-k)/2} \\
+- & \frac{ij}{n^t} \sum_{k=0, k+i \textrm{ is odd}}^{\min\{i-1,j-1\}}
+\frac{(i-1)! (j-1)!}{k! (i-1-k)!!(j-1-k)!!}
+A_{12}^{k+1} A_{11}^{(i-1-k)/2}A_{22}^{(j-1-k)/2} \\
+= &\frac{1}{n^t} \sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{i! j!}{k! (i-k)!!(j-k)!!}
+A_{12}^k A_{11}^{(i-k)/2}A_{22}^{(j-k)/2} \\
+- & \frac{1}{n^t} \sum_{k=1, k+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{i! j!}{(k-1)! (i-k)!!(j-k)!!}
+A_{12}^{k} A_{11}^{(i-k)/2}A_{22}^{(j-k)/2} \\
+= &\frac{1}{n^t} \sum_{k=0, k+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{(1-k)i! j!}{k! (i-k)!!(j-k)!!}A_{12}^k A_{11}^{(i-k)/2}A_{22}^{(j-k)/2} 
+\end{align*}
+Therefore we have
+\begin{align}
+\bar{M}_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)  \notag\\
 &+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}}
 \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
-A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}
-\end{align*}
+A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} \label{eq:Mij_second}
+\end{align}
 
-For $M_{0j}$ where $j \neq 0$,
+For $\bar{M}_{0j}$ where $j \neq 0$,
 it equals to zero if $j$ is an odd number,
 let $j=2t$ we can compute that
-$M_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $.
+$\bar{M}_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $.
 
 For $i = 1$, $ j = 2 t - 1$ we have
-$M_{ij}$ equal to zero.
+$\bar{M}_{ij}$ equal to zero.
 
-For $i \neq 0$, if $i+j$ is odd then $M_{ij} = 0$.
+For $i \neq 0$, if $i+j$ is odd then $\bar{M}_{ij} = 0$. Now we let $M_{ij} = \E_X[\bar{M}_{ij}]$ and 
+$C[\xi]=q^t M q$.
 Consider $i \neq j$ and $i+j = 2t$ we then have
 $M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! =
 -n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$.
@@ -377,7 +396,7 @@ The summation must start with $s=3$.
 The order of $A_{12}^4$ in
 the second term of $M_{ij}$ must start with $4$.
 Therefore the order of $k$ in second term is smaller than
-the first term and we can neglect the second term
+the first term and we can neglect the second term in Equation \eqref{eq:Mij_second}
 if $k$ is sufficiently large.
 
 The computation of $\E[A^2_{12}]$ is as follows:

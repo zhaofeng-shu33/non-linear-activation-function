@@ -218,6 +218,28 @@ Then we have
 Using Legendre duplication formula $\Gamma(z) \Gamma(z+\frac{1}{2}) = 2^{1-2z} \sqrt{\pi} \Gamma(2z)$, let $ z = a - \frac{1}{2} $ we have
 $\Gamma_2(a) = \sqrt{\pi}\Gamma(a)\Gamma(a-\frac{1}{2})$.
 
+For $p \times p$ symmetric matrix, we define the multivariate Beta function
+as 
+\begin{equation}
+B_p(a, b) = \int_{X \in S_{p,p}^{+} }\abs{I-X}^{a-\frac{p+1}{2}} \abs{X}^{b-\frac{p+1}{2}}dX
+\end{equation}
+The integration is about $p \times p$ positive definite matrix. We will show that
+\begin{equation}
+B_p(a,b) = \frac{\Gamma_p(a)\Gamma_p(b)}{\Gamma_p(a+b)}
+\end{equation}
+where $\Gamma_p(a)$ is defined as:
+\begin{equation}
+\Gamma_p(a) =  \int_{X \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}} \exp(-tr(X))dX
+\end{equation}
+The proof is similar with \href{https://en.wikipedia.org/wiki/Beta_function#Relationship_between_gamma_function_and_beta_function}{one dimensional case}. 
+First we consider 
+$\Gamma_p(a)\Gamma_p(b) = \int_{X,Y \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}} \abs{Y}^{b-\frac{p+1}{2}}\exp(-tr(X+Y))dXdY$
+Then we make the transformation $X = L(I-T)L^T, Y=LTL^T$ where $Z=LL^T$. We actually transform  the integral to $(T,Z)$ space where $I-T, T,Z$ are positive definite.
+The Jacobi of this transformation is $|Z|^{\frac{p+1}{2}}$ from the Proposition 5.11, \cite{eaton}. Therefore, the integral transforms to
+$$
+\int_{Z,T, I-T \in S_{p,p}^{+} }\abs{I-T}^{a-\frac{p+1}{2}} \abs{T}^{b-\frac{p+1}{2}}\abs{Z}^{a+b-\frac{p+1}{2}}\exp(-tr(Z))dZdT
+$$ which equals $\Gamma_p(a+b)B(a,b)$ by definition.
+
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

@@ -399,6 +399,23 @@ Therefore the order of $k$ in second term is smaller than
 the first term and we can neglect the second term in Equation \eqref{eq:Mij_second}
 if $k$ is sufficiently large.
 
+We can write the above formulation in mathematical way:
+Suppose $S=\{s| s+i \textrm{ is even}, s\leq \min\{i,j\} \}$,
+We need to compare the order of $\E[A_{11}^{t+1}]$ with the following expression:
+\begin{align*}
+&(n-1) \sum_{s \in S}
+\frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
+\E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}]\\
+&=(n-1) \max_{s\in S}\{\E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2]}\}\sum_{s \in S}
+\frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
+\end{align*}
+Using Proposition \ref{prop:UUM}, we have 
+$\sum_{s \in S}
+\frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!} = C(t)$. Since we suppose $t << k$, we can treat $C(t)$ as constant.
+Therefore, we only need to consider $n\max_{s\in S}\{A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}\}$,
+Since $A$ is positive definite, $A_{12}^2 \leq A_{11}A_{22}$. Therefore, the maximum value is actually bounded by
+$n \E[A_{12}^4 A_{11}^{(i-4)/2} A_{22}^{(i-4)/2}]$. 
+
 The computation of $\E[A^2_{12}]$ is as follows:
 $\E[A^2_{12}] = k \E[X_1^2X_2^2]$ while
 $\E[A_{11}^2] = k\E[X_1^4] + k(k-1)\E[X_1^2 X_2^2] \Rightarrow

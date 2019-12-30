@@ -418,12 +418,11 @@ $n \E[A_{12}^4 A_{11}^{(i-3)/2} A_{22}^{(j-3)/2}]$. Using Cauchy Inequality with
 The non-diagonal term is bounded by $\frac{r^{(i+j)/2+1}}{n} = \frac{r^{t+1}}{n}$. Compared with $\E[A_{11}^{t+1}] = r^{t+1}$, the non-diagonal term is one order smaller and can be neglected when $n$ is large. 
 
 The computation of $\E[A^2_{12}]$ is as follows:
-$\E[A^2_{12}] = k \E[X_1^2X_2^2]$ while
-$\E[A_{11}^2] = k\E[X_1^4] + k(k-1)\E[X_1^2 X_2^2] \Rightarrow
+we have $\E[A_{11}^2] = k\E[X_1^4] + k(k-1)\E[X_1^2 X_2^2] \Rightarrow
 \frac{k(k+2)}{n(n+2)} = \frac{3k}{n(n+2)} + (k-1) (k \E[X_1^2 X_2^2])$.
-We have $\E[A_{12}^2] = \E[(\sum_{i=1}^k X_1 Y_1)^2]
+Also $\E[A_{12}^2] = \E[(\sum_{i=1}^k X_1 Y_1)^2]
 = k \E[X_1^2X^2_2] + k(k-1)\E[X_1X_2Y_1Y_2]
-$
+$.
 Since $\sum_{i=1}^n X_i Y_i = 0$, multiplying this equation by $X_2Y_2$ and taking the expectation
 we have $\E[X_1X_2Y_1Y_2] = \frac{-1}{n-1} \E[X_1^2 X_2^2]$.
 

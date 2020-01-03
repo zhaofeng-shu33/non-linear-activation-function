@@ -20,7 +20,11 @@
 \author{Feng Zhao}
 \begin{document}
 \maketitle
-If we consider $\E[\min_{\hat{w}}\norm{Y - X \bar{w} - \epsilon \xi (X \bar{w} + \epsilon X \hat{w})}^2]$ where 
+If we consider $\E[\min_{\hat{w}}\norm{Y - X \bar{w} - \epsilon \xi (X \bar{w} + \epsilon X \hat{w})}^2]$ where
 $\bar{w} = X^T Y$. We can simplify this expression to
-$\E[\norm{Y-XX^TY}^2] + \epsilon^2 \E[\min_{\hat{w}}\{\norm{\xi(XX^TY)}^2 - 2(\nabla \xi(XX^TY) X\hat{w})^T(Y-XX^TY)\}] + o(\epsilon^2)$. The term to be minimized in the coefficient of $\epsilon^2$ is linear with $\hat{w}$ and may not be feasible to process as the original problem formulation.
+$\E[\norm{Y-XX^TY}^2] + \epsilon^2 \E[\min_{\hat{w}}\{\norm{\xi(XX^TY)}^2 - 2(\nabla \xi(XX^TY) X\hat{w})^T(Y-XX^TY)\}] + \min_{\hat{w}}C(\hat{w})\epsilon^3 + o(\epsilon^3)$. 
+
+We choose $(\nabla \xi(XX^TY) X)^T (Y-XX^TY) = 0$, 
+thus the coefficient of $\epsilon^2$ is zero.
+Therefore, we need to optimize $C(\hat{w}) = \xi(XX^TY)^T \nabla \xi(XX^TY) X\hat{w} - 2(Y-XX^TY)^T\hat{w}X^T\nabla^2\xi(XX^TY)X\hat{w}$, which is quadratic with $\hat{w}$.
 \end{document}

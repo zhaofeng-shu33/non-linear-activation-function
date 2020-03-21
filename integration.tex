@@ -240,6 +240,12 @@ $$
 \int_{Z,T, I-T \in S_{p,p}^{+} }\abs{I-T}^{a-\frac{p+1}{2}} \abs{T}^{b-\frac{p+1}{2}}\abs{Z}^{a+b-\frac{p+1}{2}}\exp(-tr(Z))dZdT
 $$ which equals $\Gamma_p(a+b)B(a,b)$ by definition.
 
+The multivariate Beta function is used as a distribution for sub-blocks of $A=X'X'^T$ where $X'$ is $n \times k$ sub-matrix of random orthogonal matrix $X$. From Proposition 7.2 of \cite{eaton1989group} we conclude that the distribution for $2\times 2$ upper matrix of $A$ is 
+\begin{equation}
+p(A_{11}, A_{12}, A_{22}) = C_0 I_0(A_{11}, A_{12}, A_{22})[A_{11}A_{22}-A_{12}^2]^{\frac{k-3}{2}} [(1-A_{11})(1-A_{22})-A_{12}^2]^{\frac{n-k-3}{2}}
+\end{equation}
+where $C_0 = \frac{w(k, 2) w(n-k, 2)}{w(n, 2)}$ and $I_0$ is the indicator function. The feasible region is described by:
+$ 0 < A_{11} < 1, 0 < A_{22} < 1, A_{12}^2 < \min\{A_{11}A_{22}, 1 - A_{11} - A_{22} - A_{11}A_{22}\}$
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

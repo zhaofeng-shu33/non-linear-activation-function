@@ -268,7 +268,9 @@ Since $Z^2 = XY - A = X(1-X+A-B)-A$, using $\E_{n,k}[X^{m+1}] = \frac{k+2m}{n+2m
 \end{align*}
 Since $\E_{n,k}[X^{m+1}] = \frac{k}{n}\E_{n+2,k+2}[X^m]$, we can further simplify the above expression as:
 \begin{align*}
-\E_{n,k}[X^m Z^2] &= \frac{k(n-k)}{n(n+2m+2)}(1-\frac{k-1}{n-1})\E_{n+2,k+2}[X^m]- \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}]
+\E_{n,k}[X^m Z^2] &= \frac{k(n-k)}{n(n+2m+2)}(1-\frac{k-1}{n-1})\E_{n+2,k+2}[X^m]- \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}]\\
+& = \frac{k(n-k)^2}{n(n-1)(n+2m+2)}\prod_{i=1}^m \frac{k+2i}{n+2i} - \frac{(n-k)(n-k-1)}{n(n-1)}\prod_{i=0}^m \frac{k+2i}{n+2i+2} \\
+& = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
 \end{align*}
 \bibliographystyle{plain}
 \bibliography{exportlist}

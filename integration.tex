@@ -252,6 +252,24 @@ Then using the conclusion of higher order moment for Beta distribution, we can g
 
 For $q=2$, we have $B_2(a+1,b)=\frac{a(a-\frac{1}{2})}{(a+b)(a+b-\frac{1}{2})} B_2(a,b)$. This statement is similar with
 $B(a+1,b) = \frac{a}{a+b}B(a,b)$.
+
+To simplify our notitation, let $X = A_{11}, Y = A_{22}, Z = A_{12}$ and $A = XY - Z, B = 1 - X - Y + A$. Let $\E_{n,k}[f(X,Y,Z)]$ denotes the expectation when the distribution parameters are $n, k$ and $f(X,Y,Z)$ is a function of the three input variables. Then we have $\E_{n,k}[Af(X,Y,Z)] = \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[f(X,Y,Z)]$ and $\E_{n,k}[Bf(X,Y,Z)] = \frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2, k}[f(X,Y,Z)]$. Using this property we show that
+\begin{equation}\label{eq:XZm2}
+\E_{n,k}[X^m Z^2] = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
+\end{equation}
+
+Since $Z^2 = XY - A = X(1-X+A-B)-A$, using $\E_{n,k}[X^{m+1}] = \frac{k+2m}{n+2m}\E_{n,k}[X^m]$ we have
+\begin{align*}
+\E_{n,k}[X^m Z^2] & = \E_{n,k}[X^{m+1}-X^{m+2}+AX^{m+1}-BX^{m+1}-AX^m] \\
+& = (1-\frac{k+2m+2}{n+2m+2})\E_{n,k}[X^{m+1}] + \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[X^{m+1} - X^m]\\
+& - \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}] \\
+& = \frac{n-k}{n+2m+2}\E_{n,k}[X^{m+1}] - \frac{k(k-1)}{n(n-1)}\frac{n-k}{n+2m+2}\E_{n+2,k+2}[X^m] \\
+& - \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}] \\
+\end{align*}
+Since $\E_{n,k}[X^{m+1}] = \frac{k}{n}\E_{n+2,k+2}[X^m]$, we can further simplify the above expression as:
+\begin{align*}
+\E_{n,k}[X^m Z^2] &= \frac{k(n-k)}{n(n+2m+2)}(1-\frac{k-1}{n-1})\E_{n+2,k+2}[X^m]- \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}]
+\end{align*}
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

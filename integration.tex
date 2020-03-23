@@ -151,7 +151,7 @@ We like to compute $\E[X_1^{2k_1} X_2^{2k_2}]$. Let $ Z = X_3^2 + \dots + X_n^2$
 Then we have
 \begin{align}\label{eq:cor}
 &\int_{x,y\in \mathbb{R}}\int_{z\geq 0} \frac{x^{2k_1} y^{2k_2}}{(x^2+y^2+z)^{k_1 + k_2}} p(x)p(y)q(z) dxdydz \notag\\
-&=\frac{1}{n-2}\frac{(2k_1 -1)!!(2k_2-1)!! (n-3)!!}{(n-2 + 2(k_1 + k_2))!!}
+&=\frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2}) \Gamma(k_2 + \frac{1}{2})\Gamma(\frac{n}{2}-1)}{\Gamma(k_1 + k_2 + \frac{n}{2})}
 \end{align}
 We let $z=(x^2+y^2)t$ first.
 \begin{align*}
@@ -162,7 +162,7 @@ Secondly we make the transformation $y^2=x^2u$ with $u>0$.
 \begin{align*}
 \frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{2}{2\pi}\int_{x,u,t\geq 0}\frac{x^{n-1} u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}x^2(1+u)(1+t))dxdudt =
 \end{align*}
-We can first integrate about $x$ first (we assume the variance $\sigma^2 = \frac{1}{(1+u)(1+t)}$)
+We can first integrate about $x$ first using Gamma function(let $\sigma^2 = \frac{1}{(1+u)(1+t)}$)
 and get
 \begin{align*}
 \frac{2^{n/2} \Gamma(\frac{n}{2})}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi}\int_{u,t\geq 0} \frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}\sigma^n}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}dudt = \\
@@ -171,7 +171,7 @@ and get
 \frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2}) \Gamma(k_2 + \frac{1}{2})\Gamma(\frac{n}{2}-1)}{\Gamma(k_1 + k_2 + \frac{n}{2})}
 \end{align*}
 From Equation \eqref{eq:cor}, we choose $k_1 = k_2 = k$ and we have
-$\E[X_1^{2k}X_2^{2k}]=\frac{1}{n-2}\frac{((2k-1)!!)^2}{\prod_{i=0}^{k} (n-2 + 2i)}$
+$\E[X_1^{2k}X_2^{2k}]=\frac{((2k-1)!!)^2}{\prod_{i=0}^{2k-1} (n + 2i)}$
 
 We consider the decomposition of a $2\times 2$ symmetric matrix:
 $$

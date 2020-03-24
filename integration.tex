@@ -272,6 +272,12 @@ Since $\E_{n,k}[X^{m+1}] = \frac{k}{n}\E_{n+2,k+2}[X^m]$, we can further simplif
 & = \frac{k(n-k)^2}{n(n-1)(n+2m+2)}\prod_{i=1}^m \frac{k+2i}{n+2i} - \frac{(n-k)(n-k-1)}{n(n-1)}\prod_{i=0}^m \frac{k+2i}{n+2i+2} \\
 & = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
 \end{align*}
+
+Using Equation \eqref{eq:XZm2}, we will show that 
+\begin{equation}\label{eq:XZm4}
+\E[X^m Z^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
+\end{equation}
+Equation \eqref{eq:XZm4} follows from $\E[X^m Z^4 ] = \E[Z^2 X^m(X-X^2 +AX-BX-A)]$.
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

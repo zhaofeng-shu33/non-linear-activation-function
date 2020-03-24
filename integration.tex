@@ -253,7 +253,7 @@ Then using the conclusion of higher order moment for Beta distribution, we can g
 For $q=2$, we have $B_2(a+1,b)=\frac{a(a-\frac{1}{2})}{(a+b)(a+b-\frac{1}{2})} B_2(a,b)$. This statement is similar with
 $B(a+1,b) = \frac{a}{a+b}B(a,b)$.
 
-To simplify our notitation, let $X = A_{11}, Y = A_{22}, Z = A_{12}$ and $A = XY - Z, B = 1 - X - Y + A$. Let $\E_{n,k}[f(X,Y,Z)]$ denotes the expectation when the distribution parameters are $n, k$ and $f(X,Y,Z)$ is a function of the three input variables. Then we have $\E_{n,k}[Af(X,Y,Z)] = \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[f(X,Y,Z)]$ and $\E_{n,k}[Bf(X,Y,Z)] = \frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2, k}[f(X,Y,Z)]$. Using this property we show that
+To simplify our notitation, let $X = A_{11}, Y = A_{22}, Z = A_{12}$ and $A = XY - Z^2, B = 1 - X - Y + A$. Let $\E_{n,k}[f(X,Y,Z)]$ denotes the expectation when the distribution parameters are $n, k$ and $f(X,Y,Z)$ is a function of the three input variables. Then we have $\E_{n,k}[Af(X,Y,Z)] = \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[f(X,Y,Z)]$ and $\E_{n,k}[Bf(X,Y,Z)] = \frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2, k}[f(X,Y,Z)]$. Using this property we show that
 \begin{equation}\label{eq:XZm2}
 \E_{n,k}[X^m Z^2] = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
 \end{equation}
@@ -278,6 +278,11 @@ Using Equation \eqref{eq:XZm2}, we will show that
 \E[X^m Z^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
 \end{equation}
 Equation \eqref{eq:XZm4} follows from $\E[X^m Z^4 ] = \E[Z^2 X^m(X-X^2 +AX-BX-A)]$.
+
+Further we show that
+\begin{equation}
+\E[Z^{2t} X^m] = (2t-1)!! \prod_{i=0}^{t-1}\frac{n-k+2i}{n-1+2i} \frac{\prod_{i=0}^{t-1+m} (k+2i)}{\prod_{i=0}^{2t-1+m}(n+2i)}
+\end{equation}
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

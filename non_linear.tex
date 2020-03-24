@@ -415,7 +415,7 @@ M_2(i, j) & \leq \frac{n-1}{n^{t-1}} \sum_{s \in S}
 Using Cauchy Inequality with $B_1 = A_{12}^2 A_{11}^{(i-3)/2}$ and $B_2 = A_{12}^2 A_{22}^{(i-3)/2}$ we have $\E[B_1B_2] \leq \sqrt{\E[B_1^2] \E[B_2^2]} =\sqrt{\E[ A_{12}^4 A_{11}^{i-3} ]\E[ A_{12}^4 A_{11}^{j-3} ]}$.
 
 Since we have 
-\begin{equation}
+\begin{equation}\label{eq:Am4}
 \E[A_{11}^m A_{12}^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
 \end{equation}
 When $k, n$ are sufficiently large, we can get $\E[A_{11}^m A_{12}^4] \sim \frac{3(1-r)^2 r^{m+2}}{n^2}$. Therefore
@@ -543,7 +543,10 @@ We can compute $N_{ij} =\frac{(2t-1)!!}{n^{t-1}} \prod_{s=0}^{t-1}
 when $i+j = 2t$; otherwise $N_{ij}=0$.
 $M_1(i, j)=\frac{1-r}{n^{t-1}} \prod_{s=0}^{t-1}
 \frac{(2s+k)}{(2s+n+2)} (i-1)(j-1) (i+j-3)!! =
-(1-r)(i-1)(j-1)n \prod_{s=0}^{t-1} \frac{(2s+k)(2s-1)}{(2s+n+2)n}$
+(1-r)(i-1)(j-1)n \prod_{s=0}^{t-1} \frac{(2s+k)(2s-1)}{(2s+n+2)n}$. For $M_2(i, j)$
+we consider the case when both $i, j$ are sufficiently large than $n$. We assume $\delta(n, k) = 1$.
+Otherwise we can replace $(k+2i)$ with $(k+1+2i)$ in Equation \eqref{eq:Am4}($m>>n$). Then
+we have $\E[A_{11}^m A_{12}^4] \sim \frac{C(n,k)}{(k+2(m+2)) \times \cdot\times (n+2(m+3)) } = \frac{C'(n,k)}{(2m)^{\frac{n-k}{2}+2}}$
 
 \section{External Link}
 Source document is available at

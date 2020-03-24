@@ -93,7 +93,7 @@ Using this proposition we can get the density function of $Y_1$ as
 \begin{equation}
 p(y) = \frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}\Gamma(\frac{n-1}{2})} (1-y^2)^{\frac{n-3}{2}}
 \end{equation}
-Using the property of beta function 
+Using the property of beta function
 $\int_{-1}^{1} y^{2k} p(y)dy = \frac{\Gamma(\frac{n}{2})\Gamma(\frac{2k+1}{2})}
 {\sqrt{\pi} \Gamma(\frac{2k+n}{2})}$, which is same with Equation \eqref{eq:n3}.
 Notice that $\hat{Y}_1 = Y_1^2 (-1 \leq Y_1 \leq 1)$ is beta distribution $B(\frac{1}{2}, \frac{n-1}{2})$. The high order moment of $\hat{Y}_1$ is a well known result.
@@ -177,19 +177,19 @@ We consider the decomposition of a $2\times 2$ symmetric matrix:
 $$
 \begin{pmatrix}
 x & y \\
-y & z 
-\end{pmatrix} = 
+y & z
+\end{pmatrix} =
 \begin{pmatrix}
 \cos \theta & -\sin \theta \\
-\sin \theta & \cos \theta 
+\sin \theta & \cos \theta
 \end{pmatrix}
 \begin{pmatrix}
 \lambda_1 & 0 \\
 0 & \lambda_2
-\end{pmatrix} 
+\end{pmatrix}
 \begin{pmatrix}
 \cos \theta & \sin \theta \\
--\sin \theta & \cos \theta 
+-\sin \theta & \cos \theta
 \end{pmatrix}
 $$
 We then have
@@ -219,7 +219,7 @@ Using Legendre duplication formula $\Gamma(z) \Gamma(z+\frac{1}{2}) = 2^{1-2z} \
 $\Gamma_2(a) = \sqrt{\pi}\Gamma(a)\Gamma(a-\frac{1}{2})$.
 
 For $p \times p$ symmetric matrix, we define the multivariate Beta function
-as 
+as
 \begin{equation}
 B_p(a, b) = \int_{X \in S_{p,p}^{+} }\abs{I-X}^{a-\frac{p+1}{2}} \abs{X}^{b-\frac{p+1}{2}}dX
 \end{equation}
@@ -231,8 +231,8 @@ where $\Gamma_p(a)$ is defined as:
 \begin{equation}
 \Gamma_p(a) =  \int_{X \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}} \exp(-tr(X))dX
 \end{equation}
-The proof is similar with \href{https://en.wikipedia.org/wiki/Beta_function#Relationship_between_gamma_function_and_beta_function}{one dimensional case}. 
-First we consider 
+The proof is similar with \href{https://en.wikipedia.org/wiki/Beta_function#Relationship_between_gamma_function_and_beta_function}{one dimensional case}.
+First we consider
 $\Gamma_p(a)\Gamma_p(b) = \int_{X,Y \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}} \abs{Y}^{b-\frac{p+1}{2}}\exp(-tr(X+Y))dXdY$
 Then we make the transformation $X = L(I-T)L^T, Y=LTL^T$ where $Z=LL^T$. We actually transform  the integral to $(T,Z)$ space where $I-T, T,Z$ are positive definite.
 The Jacobi of this transformation is $|Z|^{\frac{p+1}{2}}$ from the Proposition 5.11, \cite{eaton}. Therefore, the integral transforms to
@@ -240,7 +240,7 @@ $$
 \int_{Z,T, I-T \in S_{p,p}^{+} }\abs{I-T}^{a-\frac{p+1}{2}} \abs{T}^{b-\frac{p+1}{2}}\abs{Z}^{a+b-\frac{p+1}{2}}\exp(-tr(Z))dZdT
 $$ which equals $\Gamma_p(a+b)B(a,b)$ by definition.
 
-The multivariate Beta function is used as a distribution for sub-blocks of $A=X'X'^T$ where $X'$ is $n \times k$ sub-matrix of random orthogonal matrix $X$ ($n\geq k+2, k\geq 2$). From Proposition 7.2 of \cite{eaton1989group} we conclude that the distribution for $2\times 2$ upper matrix of $A$ is 
+The multivariate Beta function is used as a distribution for sub-blocks of $A=X'X'^T$ where $X'$ is $n \times k$ sub-matrix of random orthogonal matrix $X$ ($n\geq k+2, k\geq 2$). From Proposition 7.2 of \cite{eaton1989group} we conclude that the distribution for $2\times 2$ upper matrix of $A$ is
 \begin{equation}
 p(A_{11}, A_{12}, A_{22}) = C_0 I_0(A_{11}, A_{12}, A_{22})[A_{11}A_{22}-A_{12}^2]^{\frac{k-3}{2}} [(1-A_{11})(1-A_{22})-A_{12}^2]^{\frac{n-k-3}{2}}
 \end{equation}
@@ -273,7 +273,7 @@ Since $\E_{n,k}[X^{m+1}] = \frac{k}{n}\E_{n+2,k+2}[X^m]$, we can further simplif
 & = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
 \end{align*}
 
-Using Equation \eqref{eq:XZm2}, we will show that 
+Using Equation \eqref{eq:XZm2}, we will show that
 \begin{equation}\label{eq:XZm4}
 \E[X^m Z^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
 \end{equation}

@@ -630,17 +630,18 @@ U_{ij} & = \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} \textrm{ for } i\leq j \\
 \begin{proposition}\label{prop:UUM}
 \begin{equation}
 \delta(i, j)(i-1)(j-1)(i+j-3)!! = \sum_{k=0}^{\min\{i, j\}}
-\delta(k, i) \delta(k, j) \frac{(1-k)i!j!}{(i-k)!!(j-k)!!k!}
+\delta(k, i) \delta(k, j) \frac{(k-1)i!j!}{(i-k)!!(j-k)!!k!}
 \end{equation}
 \begin{proof}
 \begin{align*}
-RHS & = \sum_{k=0}^{\min\{i, j\}}
-\delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!k!}
-- \sum_{k=1}^{\min\{i, j\}}
-\delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!(k-1)!} \\
-& = \delta(i, j)(i+j-1)!! - ij\sum_{k=0}^{\min\{i-1, j-1\}}
-\delta(k, i) \delta(k, j) \frac{(i-1)!(j-1)!}{(i-1-k)!!(j-1-k)!!k!} \\
-& = \delta(i, j)(i+j-1)!! - \delta(i, j)ij(i+j-3)!! \\
+RHS & =
+\sum_{k=1}^{\min\{i, j\}}
+\delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!(k-1)!} 
+-  \sum_{k=0}^{\min\{i, j\}}
+\delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!k!} \\
+& = ij\sum_{k=0}^{\min\{i-1, j-1\}}
+\delta(k, i) \delta(k, j) \frac{(i-1)!(j-1)!}{(i-1-k)!!(j-1-k)!!k!} - \delta(i, j)(i+j-1)!! \\
+& =  \delta(i, j)ij(i+j-3)!! - \delta(i, j)(i+j-1)!!\\
 & = \delta(i, j)(i-1)(j-1)(i+j-3)!!
 \end{align*}
 \end{proof}

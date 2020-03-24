@@ -373,7 +373,14 @@ Therefore we have
 \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
 A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} \label{eq:Mij_second}
 \end{align}
-
+Let $M_{ij} = \E[\bar{M}_{ij}] = -M_1 - M_2$.
+where
+\begin{align}
+M_1 & = \frac{\E[A^t_{11}] - \E[A^{t+1}_{11}}{n^{t-1}}  ((2t-1)!!- ij (2t-3)!!)  \\
+M_2 & = \frac{n-1}{n^{t-1}} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}}
+\frac{(1-s)i!j!}{s!(i-s)!!(j-s)!!}
+\E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} ]
+\end{align}
 For $\bar{M}_{0j}$ where $j \neq 0$,
 it equals to zero if $j$ is an odd number,
 let $j=2t$ we can compute that

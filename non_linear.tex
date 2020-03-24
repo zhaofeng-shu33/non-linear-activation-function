@@ -373,10 +373,10 @@ Therefore we have
 \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
 A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} \label{eq:Mij_second}
 \end{align}
-Let $M_{ij} = \E[\bar{M}_{ij}] = -M_1 - M_2$.
+Let $M_{ij} = \E[\bar{M}_{ij}] = -M_1(i,j) + M_2(i,j)$.
 where
 \begin{align}
-M_1 & = \frac{\E[A^t_{11}] - \E[A^{t+1}_{11}}{n^{t-1}}  ((2t-1)!!- ij (2t-3)!!)  \\
+M_1 & = \frac{\E[A^t_{11}] - \E[A^{t+1}_{11}]}{n^{t-1}}  (i-1)(j-1)(2t-3)!!  \\
 M_2 & = \frac{n-1}{n^{t-1}} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}}
 \frac{(1-s)i!j!}{s!(i-s)!!(j-s)!!}
 \E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} ]
@@ -389,45 +389,45 @@ $\bar{M}_{0,2t}=\frac{1}{n^{t-1}} (1-r)r^t (2t-1)!! $.
 For $i = 1$, $ j = 2 t - 1$ we have
 $\bar{M}_{ij}$ equal to zero.
 
-For $i \neq 0$, if $i+j$ is odd then $\bar{M}_{ij} = 0$. Now we let $M_{ij} = \E_X[\bar{M}_{ij}]$ and 
+For $i \neq 0$, if $i+j$ is odd then $\bar{M}_{ij} = 0$. Now we let 
 $C[\xi]=q^t M q$.
-Consider $i \neq j$ and $i+j = 2t$ we then have
-$M_{ij} = \frac{1}{n^{t-1}} (2t-1-ij) (1-r)r^t (2t-3)!! =
--n(i-1)(j-1) (1-r)r^{(i+j)/ 2 } (i+j-3)!!$.
-Finally, consider $M_{ii}$ with $i \neq 1$. we have $M_{ii} =
--\frac{1}{n^{i-1}} (i-1)^2 (1-r)r^i (2i-3)!!$.
+Conside $i+j = 2t$, we then have
+$M_1(i,j) =
+\frac{1}{n^{t-1}}(i-1)(j-1) (1-r)r^t (i+j-3)!!$ when $ t << k$.
 
-Average over $A_{11}, A^2_{12}$(We have $\E[A^2_{12}]= (1-\frac{k-1}{n-1})\frac{k}{n(n+2)}$),
-$A_{22}(\approx r = \frac{k}{n})$.
-The summation must start with $s=3$.
+For $M_2(i,j)$, the term $A_{12}^{s+1}$ in the summation must start at least with $s=3$.
 The order of $A_{12}^4$ in
 the second term of $M_{ij}$ must start with $4$.
 Therefore the order of $k$ in second term is smaller than
-the first term and we can neglect the second term in Equation \eqref{eq:Mij_second}
+the first term and we can neglect $M_2(i,j)$
 if $k$ is sufficiently large.
 
 We can write the above formulation in mathematical way:
-Suppose $S=\{s| s+i \textrm{ is even}, s\leq \min\{i,j\} \}$,
-We need to compare the order of $\E[A_{11}^{t+1}]$ with the following expression:
+Suppose $S=\{s| s+i \textrm{ is even}, s\leq \min\{i,j\} \}$ and $\delta(i, j)= 1$,
+using $A_{12}^2 \leq A_{11}A_{22}$ (the sub-matrix is positive definite)
 \begin{align*}
-&(n-1) \sum_{s \in S}
+M_2(i, j) & \leq \frac{n-1}{n^{t-1}} \sum_{s \in S}
 \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
-\E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2}]\\
-&=(n-1) \max_{s\in S}\{\E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2]}\}\sum_{s \in S}
-\frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
+\E[A_{12}^4 A_{11}^{(i - 3) /2}A_{22}^{(j - 3)/2}]\\
+&= \frac{n-1}{n^{t-1}} (i-1)(j-1)(i+j-3)!!
+\E[A_{12}^4 A_{11}^{(i - 3) /2}A_{22}^{(j - 3)/2}]
 \end{align*}
-Using Proposition \ref{prop:UUM}, we have 
-$\sum_{s \in S}
-\frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!} = C(t)$. Since we suppose $t << k$, we can treat $C(t)$ as constant.
-Therefore, we only need to consider $n\max_{s\in S}\{A_{12}^{s+1} A_{11}^{(i- s) /2}A_{22}^{(j- s)/2}\}$,
-Since $A$ is positive definite, $A_{12}^2 \leq A_{11}A_{22}$. Therefore, the maximum value is actually bounded by
-$n \E[A_{12}^4 A_{11}^{(i-3)/2} A_{22}^{(j-3)/2}]$.
-Using Cauchy Inequality with $B_1 = A_{12}^2 A_{11}^{(i-3)/2}$ and $B_2 = A_{12}^2 A_{22}^{(i-3)/2}$ we have $n\E[B_1B_2] \leq n \sqrt{\E[B_1^2] \E[B_2^2]} = n  \sqrt{\E[ A_{12}^4 A_{11}^{i-3} ]\E[ A_{12}^4 A_{11}^{j-3} ]}$.
-When $k, n$ are sufficiently large, by central limit theorem we can treat the joint distribution of $A_{12}, A_{11}$ as Gaussian.
-The variance of $A_{12}$ is $\E[A^2_{12}]=(1-\frac{k-1}{n-1}) \frac{k}{n(n+2)}$. We assume $k/n$ is a constant and therefore the variance is $\frac{r(1-r)}{n} \leq \frac{r^2}{4n}$.
-We can write $A_{11}^{i-3} = [A_{11} - \E[A_{11}] + \E[A_{11}]]^{i-3}$, $A_{11} - \E[A_{11}]$ has zero mean and variance $\frac{k(k+2)}{n(n+2)} - \frac{k^2}{n^2} = \frac{2r(1-r)}{n}$ which is one order small compared with $\E[A_{11}] = r$.
-Therefore, we only need to consider the dominant term: $\E[A^4_{12}]\E[A_{11}]^{i-3}$. Since $A_{12}$ is zero mean Gaussian with variance bounded by $\frac{r^2}{4n}$.  We have $ \E[A^4_{12}]\E[A_{11}]^{i-3} \sim \frac{r^{i+1}}{n^2}$ Similarly we have $ \E[A^4_{12}]\E[A_{22}]^{j-3} \sim \frac{r^{j+1}}{n^2}$. Therefore
-The non-diagonal term is bounded by $\frac{r^{(i+j)/2+1}}{n} = \frac{r^{t+1}}{n}$. Compared with $\E[A_{11}^{t+1}] = r^{t+1}$, the non-diagonal term is one order smaller and can be neglected when $n$ is large. 
+Using Cauchy Inequality with $B_1 = A_{12}^2 A_{11}^{(i-3)/2}$ and $B_2 = A_{12}^2 A_{22}^{(i-3)/2}$ we have $\E[B_1B_2] \leq \sqrt{\E[B_1^2] \E[B_2^2]} =\sqrt{\E[ A_{12}^4 A_{11}^{i-3} ]\E[ A_{12}^4 A_{11}^{j-3} ]}$.
+
+Since we have 
+\begin{equation}
+\E[A_{11}^m A_{12}^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
+\end{equation}
+When $k, n$ are sufficiently large, we can get $\E[A_{11}^m A_{12}^4] \sim \frac{3(1-r)^2 r^{m+2}}{n^2}$. Therefore
+$ \sqrt{\E[B_1^2] \E[B_2^2]}  \sim  \frac{3(1-r)^2 r^{t+2}}{n^2}$ and 
+\begin{align*}
+M_2(i, j) \leq & \frac{n-1}{n^{t-1}} (i-1)(j-1)(i+j-3)!! 
+\sqrt{\E[B_1^2] \E[B_2^2]} \\
+\sim & \frac{3}{n^t} (i-1)(j-1)(i+j-3)!!
+(1-r)^2 r^{t+2} \\
+\leq & \frac{3}{4n^t} (i-1)(j-1)(i+j-3)!! (1-r)r^t = \frac{3}{4n} M_1(i,j)
+\end{align*}
+$M_2(i,j)$ is one order smaller than $M_1(i,j)$ and can be neglected when $n$ is large. 
 
 The computation of $\E[A^2_{12}]$ is as follows:
 we have $\E[A_{11}^2] = k\E[X_1^4] + k(k-1)\E[X_1^2 X_2^2] \Rightarrow

@@ -22,21 +22,48 @@
 \begin{document}
 \maketitle
 \section{Abstract}
-We find that under orthogonal feature (which can be obtained by PCA techniques etc.), using Hermite orthogonal polynomial as activation function is universally good.
+We find that under orthogonal feature
+(which can be obtained by PCA techniques etc.),
+using Hermite orthogonal polynomial as activation function is
+universally good.
 \section{Background}
-Suppose we have two discrete random variables $X, Y$. $Y$ is binary (0 or 1). $X$ is from $\{1, \dots, \abs{\mathcal{X}}\}$. We want to approximate $P_{Y|X=x}(0)$ (approximating $P_{Y|X=x}(0)$ is through $1-P_{Y|X=x}(1)$). We suppose the dimension $n$ of $X$ is very large. The observation of $X$ is through $k$ given feature function $f_1, \dots f_k$.
-A simple approximation of $P_{Y|X=x}(0)$ is through $ \sum_{i=1}^k w_i f_i(x)$. To increase the approximation power we introduce a non-linear transformation function $ \sigma$. That is, we have
-$g(x)  = P_{Y|X=x}(0) \approx \sigma(\sum_{i=1}^k w_i f_i(x))$. This formulation is very similar to one-node neural networks. If we take $\sigma$ as sigmoid function and treat the output of neural network as
-posterior probability, our loss function is $ \E[y - \sigma(\sum_{i=1}^k w_i f_i(x))]$.
+Suppose we have two discrete random variables $X, Y$. $Y$ is binary (0 or 1).
+$X$ is from $\{1, \dots, \abs{\mathcal{X}}\}$.
+We want to approximate $P_{Y|X=x}(0)$ (approximating $P_{Y|X=x}(0)$
+is through $1-P_{Y|X=x}(1)$).
+We suppose the dimension $n$ of $X$ is very large.
+The observation of $X$ is through $k$ given feature function $f_1, \dots f_k$.
+A simple approximation of $P_{Y|X=x}(0)$ is through
+$ \sum_{i=1}^k w_i f_i(x)$.
+To increase the approximation power
+we introduce a non-linear transformation function
+$ \sigma$. That is, we have
+$g(x)  = P_{Y|X=x}(0) \approx \sigma(\sum_{i=1}^k w_i f_i(x))$.
+This formulation is very similar to one-node neural networks.
+If we take $\sigma$ as sigmoid function and
+treat the output of neural network as
+posterior probability,
+our loss function is $ \E[y - \sigma(\sum_{i=1}^k w_i f_i(x))]$.
 
-Now we have only $n$(very large) samples, the loss function to minimize globally is
+Now we have only $n$(very large) samples,
+the loss function to minimize globally is
 $\norm{g - \sigma(\sum_{i=1}^k w_i f_i)}^2$ using L2 loss.
 $g, f_i$ is an $n\times 1 $ vector.
 
-We want to find an activation function that is good on average. We need to formulate the problem in more detail. Since We know little about $g$ and $f$, we can treat them as uniformly distributed. $g$ might have the non-negative constraint. We can make a simple transformation (e.g. $\log$) to remove the constraint and make some normalization. All these operations are inversible. We assume that $g$ is Gaussian distributed, $f_1, \dots, f_k$ are orthogonal to each other and they are uniformly distributed on a sphere.
+We want to find an activation function that is good on average.
+We need to formulate the problem in more detail.
+Since We know little about $g$ and $f$,
+we can treat them as uniformly distributed.
+$g$ might have the non-negative constraint.
+We can make a simple transformation (e.g. $\log$)
+to remove the constraint and make some normalization.
+All these operations are inversible.
+We assume that $g$ is Gaussian distributed, $f_1, \dots, f_k$ are
+orthogonal to each other and they are uniformly distributed on a sphere.
 
 \section{Problem}
-Let $Y$ be standard Gaussian vector. each component has $ \frac{1}{n}$ variance.
+Let $Y$ be standard Gaussian vector.
+Each component has $ \frac{1}{n}$ variance.
 $X_1, \dots, X_k$ be
 n-dimensional uniformly distributed random vector on unit sphere.
 $X=(X_1, \dots, X_k)$ is an $n\times k$ random matrix
@@ -115,7 +142,8 @@ Indeed, $A_{ii} = \sum_{j=1}^k x_{ij}^2$
 Using the conclusion from Lemma \ref{lem:uniform},
 we can get for example $\E[X_{11}^2 X_{12}^2]
 = \E_{X_1}[X_{11}^2 \E[ X^2_{12}| X_1]]
-= \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )] = \frac{1}{n-1}(\frac{1}{n} - \frac{3}{n(n+2)}$.
+= \frac{1}{n-1}\E[X_{11}^2 ( 1 - X_{11}^2 )] =
+\frac{1}{n-1}(\frac{1}{n} - \frac{3}{n(n+2)}$.
 Therefore we get the result that $\E[X_{11}^2 X_{12}^2]  =  \frac{1}{n(n+2)}$
 \end{remark}
 \begin{remark}
@@ -274,7 +302,10 @@ Let $Z = AY$. $Z | X$ is Gaussian and
 its covariance matrix is
 $A\E[YY^T]A^T = \frac{1}{n}AA^T = \frac{1}{n}A$
 (from Lemma \ref{lem:uniform}).
-Also, both $Y$ and $Z$ have zero mean (vector). The joint distribution of $(Z, X)$ is the product of Gaussian and multivariant Beta distribution \cite{eaton1989group}.
+Also, both $Y$ and $Z$ have zero mean (vector).
+The joint distribution of $(Z, X)$ is
+the product of Gaussian and
+multivariant Beta distribution \cite{eaton1989group}.
 We then have
 \begin{equation*}
 I_1 =\E[\norm{\xi(Z)}^2] = \sum_{i=1}^n \E_{Z|X}[\xi^2(Z_i)]
@@ -368,7 +399,8 @@ A_{12}^{k} A_{11}^{(i-k)/2}A_{22}^{(j-k)/2} \\
 \end{align*}
 Therefore we have
 \begin{align}
-\bar{M}_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)  \notag\\
+\bar{M}_{ij} &= n(1-A_{11})\frac{A^t_{11}}{n^t}  ((2t-1)!!- ij (2t-3)!!)
+\notag\\
 &+n(n-1)\frac{1}{n^t}A_{12} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}}
 \frac{(s-1)i!j!}{s!(i-s)!!(j-s)!!}
 A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} \label{eq:Mij_second}
@@ -376,7 +408,8 @@ A_{12}^s A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} \label{eq:Mij_second}
 Let $M_{ij} = \E[\bar{M}_{ij}] = -M_1(i,j) + M_2(i,j)$.
 where
 \begin{align}
-M_1 & = \frac{\E[A^t_{11}] - \E[A^{t+1}_{11}]}{n^{t-1}}  (i-1)(j-1)(2t-3)!!  \\
+M_1 & = \frac{\E[A^t_{11}] - \E[A^{t+1}_{11}]}{n^{t-1}}
+(i-1)(j-1)(2t-3)!!  \\
 M_2 & = \frac{n-1}{n^{t-1}} \sum_{s=0, s+i \textrm{ is even}}^{\min\{i,j\}}
 \frac{(1-s)i!j!}{s!(i-s)!!(j-s)!!}
 \E[A_{12}^{s+1} A_{11}^{(i - s) /2}A_{22}^{(j - s)/2} ]
@@ -395,7 +428,8 @@ Conside $i+j = 2t$, we then have
 $M_1(i,j) =
 \frac{1}{n^{t-1}}(i-1)(j-1) (1-r)r^t (i+j-3)!!$ when $ t << k$.
 
-For $M_2(i,j)$, the term $A_{12}^{s+1}$ in the summation must start at least with $s=3$.
+For $M_2(i,j)$, the term $A_{12}^{s+1}$ in the summation
+must start at least with $s=3$.
 The order of $A_{12}^4$ in
 the second term of $M_{ij}$ must start with $4$.
 Therefore the order of $k$ in second term is smaller than
@@ -403,7 +437,8 @@ the first term and we can neglect $M_2(i,j)$
 if $k$ is sufficiently large.
 
 We can write the above formulation in mathematical way:
-Suppose $S=\{s| s+i \textrm{ is even}, s\leq \min\{i,j\} \}$ and $\delta(i, j)= 1$,
+Suppose $S=\{s| s+i \textrm{ is even}, s\leq \min\{i,j\} \}$
+and $\delta(i, j)= 1$,
 using $A_{12}^2 \leq A_{11}A_{22}$ (the sub-matrix is positive definite)
 \begin{align*}
 M_2(i, j) & \leq \frac{n-1}{n^{t-1}} \sum_{s \in S}
@@ -412,13 +447,18 @@ M_2(i, j) & \leq \frac{n-1}{n^{t-1}} \sum_{s \in S}
 &= \frac{n-1}{n^{t-1}} (i-1)(j-1)(i+j-3)!!
 \E[A_{12}^4 A_{11}^{(i - 3) /2}A_{22}^{(j - 3)/2}]
 \end{align*}
-Using Cauchy Inequality with $B_1 = A_{12}^2 A_{11}^{(i-3)/2}$ and $B_2 = A_{12}^2 A_{22}^{(i-3)/2}$ we have $\E[B_1B_2] \leq \sqrt{\E[B_1^2] \E[B_2^2]} =\sqrt{\E[ A_{12}^4 A_{11}^{i-3} ]\E[ A_{12}^4 A_{11}^{j-3} ]}$.
+Using Cauchy Inequality with $B_1 = A_{12}^2 A_{11}^{(i-3)/2}$ and
+$B_2 = A_{12}^2 A_{22}^{(i-3)/2}$ we have $\E[B_1B_2] \leq
+\sqrt{\E[B_1^2] \E[B_2^2]} =\sqrt{\E[ A_{12}^4 A_{11}^{i-3} ]
+\E[ A_{12}^4 A_{11}^{j-3} ]}$.
 
 Since we have
 \begin{equation}\label{eq:Am4}
-\E[A_{11}^m A_{12}^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
+\E[A_{11}^m A_{12}^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)}
+\frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
 \end{equation}
-When $k, n$ are sufficiently large, we can get $\E[A_{11}^m A_{12}^4] \sim \frac{3(1-r)^2 r^{m+2}}{n^2}$. Therefore
+When $k, n$ are sufficiently large, we can get $\E[A_{11}^m A_{12}^4] \sim
+\frac{3(1-r)^2 r^{m+2}}{n^2}$. Therefore
 $ \sqrt{\E[B_1^2] \E[B_2^2]}  \sim  \frac{3(1-r)^2 r^{t+2}}{n^2}$ and
 \begin{align*}
 M_2(i, j) \leq & \frac{n-1}{n^{t-1}} (i-1)(j-1)(i+j-3)!!
@@ -435,7 +475,8 @@ we have $\E[A_{11}^2] = k\E[X_1^4] + k(k-1)\E[X_1^2 X_2^2] \Rightarrow
 Also $\E[A_{12}^2] = \E[(\sum_{i=1}^k X_1 Y_1)^2]
 = k \E[X_1^2X^2_2] + k(k-1)\E[X_1X_2Y_1Y_2]
 $.
-Since $\sum_{i=1}^n X_i Y_i = 0$, multiplying this equation by $X_2Y_2$ and taking the expectation
+Since $\sum_{i=1}^n X_i Y_i = 0$, multiplying this equation by $X_2Y_2$ and
+taking the expectation
 we have $\E[X_1X_2Y_1Y_2] = \frac{-1}{n-1} \E[X_1^2 X_2^2]$.
 
 Therefore $\E[A^2_{12}]=(1-\frac{k-1}{n-1}) \frac{k}{n(n+2)}$.
@@ -543,10 +584,14 @@ We can compute $N_{ij} =\frac{(2t-1)!!}{n^{t-1}} \prod_{s=0}^{t-1}
 when $i+j = 2t$; otherwise $N_{ij}=0$.
 $M_1(i, j)=\frac{1-r}{n^{t-1}} \prod_{s=0}^{t-1}
 \frac{(2s+k)}{(2s+n+2)} (i-1)(j-1) (i+j-3)!! =
-(1-r)(i-1)(j-1)n \prod_{s=0}^{t-1} \frac{(2s+k)(2s-1)}{(2s+n+2)n}$. For $M_2(i, j)$
-we consider the case when both $i, j$ are sufficiently large than $n$. We assume $\delta(n, k) = 1$.
-Otherwise we can replace $(k+2i)$ with $(k+1+2i)$ in Equation \eqref{eq:Am4}($m>>n$). Then
-we have $\E[A_{11}^m A_{12}^4] \sim \frac{C(n,k)}{(k+2(m+2)) \times \cdot\times (n+2(m+3)) } = \frac{C'(n,k)}{(2m)^{\frac{n-k}{2}+2}}$
+(1-r)(i-1)(j-1)n \prod_{s=0}^{t-1} \frac{(2s+k)(2s-1)}{(2s+n+2)n}$.
+For $M_2(i, j)$
+we consider the case when both $i, j$ are sufficiently large than $n$.
+We assume $\delta(n, k) = 1$.
+Otherwise we can replace $(k+2i)$ with $(k+1+2i)$
+in Equation \eqref{eq:Am4}($m>>n$).
+Then we have $\E[A_{11}^m A_{12}^4] \sim \frac{C(n,k)}{(k+2(m+2)) \times
+\cdot\times (n+2(m+3)) } = \frac{C'(n,k)}{(2m)^{\frac{n-k}{2}+2}}$
 
 \section{External Link}
 Source document is available at
@@ -644,7 +689,8 @@ RHS & =
 -  \sum_{k=0}^{\min\{i, j\}}
 \delta(k, i) \delta(k, j) \frac{i!j!}{(i-k)!!(j-k)!!k!} \\
 & = ij\sum_{k=0}^{\min\{i-1, j-1\}}
-\delta(k, i) \delta(k, j) \frac{(i-1)!(j-1)!}{(i-1-k)!!(j-1-k)!!k!} - \delta(i, j)(i+j-1)!! \\
+\delta(k, i) \delta(k, j) \frac{(i-1)!(j-1)!}{(i-1-k)!!(j-1-k)!!k!} -
+\delta(i, j)(i+j-1)!! \\
 & =  \delta(i, j)ij(i+j-3)!! - \delta(i, j)(i+j-1)!!\\
 & = \delta(i, j)(i-1)(j-1)(i+j-3)!!
 \end{align*}
@@ -656,7 +702,8 @@ $p_i = (-1)^{(m-i)/2}\delta(i, m) \frac{m!}{i!(m-i)!! \sqrt{m!}} $.
 First we can show that $U_{mm} p_m = 1 $. For $ 0\leq i < m $ we
 will show that $ \sum_{j=i}^m U_{ij} p_j = 0 $. In specific form as
 \begin{equation}
-\sum_{j=i}^m \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} (-1)^{(m-j)/2}\delta(j, m) \frac{m!}{j!(m-j)!! \sqrt{m!}} = 0
+\sum_{j=i}^m \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}}
+(-1)^{(m-j)/2}\delta(j, m) \frac{m!}{j!(m-j)!! \sqrt{m!}} = 0
 \end{equation}
 It is equivalent to
 \begin{align*}
@@ -670,16 +717,21 @@ It is equivalent to
 \end{proof}
 \section{Another proof of $-(m-1)$}
 Using Lagrange multiplier we get an unconstraint optimization problem:
-$p^T \widetilde{M} p - \lambda p^T \widetilde{N} p $. Let the derivative of this expression equal to zero
-we have $(\widetilde{M}-\lambda \widetilde{N})p=0$ where $\lambda = p^T \widetilde{M} p$.
-Therefore, we choose the minimal $\lambda$ which make the determinant of $(\widetilde{M}-\lambda \widetilde{N})$ equal to zero.
+$p^T \widetilde{M} p - \lambda p^T \widetilde{N} p $.
+Let the derivative of this expression equal to zero
+we have $(\widetilde{M}-\lambda \widetilde{N})p=0$ where
+$\lambda = p^T \widetilde{M} p$.
+Therefore, we choose the minimal $\lambda$
+which make the determinant of $(\widetilde{M}-\lambda \widetilde{N})$
+equal to zero.
 We have the following proposition:
 \begin{proposition}
 \begin{equation}
 \det[\widetilde{M}-\lambda \widetilde{N}] = \prod_{i=0}^m i!(-(i-1) - \lambda)
 \end{equation}
 \end{proposition}
-From the above proposition, we say that the minimal $\lambda$ is exactly $-(m-1)$.
+From the above proposition,
+we say that the minimal $\lambda$ is exactly $-(m-1)$.
 \bibliographystyle{plain}
 \bibliography{exportlist}
 \end{document}

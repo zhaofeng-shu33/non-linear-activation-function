@@ -79,25 +79,39 @@ B(\frac{n-1}{2}, \frac{2k+1}{2})
 \end{align*}
 
 Actually, we can caculate the exact distribution of $Y_1$.
-Suppose $w(n, q) = \frac{1}{2^{nq/2} \Gamma_q(\frac{n}{2})}$ which is called Wishart constant. $\Gamma_q$ is the multivariate Gamma function.
+Suppose $w(n, q) = \frac{1}{2^{nq/2} \Gamma_q(\frac{n}{2})}$ which is
+called Wishart constant. $\Gamma_q$ is the multivariate Gamma function.
 The Proposition 7.3, Chapter 7 of \cite{eaton1989group} says:
 \begin{proposition}\label{prop:dens}
-Suppose $X$ is a random orthogonal matrix, $Y$ is the $p\times q$ upper submatrix of $X$. $q\leq p $ and $p+q \leq n$. Then the density function of $Y$ is given by
+Suppose $X$ is a random orthogonal matrix,
+$Y$ is the $p\times q$ upper submatrix of $X$.
+$q\leq p $ and $p+q \leq n$.
+Then the density function of $Y$ is given by
 
 \begin{equation}
-f(y) = \frac{w(n-p, q)}{\sqrt{2\pi}^{pq}w(n,q)} \abs{I_q - y^T y}^{\frac{n-p-q-1}{2}}I_0(y^T y)
+f(y) = \frac{w(n-p, q)}{\sqrt{2\pi}^{pq}w(n,q)}
+\abs{I_q - y^T y}^{\frac{n-p-q-1}{2}}I_0(y^T y)
 \end{equation}
-where $I_0$ is an indicator function of the $q\times q $ symmetric matrices. $I_0(A)=1$ if all eigenvalues of $A$ falls within $(0,1)$. Otherwise $I_0(A)=0$.
+where $I_0$ is an indicator function
+of the $q\times q $ symmetric matrices.
+$I_0(A)=1$ if all eigenvalues of $A$ falls within $(0,1)$.
+Otherwise $I_0(A)=0$.
 \end{proposition}
 Using this proposition we can get the density function of $Y_1$ as
 \begin{equation}
-p(y) = \frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}\Gamma(\frac{n-1}{2})} (1-y^2)^{\frac{n-3}{2}}
+p(y) = \frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}\Gamma(\frac{n-1}{2})}
+(1-y^2)^{\frac{n-3}{2}}
 \end{equation}
 Using the property of beta function
-$\int_{-1}^{1} y^{2k} p(y)dy = \frac{\Gamma(\frac{n}{2})\Gamma(\frac{2k+1}{2})}
-{\sqrt{\pi} \Gamma(\frac{2k+n}{2})}$, which is same with Equation \eqref{eq:n3}.
-Notice that $\hat{Y}_1 = Y_1^2 (-1 \leq Y_1 \leq 1)$ is beta distribution $B(\frac{1}{2}, \frac{n-1}{2})$. The high order moment of $\hat{Y}_1$ is a well known result.
-See \href{https://en.wikipedia.org/wiki/Beta_distribution#Higher_moments}{Higher moments of Beta distribution}.
+$\int_{-1}^{1} y^{2k} p(y)dy =
+\frac{\Gamma(\frac{n}{2})\Gamma(\frac{2k+1}{2})}
+{\sqrt{\pi} \Gamma(\frac{2k+n}{2})}$,
+which is same with Equation \eqref{eq:n3}.
+Notice that $\hat{Y}_1 = Y_1^2 (-1 \leq Y_1 \leq 1)$ is beta distribution
+$B(\frac{1}{2}, \frac{n-1}{2})$.
+The high order moment of $\hat{Y}_1$ is a well known result.
+See \href{https://en.wikipedia.org/wiki/Beta_distribution#Higher_moments}
+{Higher moments of Beta distribution}.
 We also consider the case when the moments of
 $\hat{Y} = Y_1^2 + \dots + Y_r^2$ is required.
 Let $Z = X_{r+1}^2 + \dots + X_n^2$. We have
@@ -133,42 +147,80 @@ B(\frac{n-r}{2}, \frac{2t+r}{2}) =
 {\Gamma(\frac{2t+n}{2})\Gamma(\frac{r}{2})}
 \end{align*}
 
-From Proposition \ref{prop:dens}, let $p=r, q=1$. The joint distribution of $Y_1, \dots, Y_r$ can be written as:
+From Proposition \ref{prop:dens}, let $p=r, q=1$.
+The joint distribution of $Y_1, \dots, Y_r$ can be written as:
 $$
-p(y_1, \dots, y_r) = \frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}^r \Gamma(\frac{n-r}{2})}(1- y_1^2 - \dots - y_r^2)^{\frac{n-r}{2} -1}
+p(y_1, \dots, y_r) = \frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}^r
+\Gamma(\frac{n-r}{2})}(1- y_1^2 - \dots - y_r^2)^{\frac{n-r}{2} -1}
 $$
 To compute $\E[(Y_1^2 + \dots Y_r^2)^t]$, we
-make the spherical transformation and integrate over all those angle components:
+make the spherical transformation and
+integrate over all those angle components:
 \begin{align*}
-\frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}^r\Gamma(\frac{n-r}{2})}  \frac{r\pi^{r/2}}{\Gamma(\frac{r}{2}+1)}\int_{0}^1 y^{2t+r-1}(1- y^2)^{\frac{n-r}{2} -1} dy =
+\frac{\Gamma(\frac{n}{2})}{\sqrt{\pi}^r\Gamma(\frac{n-r}{2})}
+\frac{r\pi^{r/2}}{\Gamma(\frac{r}{2}+1)}
+\int_{0}^1 y^{2t+r-1}(1- y^2)^{\frac{n-r}{2} -1} dy =
 \frac{\Gamma(\frac{2t+r}{2})\Gamma(\frac{n}{2})}
 {\Gamma(\frac{2t+n}{2})\Gamma(\frac{r}{2})}
 \end{align*}
-The result is the same with Equation \eqref{eq:n4}. We can further show that $\hat{Y}$ is beta distribution with $B(\frac{r}{2}, \frac{n-r}{2})$ using the techniques similar to \href{https://en.wikipedia.org/wiki/Proofs_related_to_chi-squared_distribution#Derivation_of_the_pdf_for_k_degrees_of_freedom}{Derivation of pdf for chi-square distributions}. Then the higher order moment of $\hat{Y}$ follows naturally. The distribution of $\hat{Y}$ can also be got from Proposition 7.2 in \cite{eaton1989group} by setting $p=r, q=1$.
+The result is the same with Equation \eqref{eq:n4}.
+We can further show that $\hat{Y}$
+is beta distribution with $B(\frac{r}{2}, \frac{n-r}{2})$
+using the techniques similar to
+\href{https://en.wikipedia.org/wiki/
+Proofs_related_to_chi-squared_distribution
+#Derivation_of_the_pdf_for_k_degrees_of_freedom}
+{Derivation of pdf for chi-square distributions}.
+Then the higher order moment of $\hat{Y}$ follows naturally.
+The distribution of $\hat{Y}$ can also be got
+from Proposition 7.2 in \cite{eaton1989group} by setting $p=r, q=1$.
 
 
-We like to compute $\E[X_1^{2k_1} X_2^{2k_2}]$. Let $ Z = X_3^2 + \dots + X_n^2$ which is a chi square distribution with $n-2$ degree of freedom.
+We like to compute $\E[X_1^{2k_1} X_2^{2k_2}]$.
+Let $ Z = X_3^2 + \dots + X_n^2$ which is a chi square distribution
+with $n-2$ degree of freedom.
 Then we have
 \begin{align}\label{eq:cor}
-&\int_{x,y\in \mathbb{R}}\int_{z\geq 0} \frac{x^{2k_1} y^{2k_2}}{(x^2+y^2+z)^{k_1 + k_2}} p(x)p(y)q(z) dxdydz \notag\\
-&=\frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2}) \Gamma(k_2 + \frac{1}{2})\Gamma(\frac{n}{2}-1)}{\Gamma(k_1 + k_2 + \frac{n}{2})}
+&\int_{x,y\in \mathbb{R}}\int_{z\geq 0}
+\frac{x^{2k_1} y^{2k_2}}{(x^2+y^2+z)^{k_1 + k_2}} p(x)p(y)q(z) dxdydz \notag\\
+&=\frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2})
+\Gamma(k_2 + \frac{1}{2})
+\Gamma(\frac{n}{2}-1)}{\Gamma(k_1 + k_2 + \frac{n}{2})}
 \end{align}
 We let $z=(x^2+y^2)t$ first.
 \begin{align*}
-\int_{x,y\in \mathbb{R}}\int_{z\geq 0} \frac{x^{2k_1} y^{2k_2}}{(x^2+y^2+z)^{k_1 + k_2}} p(x)p(y)q(z) dxdydz & =\\
-\frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi} \int_{x,y\in \mathbb{R}}\int_{t\geq 0}\frac{x^{2k_1} y^{2k_2}t^{-2+\frac{n}{2}}}{(x^2+y^2)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}(x^2+y^2)(1+t))dxdydt =
+\int_{x,y\in \mathbb{R}}\int_{z\geq 0}
+\frac{x^{2k_1} y^{2k_2}}{(x^2+y^2+z)^{k_1 + k_2}} p(x)p(y)q(z) dxdydz & =\\
+\frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi}
+\int_{x,y\in \mathbb{R}}\int_{t\geq 0}
+\frac{x^{2k_1} y^{2k_2}t^{-2+\frac{n}{2}}}
+{(x^2+y^2)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}
+\exp(-\frac{1}{2}(x^2+y^2)(1+t))dxdydt =
 \end{align*}
 Secondly we make the transformation $y^2=x^2u$ with $u>0$.
 \begin{align*}
-\frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{2}{2\pi}\int_{x,u,t\geq 0}\frac{x^{n-1} u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}\exp(-\frac{1}{2}x^2(1+u)(1+t))dxdudt =
+\frac{1}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{2}{2\pi}
+\int_{x,u,t\geq 0}\frac{x^{n-1}
+u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}
+{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}
+\exp(-\frac{1}{2}x^2(1+u)(1+t))dxdudt =
 \end{align*}
-We can first integrate about $x$ first using Gamma function(let $\sigma^2 = \frac{1}{(1+u)(1+t)}$)
+We can first integrate about $x$ first using Gamma function
+(let $\sigma^2 = \frac{1}{(1+u)(1+t)}$)
 and get
 \begin{align*}
-\frac{2^{n/2} \Gamma(\frac{n}{2})}{2^{\frac{n-2}{2}}\Gamma(\frac{n-2}{2})}\frac{1}{2\pi}\int_{u,t\geq 0} \frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}\sigma^n}{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}dudt = \\
-\frac{n-2}{2\pi}\int_{u,t\geq 0} \frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}{(1+u)^{k_1 + k_2+1}(1+t)^{k_1 + k_2 + \frac{n}{2}}}dudt = \\
-\frac{n-2}{2\pi} B(k_2 + \frac{1}{2}, k_1 + \frac{1}{2}) B(-1+\frac{n}{2}, k_1 + k_2 + 1) =\\
-\frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2}) \Gamma(k_2 + \frac{1}{2})\Gamma(\frac{n}{2}-1)}{\Gamma(k_1 + k_2 + \frac{n}{2})}
+\frac{2^{n/2} \Gamma(\frac{n}{2})}{2^{\frac{n-2}{2}}
+\Gamma(\frac{n-2}{2})}\frac{1}{2\pi}\int_{u,t\geq 0}
+\frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}\sigma^n}
+{(1+u)^{k_1 + k_2+1-\frac{n}{2}}(1+t)^{k_1 + k_2}}dudt = \\
+\frac{n-2}{2\pi}\int_{u,t\geq 0}
+\frac{u^{k_2 - \frac{1}{2}}t^{-2+\frac{n}{2}}}
+{(1+u)^{k_1 + k_2+1}(1+t)^{k_1 + k_2 + \frac{n}{2}}}dudt = \\
+\frac{n-2}{2\pi}
+B(k_2 + \frac{1}{2}, k_1 + \frac{1}{2}) B(-1+\frac{n}{2}, k_1 + k_2 + 1) =\\
+\frac{n-2}{2\pi} \frac{\Gamma(k_1 + \frac{1}{2})
+\Gamma(k_2 + \frac{1}{2})\Gamma(\frac{n}{2}-1)}
+{\Gamma(k_1 + k_2 + \frac{n}{2})}
 \end{align*}
 From Equation \eqref{eq:cor}, we choose $k_1 = k_2 = k$ and we have
 $\E[X_1^{2k}X_2^{2k}]=\frac{((2k-1)!!)^2}{\prod_{i=0}^{2k-1} (n + 2i)}$
@@ -198,106 +250,171 @@ x & = \cos^2\theta \lambda_1 + \sin^2 \theta \lambda_2 \\
 y & = \cos\theta \sin\theta (\lambda_1 - \lambda_2) \\
 z & = \sin^2\theta \lambda_1 + \cos^2 \theta \lambda_2
 \end{align*}
-If we have an integral over all $2\times 2$ positive definite matrices, we can convert the integral to $\theta, \lambda_1, \lambda_2$. The determinant of the Jacobi matrix is $\abs{\lambda_1 - \lambda_2}$. The domain for $(\theta, \lambda_1, \lambda_2)$ is
+If we have an integral over all $2\times 2$ positive definite matrices,
+we can convert the integral to $\theta, \lambda_1, \lambda_2$.
+The determinant of the Jacobi matrix is $\abs{\lambda_1 - \lambda_2}$.
+The domain for $(\theta, \lambda_1, \lambda_2)$ is
 $\lambda_1 \geq \lambda_2 \geq 0$ and $\theta \in [0,\pi]$.
 We show that $\Gamma_2(a) = \sqrt{\pi}\Gamma(a) \Gamma(a-\frac{1}{2})$ where
 $\Gamma_2(a) = \int_{S>0} \exp(-\tr(S)) \abs{S}^{a-\frac{3}{2}} dS$.
 
-First we transform the integral to $(\lambda_1, \lambda_2, \theta)$ space and integrate out $\theta$:
+First we transform the integral to $(\lambda_1, \lambda_2, \theta)$ space and
+integrate out $\theta$:
 $$
-\Gamma_2(a) = \pi \int_{\lambda_1 \geq \lambda_2} (\lambda_1 -\lambda_2) \exp(-\lambda_1 - \lambda_2) (\lambda_1 \lambda_2)^{a-\frac{3}{2}} d\lambda_1 d\lambda_2
+\Gamma_2(a) = \pi \int_{\lambda_1 \geq \lambda_2} (\lambda_1 -\lambda_2)
+\exp(-\lambda_1 - \lambda_2)
+(\lambda_1 \lambda_2)^{a-\frac{3}{2}} d\lambda_1 d\lambda_2
 $$
-Next we make another transformation: $\lambda_1 = r \cos^2 \phi, \lambda_2 = r \sin^2 \phi$. The determinant of Jacobi is $2r\sin\phi \cos\phi$ where $ r >0, \phi \in [0, \frac{\pi}{4}]$.
+Next we make another transformation:
+$\lambda_1 = r \cos^2 \phi, \lambda_2 = r \sin^2 \phi$.
+The determinant of Jacobi is $2r\sin\phi \cos\phi$ where
+$ r >0, \phi \in [0, \frac{\pi}{4}]$.
 Then we have
 \begin{align*}
-\Gamma_2(a) =&  2\pi \int_0^{\frac{\pi}{4}} (\cos^2\phi - \sin^2 \phi) (\cos\phi\sin\phi)^{2a-2} d\phi \int_0^{+\infty} r^{2a-1} \exp(-r) dr \\
-= & 2\pi \Gamma(2a) \int_0^{\frac{pi}{4}} \cos(2\phi) \frac{1}{2^{2a-2}}\sin^{2a-2} (2\phi)d\phi \\
+\Gamma_2(a) =&  2\pi \int_0^{\frac{\pi}{4}}
+(\cos^2\phi - \sin^2 \phi) (\cos\phi\sin\phi)^{2a-2} d\phi
+\int_0^{+\infty} r^{2a-1} \exp(-r) dr \\
+= & 2\pi \Gamma(2a) \int_0^{\frac{pi}{4}}
+\cos(2\phi) \frac{1}{2^{2a-2}}\sin^{2a-2} (2\phi)d\phi \\
 = & \pi\frac{\Gamma(2a)}{2^{2a-2}} \int_0^1 x^{2a-2}dx \\
 = & \frac{\pi\Gamma(2a-1)}{2^{2a-2}}
 \end{align*}
-Using Legendre duplication formula $\Gamma(z) \Gamma(z+\frac{1}{2}) = 2^{1-2z} \sqrt{\pi} \Gamma(2z)$, let $ z = a - \frac{1}{2} $ we have
+Using Legendre duplication formula $\Gamma(z) \Gamma(z+\frac{1}{2}) =
+2^{1-2z} \sqrt{\pi} \Gamma(2z)$, let $ z = a - \frac{1}{2} $ we have
 $\Gamma_2(a) = \sqrt{\pi}\Gamma(a)\Gamma(a-\frac{1}{2})$.
 
 For $p \times p$ symmetric matrix, we define the multivariate Beta function
 as
 \begin{equation}
-B_p(a, b) = \int_{X \in S_{p,p}^{+} }\abs{I-X}^{a-\frac{p+1}{2}} \abs{X}^{b-\frac{p+1}{2}}dX
+B_p(a, b) = \int_{X \in S_{p,p}^{+} }\abs{I-X}^{a-\frac{p+1}{2}}
+\abs{X}^{b-\frac{p+1}{2}}dX
 \end{equation}
-The integration is about $p \times p$ positive definite matrix. We will show that
+The integration is about $p \times p$ positive definite matrix.
+We will show that
 \begin{equation}
 B_p(a,b) = \frac{\Gamma_p(a)\Gamma_p(b)}{\Gamma_p(a+b)}
 \end{equation}
 where $\Gamma_p(a)$ is defined as:
 \begin{equation}
-\Gamma_p(a) =  \int_{X \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}} \exp(-tr(X))dX
+\Gamma_p(a) =  \int_{X \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}}
+\exp(-tr(X))dX
 \end{equation}
-The proof is similar with \href{https://en.wikipedia.org/wiki/Beta_function#Relationship_between_gamma_function_and_beta_function}{one dimensional case}.
+The proof is similar with
+\href{https://en.wikipedia.org/wiki/Beta_function
+#Relationship_between_gamma_function_and_beta_function}
+{one dimensional case}.
 First we consider
-$\Gamma_p(a)\Gamma_p(b) = \int_{X,Y \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}} \abs{Y}^{b-\frac{p+1}{2}}\exp(-tr(X+Y))dXdY$
-Then we make the transformation $X = L(I-T)L^T, Y=LTL^T$ where $Z=LL^T$. We actually transform  the integral to $(T,Z)$ space where $I-T, T,Z$ are positive definite.
-The Jacobi of this transformation is $|Z|^{\frac{p+1}{2}}$ from the Proposition 5.11, \cite{eaton}. Therefore, the integral transforms to
+$\Gamma_p(a)\Gamma_p(b) =
+\int_{X,Y \in S_{p,p}^{+} }\abs{X}^{a-\frac{p+1}{2}}
+\abs{Y}^{b-\frac{p+1}{2}}\exp(-tr(X+Y))dXdY$
+Then we make the transformation $X = L(I-T)L^T, Y=LTL^T$
+where $Z=LL^T$. We actually transform  the integral to $(T,Z)$ space
+where $I-T, T,Z$ are positive definite.
+The Jacobi of this transformation is $|Z|^{\frac{p+1}{2}}$
+from the Proposition 5.11, \cite{eaton}. Therefore, the integral transforms to
 $$
-\int_{Z,T, I-T \in S_{p,p}^{+} }\abs{I-T}^{a-\frac{p+1}{2}} \abs{T}^{b-\frac{p+1}{2}}\abs{Z}^{a+b-\frac{p+1}{2}}\exp(-tr(Z))dZdT
+\int_{Z,T, I-T \in S_{p,p}^{+} }\abs{I-T}^{a-\frac{p+1}{2}}
+\abs{T}^{b-\frac{p+1}{2}}\abs{Z}^{a+b-\frac{p+1}{2}}\exp(-tr(Z))dZdT
 $$ which equals $\Gamma_p(a+b)B(a,b)$ by definition.
 
-The multivariate Beta function is used as a distribution for sub-blocks of $A=X'X'^T$ where $X'$ is $n \times k$ sub-matrix of random orthogonal matrix $X$ ($n\geq k+2, k\geq 2$). From Proposition 7.2 of \cite{eaton1989group} we conclude that the distribution for $2\times 2$ upper matrix of $A$ is
+The multivariate Beta function is used as
+a distribution for sub-blocks of $A=X'X'^T$ where
+$X'$ is $n \times k$ sub-matrix of random orthogonal matrix $X$
+($n\geq k+2, k\geq 2$).
+From Proposition 7.2 of \cite{eaton1989group}
+we conclude that the distribution for $2\times 2$ upper matrix of $A$ is
 \begin{equation}
-p(A_{11}, A_{12}, A_{22}) = C_0 I_0(A_{11}, A_{12}, A_{22})[A_{11}A_{22}-A_{12}^2]^{\frac{k-3}{2}} [(1-A_{11})(1-A_{22})-A_{12}^2]^{\frac{n-k-3}{2}}
+p(A_{11}, A_{12}, A_{22}) =
+C_0 I_0(A_{11}, A_{12}, A_{22})[A_{11}A_{22}-A_{12}^2]^{\frac{k-3}{2}}
+[(1-A_{11})(1-A_{22})-A_{12}^2]^{\frac{n-k-3}{2}}
 \end{equation}
-where $C_0 = \frac{w(k, 2) w(n-k, 2)}{w(n, 2)}$ and $I_0$ is the indicator function. The feasible region is described by:
-$ 0 < A_{11} < 1, 0 < A_{22} < 1, A_{12}^2 < \min\{A_{11}A_{22}, 1 - A_{11} - A_{22} + A_{11}A_{22}\}$
+where $C_0 = \frac{w(k, 2) w(n-k, 2)}{w(n, 2)}$
+and $I_0$ is the indicator function.
+The feasible region is described by:
+$ 0 < A_{11} < 1, 0 < A_{22} < 1, A_{12}^2 < \min\{A_{11}A_{22},
+1 - A_{11} - A_{22} + A_{11}A_{22}\}$
 
-If only $A_{11}$(or $A_{22}$) is considered, $A_{11}$ is Beta distribution with parameter $B(\frac{k}{2}, \frac{n-k}{2})$.
-Then using the conclusion of higher order moment for Beta distribution, we can get $\E[A_{11}^t] = \prod_{i=0}^{t-1}\frac{2t+k}{2t+n}$. The conclusion is the same with Equation \eqref{eq:n4}.
+If only $A_{11}$(or $A_{22}$) is considered,
+$A_{11}$ is Beta distribution with parameter $B(\frac{k}{2}, \frac{n-k}{2})$.
+Then using the conclusion of higher order moment for Beta distribution,
+we can get $\E[A_{11}^t] = \prod_{i=0}^{t-1}\frac{2t+k}{2t+n}$.
+The conclusion is the same with Equation \eqref{eq:n4}.
 
-For $q=2$, we have $B_2(a+1,b)=\frac{a(a-\frac{1}{2})}{(a+b)(a+b-\frac{1}{2})} B_2(a,b)$. This statement is similar with
+For $q=2$,
+we have $B_2(a+1,b)=\frac{a(a-\frac{1}{2})}{(a+b)(a+b-\frac{1}{2})} B_2(a,b)$.
+This statement is similar with
 $B(a+1,b) = \frac{a}{a+b}B(a,b)$.
 
-To simplify our notitation, let $X = A_{11}, Y = A_{22}, Z = A_{12}$ and $A = XY - Z^2, B = 1 - X - Y + A$. Let $\E_{n,k}[f(X,Y,Z)]$ denotes the expectation when the distribution parameters are $n, k$ and $f(X,Y,Z)$ is a function of the three input variables. Then we have $\E_{n,k}[Af(X,Y,Z)] = \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[f(X,Y,Z)]$ and $\E_{n,k}[Bf(X,Y,Z)] = \frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2, k}[f(X,Y,Z)]$. We can omit the subscript $n,k$ when there is no ambiguity.
+To simplify our notitation,
+let $X = A_{11}, Y = A_{22}, Z = A_{12}$ and
+$A = XY - Z^2, B = 1 - X - Y + A$.
+Let $\E_{n,k}[f(X,Y,Z)]$ denotes the expectation
+when the distribution parameters are $n, k$
+and $f(X,Y,Z)$ is a function of the three input variables.
+Then we have $\E_{n,k}[Af(X,Y,Z)] =
+\frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[f(X,Y,Z)]$
+and $\E_{n,k}[Bf(X,Y,Z)] = \frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2, k}[f(X,Y,Z)]$.
+We can omit the subscript $n,k$ when there is no ambiguity.
 Using this property we show that
 \begin{equation}\label{eq:XZm2}
-\E_{n,k}[X^m Z^2] = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
+\E_{n,k}[X^m Z^2] = \frac{n-k}{n-1}
+\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
 \end{equation}
 
-Since $Z^2 = XY - A = X(1-X+A-B)-A$, using $\E_{n,k}[X^{m+1}] = \frac{k+2m}{n+2m}\E_{n,k}[X^m]$ we have
+Since $Z^2 = XY - A = X(1-X+A-B)-A$,
+using $\E_{n,k}[X^{m+1}] = \frac{k+2m}{n+2m}\E_{n,k}[X^m]$ we have
 \begin{align*}
 \E_{n,k}[X^m Z^2] & = \E_{n,k}[X^{m+1}-X^{m+2}+AX^{m+1}-BX^{m+1}-AX^m] \\
-& = (1-\frac{k+2m+2}{n+2m+2})\E_{n,k}[X^{m+1}] + \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[X^{m+1} - X^m]\\
+& = (1-\frac{k+2m+2}{n+2m+2})\E_{n,k}[X^{m+1}] +
+\frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[X^{m+1} - X^m]\\
 & - \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}] \\
-& = \frac{n-k}{n+2m+2}\E_{n,k}[X^{m+1}] - \frac{k(k-1)}{n(n-1)}\frac{n-k}{n+2m+2}\E_{n+2,k+2}[X^m] \\
+& = \frac{n-k}{n+2m+2}\E_{n,k}[X^{m+1}] -
+\frac{k(k-1)}{n(n-1)}\frac{n-k}{n+2m+2}\E_{n+2,k+2}[X^m] \\
 & - \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}] \\
 \end{align*}
-Since $\E_{n,k}[X^{m+1}] = \frac{k}{n}\E_{n+2,k+2}[X^m]$, we can further simplify the above expression as:
+Since $\E_{n,k}[X^{m+1}] = \frac{k}{n}\E_{n+2,k+2}[X^m]$,
+we can further simplify the above expression as:
 \begin{align*}
-\E_{n,k}[X^m Z^2] &= \frac{k(n-k)}{n(n+2m+2)}(1-\frac{k-1}{n-1})\E_{n+2,k+2}[X^m]- \frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}]\\
-& = \frac{k(n-k)^2}{n(n-1)(n+2m+2)}\prod_{i=1}^m \frac{k+2i}{n+2i} - \frac{(n-k)(n-k-1)}{n(n-1)}\prod_{i=0}^m \frac{k+2i}{n+2i+2} \\
+\E_{n,k}[X^m Z^2] &=
+\frac{k(n-k)}{n(n+2m+2)}(1-\frac{k-1}{n-1})\E_{n+2,k+2}[X^m] -
+\frac{(n-k)(n-k-1)}{n(n-1)} \E_{n+2,k}[X^{m+1}]\\
+& = \frac{k(n-k)^2}{n(n-1)(n+2m+2)}\prod_{i=1}^m \frac{k+2i}{n+2i} -
+\frac{(n-k)(n-k-1)}{n(n-1)}\prod_{i=0}^m \frac{k+2i}{n+2i+2} \\
 & = \frac{n-k}{n-1}\frac{\prod_{i=0}^m (k+2i)}{\prod_{i=0}^{m+1} (n+2i)}
 \end{align*}
 Using Equation \eqref{eq:XZm2}, we will show that
 \begin{equation}\label{eq:XZm4}
-\E[X^m Z^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)} \frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
+\E[X^m Z^4] = \frac{3(n-k)(n+2-k)}{(n-1)(n+1)}
+\frac{\prod_{i=0}^{m+1} (k+2i)}{\prod_{i=0}^{m+3} (n+2i)}
 \end{equation}
-Equation \eqref{eq:XZm4} follows from $\E[X^m Z^4 ] = \E[Z^2 X^m(X-X^2 +AX-BX-A)]$.
+Equation \eqref{eq:XZm4} follows from
+$\E[X^m Z^4 ] = \E[Z^2 X^m(X-X^2 +AX-BX-A)]$.
 
 Further we show that
 \begin{equation}\label{eq:ZXtm}
-\E[Z^{2t} X^m] = (2t-1)!! \prod_{i=0}^{t-1}\frac{n-k+2i}{n-1+2i} \frac{\prod_{i=0}^{t-1+m} (k+2i)}{\prod_{i=0}^{2t-1+m}(n+2i)}
+\E[Z^{2t} X^m] = (2t-1)!! \prod_{i=0}^{t-1}\frac{n-k+2i}{n-1+2i}
+\frac{\prod_{i=0}^{t-1+m} (k+2i)}{\prod_{i=0}^{2t-1+m}(n+2i)}
 \end{equation}
 We use induction to show Equation \eqref{eq:ZXtm} is true.
 Suppose Equation \eqref{eq:ZXtm} holds for $\E[Z^{2t-2}X^m]$, then
 \begin{align*}
 \E[Z^{2t}X^m] &= \E[Z^{2t-2}X^m(X-X^2+AX-BX-A)] \\
-&= \E[Z^{2t-2}(X^{m+1} - X^{m+2})] + \E[A Z^{2t-2} (X^{m+1} - X^m)] - \E[BZ^{2t-2} X^{m+1}] \\
-&= \left(1-\frac{k+2(t+m)}{n+2(2t+m-1)}\right)\E[Z^{2t-2}X^{m+1}] + \frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[Z^{2t-2}(X^{m+1} - X^m)] \\
+&= \E[Z^{2t-2}(X^{m+1} - X^{m+2})] +
+\E[A Z^{2t-2} (X^{m+1} - X^m)] - \E[BZ^{2t-2} X^{m+1}] \\
+&= \left(1-\frac{k+2(t+m)}{n+2(2t+m-1)}\right)\E[Z^{2t-2}X^{m+1}] +
+\frac{k(k-1)}{n(n-1)}\E_{n+2,k+2}[Z^{2t-2}(X^{m+1} - X^m)] \\
 &-\frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2,k}[Z^{2t-2}X^{m+1}]\\
-&=\frac{n-k+2(t-1)}{n+2(2t+m-1)}\E[Z^{2t-2}X^{m+1}] - \frac{k(k-1)}{n(n-1)}\left(1-\frac{k+2(t+m)}{n+2(2t-1+m)}\right)
+&=\frac{n-k+2(t-1)}{n+2(2t+m-1)}\E[Z^{2t-2}X^{m+1}] -
+\frac{k(k-1)}{n(n-1)}\left(1-\frac{k+2(t+m)}{n+2(2t-1+m)}\right)
 \E[Z^{2t-2}X^m] \\
 &-\frac{(n-k)(n-k-1)}{n(n-1)}\E_{n+2,k}[Z^{2t-2}X^{m+1}]\\
-&=\frac{n-k+2(t-1)}{n+2(2t+m-1)}\left(1-\frac{k-1}{n+1+2(t-2)}\right)\E[Z^{2t-2}X^{m+1}] \\
+&=\frac{n-k+2(t-1)}{n+2(2t+m-1)}
+\left(1-\frac{k-1}{n+1+2(t-2)}\right)\E[Z^{2t-2}X^{m+1}] \\
 &-\frac{(n-k-1)(n-k+2(t-1))}{(n+2(t-1))(n+2(2t-1+m)}\E[Z^{2t-2}X^{m+1}] \\
 &=\frac{(2t-1)(n-k+2(t-1))}{(n+2(t-1)) (n+2(2t-1+m))}\E[Z^{2t-2}X^{m+1}]
 \end{align*}
-Using Equation \eqref{eq:XZm2} for $t-1$ we can get the same form of expression for $t$.
+Using Equation \eqref{eq:XZm2} for $t-1$
+we can get the same form of expression for $t$.
 
 \bibliographystyle{plain}
 \bibliography{exportlist}

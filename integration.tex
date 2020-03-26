@@ -416,6 +416,17 @@ Suppose Equation \eqref{eq:ZXtm} holds for $\E[Z^{2t-2}X^m]$, then
 Using Equation \eqref{eq:XZm2} for $t-1$
 we can get the same form of expression for $t$.
 
+For the general formula of $\E[Z^{2t}X^m Y^r]$
+we only consider the case when $r\leq m$ since $X$ and $Y$ are symmetric.
+Using $\E[Z^{2t}X^m Y^r]=\E[Z^{2t}X^{m-r}(A+Z^2)^r]$ we can get:
+\begin{align}
+\E[Z^{2t}X^m Y^r] &= (2t-1)!!
+\frac{\prod_{j=0}^{t-1} (n-k+2j)}{\prod_{j=0}^{t+r-1} (n-1+2j)}
+\frac{\prod_{j=0}^{t+m-1}(k+2j)}{\prod_{j=0}^{2t+m-1} (n+2j)}\notag\\
+&\cdot\sum_{i=0}^r\binom{r}{i}\prod_{j=1}^i (2t-1+2j)
+\frac{\displaystyle\prod_{j=0}^{r-i-1}(k-1+2j)
+\prod_{j=0}^{i-1}(n-k+2(j+t))}{\prod_{j=0}^{i-1}(n+2(j+2t+m))}
+\end{align}
 \bibliographystyle{plain}
 \bibliography{exportlist}
 

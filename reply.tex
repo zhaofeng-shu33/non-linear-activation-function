@@ -34,4 +34,18 @@ Therefore, we need to optimize
 $C(\hat{w}) = \xi(XX^TY)^T \nabla \xi(XX^TY) X\hat{w} -
 2(Y-XX^TY)^T\hat{w}X^T\nabla^2\xi(XX^TY)X\hat{w}$,
 which is quadratic with $\hat{w}$.
+
+\section{March 27}
+Suppose $M_{0j} = \frac{n}{j+n}N_{0j}$ and
+$M_{ij} = -\frac{n(i-1)(j-1)}{(i+j-1)(i+j+n)}
+N_{ij}$
+for $i,j>0$. Let $2t= i+j$, we know $N_{ij}
+\to +\infty$ as $t \to \infty$.
+
+Can we get $q^TMq > C$ from $q^TNq=1$ when $t \to +\infty$?
+($C$ is a constant irrelevant with $t$)
+
+Some thoughts: $ M_{ij} \geq 
+-\frac{n}{4}\frac{(i+j-2)^2}{(i+j+1)(i+j+n)}N_{ij}
+\geq -\frac{n}{4}N_{ij}$
 \end{document}

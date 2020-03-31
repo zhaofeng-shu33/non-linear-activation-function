@@ -594,10 +594,15 @@ in Equation \eqref{eq:Am4}($m>>n$).
 Then we have $\E[A_{11}^m A_{12}^4] \sim \frac{C(n,k)}{(k+2(m+2)) \times
 \cdot\times (n+2(m+3)) } = \frac{C'(n,k)}{(2m)^{\frac{n-k}{2}+2}}$
 
-\section{External Link}
-Source document is available at
-\url{https://gitee.com/freewind201301/non-linear-activation-function/blob/
-master/non_linear.tex}
+\section{Transformation}
+We make the transformation:
+$ q_i = \frac{n^{-1/2+i}}{k^{i/2}}\sum_{r=0}^m U_{ir}^{-1}p_r$.
+Then from 
+$q^T N q = 1$ we can get $p^T \widetilde{N} p = 1$. where
+\begin{equation}
+\widetilde{N}_{rs} = \sum_{i=0}^{r}\sum_{j=0}^{s}
+\frac{n^{-1/2+i+j}}{k^{(i+j)/2}} U^{-1}_{ir}U^{-1}_{js}N_{ij}
+\end{equation}
 
 \appendix
 \section{Decomposition of $\widetilde{N}$}
@@ -614,6 +619,8 @@ U_{ij} & = \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}} \textrm{ for } i\leq j
 \end{equation}
 \end{proposition}
 \begin{remark}
+Proposition \ref{prop:UUN} is a special case of Equation \eqref{eq:Isserlis} when
+$Y=X$ is a standard normal random variable.
 If Proposition \ref{prop:UUN} holds, $\widetilde{N} = U^T U$.
 \end{remark}
 \begin{proof}
@@ -702,12 +709,12 @@ In this section, we compute the inverse of $U$,
 which we denote as $U^{-1}$.
 We have
 \begin{equation}\label{eq:Uinv}
-U^{-1}(i, j) = \delta(i,j) (-1)^{(j-i)/2}
+U^{-1}_{ij} = \delta(i,j) (-1)^{(j-i)/2}
 \frac{\sqrt{j!}}{i!(j-i)!!} \textrm{ for }
 j\geq i
 \end{equation}
 \begin{proof}
-$U^{-1}(i, j) = 0$ if $i > j$, since the inverse of an upper
+$U^{-1}_{ij} = 0$ if $i > j$, since the inverse of an upper
 triangular matrix $U$ is also upper triangular.
 Let the matrix described in Equation \eqref{eq:Uinv} be called
 $A$, we will show that $B(i,j) := \sum_{k=0}^{m} U_{ik}A_{kj} = \delta_{ij}$

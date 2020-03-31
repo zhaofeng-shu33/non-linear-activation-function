@@ -697,25 +697,42 @@ RHS & =
 \end{align*}
 \end{proof}
 \end{proposition}
-\section{Proof of $Up=e_m$}
-\begin{proof}
-$p_i = (-1)^{(m-i)/2}\delta(i, m) \frac{m!}{i!(m-i)!! \sqrt{m!}} $.
-First we can show that $U_{mm} p_m = 1 $. For $ 0\leq i < m $ we
-will show that $ \sum_{j=i}^m U_{ij} p_j = 0 $. In specific form as
-\begin{equation}
-\sum_{j=i}^m \delta(i, j) \frac{j!}{(j-i)!!\sqrt{i!}}
-(-1)^{(m-j)/2}\delta(j, m) \frac{m!}{j!(m-j)!! \sqrt{m!}} = 0
+\section{Inverse of $U$}
+In this section, we compute the inverse of $U$,
+which we denote as $U^{-1}$.
+We have
+\begin{equation}\label{eq:Uinv}
+U^{-1}(i, j) = \delta(i,j) (-1)^{(j-i)/2}
+\frac{\sqrt{j!}}{i!(j-i)!!} \textrm{ for }
+j\geq i
 \end{equation}
-It is equivalent to
+\begin{proof}
+$U^{-1}(i, j) = 0$ if $i > j$, since the inverse of an upper
+triangular matrix $U$ is also upper triangular.
+Let the matrix described in Equation \eqref{eq:Uinv} be called
+$A$, we will show that $B(i,j) := \sum_{k=0}^{m} U_{ik}A_{kj} = \delta_{ij}$
+If $i>j$, then $B(i,j)=0$ from the upper triangular property of $U$ and
+$A$. If $i\geq j$ we have
+\begin{equation}
+B(i,j) = \frac{\sqrt{j!}}{\sqrt{i!}}\sum_{k=i}^j
+\delta(i, k)\delta(k,j) \frac{1}{(k-i)!!(j-k)!!}
+\end{equation}
+If $i=j$, we have $B(i,j)=1$. Under the condition of $j>i$,
+if $\delta(i,j)=0$, then $B(i,j)=0$. We consider the
+case when $2m'=j-i$ where $m' \geq 1$.
+Then
 \begin{align*}
-\sum_{j=i, j+=2}^m (-1)^{(m-j)/2} \frac{1}{(m-j)!!(j-i)!!}  = 0 & \iff \\
-\sum_{j=0, j+=2}^{2m} (-1)^{(2m-j)/2} \frac{1}{(2m-j)!! j!!} = 0 & \iff \\
-\sum_{j=0}^{m} (-1)^{m-j} \frac{1}{(2m-2j)!! (2j)!!} = 0 & \iff \\
-\sum_{j=0}^{m} (-1)^{m-j} \frac{1}{(m-j)! j!} = 0 & \iff \\
-\sum_{j=0}^{m} (-1)^{m-j} \binom{m}{j} = 0 & \iff \\
-(1+x)^m = 0 (x=-1)
+B(i,j)&=\frac{\sqrt{j!}}{\sqrt{i!}}
+\sum_{k=0}^{2m'} \delta(k,2)(-1)^{(2m'-k)/2} \frac{1}{(k)!!(2m'-k)!!} \\
+&=\frac{\sqrt{j!}}{\sqrt{i!}}
+\sum_{k=0}^{m'} (-1)^{m'-k} \frac{1}{(2k)!! (2m'-2k)!!}\\
+&=\frac{2^{m'}\sqrt{j!}}{m'!\sqrt{i!}}
+\sum_{k=0}^{m'}(-1)^{m'-k}\binom{m'}{k} \\
+& = 0 \textrm{ by binomial theorem}
 \end{align*}
 \end{proof}
+From the inverse of $U$ we can get $Up = e_m$ where
+$p_i = (-1)^{(m-i)/2}\delta(i, m) \frac{m!}{i!(m-i)!! \sqrt{m!}} $.
 \section{Another proof of $-(m-1)$}
 Using Lagrange multiplier we get an unconstraint optimization problem:
 $p^T \widetilde{M} p - \lambda p^T \widetilde{N} p $.
